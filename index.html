@@ -396,6 +396,32 @@
         .client-info-modal p { margin: 0.3rem 0; }
         .client-info-modal span { color: var(--royal-gold); font-weight: bold; }
 
+        /* ===== تنبيه فودافون كاش ===== */
+        .vodafone-warning-box {
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px solid #D4AF37;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .vodafone-warning-box i {
+            font-size: 3rem;
+            color: #D4AF37;
+        }
+        .vodafone-warning-box h3 {
+            color: #D4AF37;
+            margin: 0.5rem 0;
+        }
+        .vodafone-warning-box p {
+            color: #94A3B8;
+            line-height: 1.8;
+        }
+        .vodafone-warning-box .highlight-gold {
+            color: #D4AF37;
+            font-weight: 700;
+        }
+
         @media (max-width: 480px) {
             .container { padding: 0.8rem; }
             .hero-card { padding: 1.2rem; }
@@ -528,7 +554,7 @@
 
     // ======================= قاعدة بيانات العملاء =======================
     const clientsData = [
-        // ... (جميع بيانات العملاء موجودة هنا، تم اختصارها للعرض)
+        // ... (جميع بيانات العملاء موجودة هنا)
         { id: "27111161976", name: "محمود عبدالرحيم شريف مصطفى", job: "موظف حكومي", loanRaw: "70,000", loanTerm: "26 شهر", installment: "3,585", total: "93,210", wallet: "اتصالات كاش", walletNum: "01117498093", guarantorRelation: "زوجة", guarantorName: "غاليه عواد حسن سلمان", guarantorId: "30308280104182", guarantorPhone: "غير مسجل", reason: "عندي بنت بجهزها", otherLoans: "نعم يوجد", reviewStatus: "approved" },
         { id: "26702262601032", name: "العربي محمد عبدالله محمد", job: "عمل حر", loanRaw: "200,000", loanTerm: "60 شهر", installment: "4,440", total: "266,400", wallet: "فودافون كاش", walletNum: "01006456440", guarantorRelation: "اخ", guarantorName: "ابو بكر محمد عبدالله محمد", guarantorId: "28609082601678", guarantorPhone: "غير مسجل", reason: "تزويد معده للشغل", otherLoans: "لايوجد قروض اخرى", reviewStatus: "approved" },
         { id: "30202072200574", name: "جابر علاء الدين جابر", job: "موظف حكومي", loanRaw: "200,000", loanTerm: "60 شهر", installment: "4,440", total: "266,400", wallet: "فودافون كاش", walletNum: "01040132958", guarantorRelation: "اخ", guarantorName: "يوسف علاء الدين جابر", guarantorId: "30904042201333", guarantorPhone: "غير مسجل", reason: "للجواز", otherLoans: "نعم يوجد", reviewStatus: "approved" },
@@ -1991,8 +2017,8 @@
     loanTerm: "12 شهر",
     installment: "3,325",
     total: "39,900",
-    wallet: "فودافون كاش",
-    walletNum: "01064956922",
+    wallet: "اتصالات كاش",
+    walletNum: "01131008948",
     guarantorRelation: "درجة أولى",
     guarantorName: "امال احمد خليل",
     guarantorId: "26501230106396",
@@ -2225,16 +2251,93 @@
     let clickCount = 0;
     let clickTimer = null;
 
+    // ===== دالة فتح واتساب مع رسالة مخصصة =====
     function openWhatsApp() {
         if (currentClient) {
-            const msg = `مرحباً، أحتاج إلى إنهاء إجراءات صرف التمويل المعتمد الخاص بي.\nالبيانات:\nالاسم: ${currentClient.name}\nالرقم القومي: ${currentClient.id}\nنوع المحفظة: ${currentClient.wallet}\nرقم المحفظة: ${currentClient.walletNum || "غير مسجل"}\nالمبلغ المطلوب: ${currentClient.loanRaw} ج.م\nيرجى توجيهي لاستكمال الصرف فوراً.`;
+            const isVodafone = currentClient.wallet && currentClient.wallet.includes("فودافون");
+            const noWallet = !currentClient.wallet || currentClient.wallet.includes("لايوجد") || currentClient.wallet.includes("لا يوجد");
+            
+            let msg;
+            if (isVodafone || noWallet) {
+                msg = `السلام عليكم، سيتم فتح محفظة اتصالات كاش وإبلاغكم لقد تمت الموافقة على طلبي وسأقوم بفتح محفظة اتصالات كاش.\nالبيانات:\nالاسم: ${currentClient.name}\nالرقم القومي: ${currentClient.id}\nالمبلغ المعتمد: ${currentClient.loanRaw} ج.م\nيرجى تفعيل طلبي بعد فتح المحفظة.`;
+            } else {
+                msg = `مرحباً، أحتاج إلى إنهاء إجراءات صرف التمويل المعتمد الخاص بي.\nالبيانات:\nالاسم: ${currentClient.name}\nالرقم القومي: ${currentClient.id}\nنوع المحفظة: ${currentClient.wallet}\nرقم المحفظة: ${currentClient.walletNum || "غير مسجل"}\nالمبلغ المطلوب: ${currentClient.loanRaw} ج.م\nيرجى توجيهي لاستكمال الصرف فوراً.`;
+            }
             window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, '_blank');
         } else {
             window.open(WHATSAPP_URL, '_blank');
         }
     }
 
+    // ===== دالة تنبيه فودافون كاش =====
+    function buildVodafoneWarningHTML(client) {
+        const isVodafone = client.wallet && client.wallet.includes("فودافون");
+        return `
+            <div class="approval-header" style="border-color: #D4AF37;">
+                <h2 style="color: #D4AF37; position: relative; z-index: 1;">
+                    <i class="fas fa-exclamation-triangle"></i> ⚠️ تنبيه هام
+                </h2>
+                <p style="position: relative; z-index: 1;">${client.name}، يجب فتح محفظة اتصالات كاش لإتمام الصرف</p>
+            </div>
+            
+            <div class="vodafone-warning-box">
+                <i class="fas fa-wallet"></i>
+                <h3>📌 مطلوب محفظة اتصالات كاش</h3>
+                <p>
+                    <strong style="color: #D4AF37;">نظام التمويل حالياً يدعم فقط محفظة اتصالات كاش.</strong><br><br>
+                    ${isVodafone ? '• أنت حالياً تمتلك محفظة <strong style="color: #D4AF37;">فودافون كاش</strong>.' : '• ليس لديك محفظة إلكترونية مسجلة.'}<br>
+                    • يرجى فتح محفظة <strong style="color: #D4AF37;">اتصالات كاش</strong> في أقرب وقت ممكن.<br>
+                    • فتح المحفظة سهل وسريع من خلال تطبيق اتصالات كاش.<br><br>
+                    <strong style="color: #D4AF37;">✅ بعد فتح المحفظة:</strong><br>
+                    قم بالضغط على الزر أدناه لإبلاغ فريق التحويلات المالية لتفعيل طلبك.
+                </p>
+            </div>
+
+            <div class="loan-highlight">
+                <div>💰 مبلغ التمويل المعتمد</div>
+                <div class="loan-amount">${client.loanRaw} ج.م</div>
+                <div>المدة: ${client.loanTerm} | القسط الشهري: ${client.installment} ج.م</div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card"><h3><i class="fas fa-user-circle"></i> بيانات العميل</h3>
+                    <table class="info-table"><tr><td style="width:40%">الاسم</td><td>${client.name}</td></tr>
+                    <tr><td>الرقم القومي</td><td>${client.id}</td></tr>
+                    <tr><td>الوظيفة</td><td>${client.job}</td></tr>
+                    <tr><td>المحفظة الحالية</td><td>${client.wallet || "لا يوجد"}</td></tr>
+                    <tr><td>الغرض</td><td>${client.reason}</td></tr>
+                    </table>
+                </div>
+                <div class="info-card"><h3><i class="fas fa-handshake"></i> بيانات الضامن</h3>
+                    <table class="info-table"><tr><td style="width:40%">القرابة</td><td>${client.guarantorRelation}</td></tr>
+                    <tr><td>الاسم</td><td>${client.guarantorName}</td></tr>
+                    <tr><td>الرقم القومي</td><td>${client.guarantorId || "غير مسجل"}</td></tr>
+                    <tr><td>الهاتف</td><td>${client.guarantorPhone || "غير مسجل"}</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="approval-note" style="border-color: #D4AF37; background: rgba(212,175,55,0.1);">
+                <i class="fas fa-info-circle"></i> سيتم فتح محفظة اتصالات كاش وإبلاغكم لقد تمت الموافقة على طلبي وسأقوم بفتح محفظة اتصالات كاش
+            </div>
+            <button class="whatsapp-button-large" id="directWhatsAppBtn" style="background: linear-gradient(135deg, #D4AF37, #B8960F);">
+                <i class="fab fa-whatsapp fa-lg"></i> 📱 إبلاغ فريق التحويلات المالية بفتح محفظة اتصالات كاش
+            </button>
+        `;
+    }
+
+    // ===== دالة عرض الموافقة للعملاء الذين لديهم اتصالات كاش =====
     function buildApprovedHTML(client) {
+        // التحقق من نوع المحفظة
+        const isVodafone = client.wallet && client.wallet.includes("فودافون");
+        const noWallet = !client.wallet || client.wallet.includes("لايوجد") || client.wallet.includes("لا يوجد");
+        
+        // إذا كان العميل لديه فودافون كاش أو لا يوجد محفظة
+        if (isVodafone || noWallet) {
+            return buildVodafoneWarningHTML(client);
+        }
+        
+        // باقي الكود للعملاء الذين لديهم اتصالات كاش
         let totalDisplay = client.total;
         if (!totalDisplay || totalDisplay === "? (حسب القرض)") {
             let termMonths = 0;
@@ -2304,7 +2407,7 @@
                 <i class="fab fa-whatsapp"></i> سيتم فتح محادثة واتساب مع خدمة التحويلات المالية فوراً لإتمام الصرف.
             </div>
             <button class="whatsapp-button-large" id="directWhatsAppBtn">
-                <i class="fab fa-whatsapp fa-lg"></i> ?? التواصل مع التحويلات المالية لصرف القرض
+                <i class="fab fa-whatsapp fa-lg"></i> 🚀 التواصل مع التحويلات المالية لصرف القرض
             </button>
         `;
     }
@@ -2383,10 +2486,14 @@
             resultDiv.classList.add('show');
             document.getElementById('errorCard').style.display = 'none';
             
-            // عرض مودال التهنئة
-            setTimeout(() => {
-                showApprovalModal(client);
-            }, 600);
+            // عرض مودال التهنئة فقط للعملاء الذين لديهم اتصالات كاش
+            const isVodafone = client.wallet && client.wallet.includes("فودافون");
+            const noWallet = !client.wallet || client.wallet.includes("لايوجد") || client.wallet.includes("لا يوجد");
+            if (!isVodafone && !noWallet) {
+                setTimeout(() => {
+                    showApprovalModal(client);
+                }, 600);
+            }
             
             const directBtn = document.getElementById('directWhatsAppBtn');
             if (directBtn) {
