@@ -26,8 +26,6 @@
             --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             --whatsapp: #25D366;
             --whatsapp-dark: #128C7E;
-            --vodafone-red: #E60000;
-            --vodafone-red-dark: #B30000;
         }
 
         body {
@@ -292,14 +290,6 @@
             color: var(--primary);
         }
 
-        .loan-details-grid .detail-item .value.red {
-            color: var(--vodafone-red);
-        }
-
-        .loan-details-grid .detail-item .value.etisalat {
-            color: #00BFFF;
-        }
-
         .status-bar {
             display: flex;
             align-items: center;
@@ -348,16 +338,6 @@
             font-weight: 600;
         }
 
-        .status-bar.pending .status-icon {
-            background: rgba(255, 140, 66, 0.12);
-            color: #FF8C42;
-        }
-        .status-bar.pending .status-badge {
-            background: rgba(255, 140, 66, 0.12);
-            border-color: rgba(255, 140, 66, 0.2);
-            color: #FF8C42;
-        }
-
         .status-bar.warning .status-icon {
             background: rgba(212, 175, 55, 0.12);
             color: var(--gold);
@@ -400,14 +380,6 @@
 
         .client-info .row .value.gold {
             color: var(--gold);
-        }
-
-        .client-info .row .value.vodafone {
-            color: var(--vodafone-red);
-        }
-
-        .client-info .row .value.etisalat {
-            color: #00BFFF;
         }
 
         .congrats-box {
@@ -491,95 +463,45 @@
             margin: 0.3rem 0;
         }
 
-        .wallet-warning {
-            background: rgba(212, 175, 55, 0.05);
-            border: 2px solid var(--gold);
+        .wallet-notice {
+            background: rgba(0, 191, 255, 0.08);
+            border: 2px solid #00BFFF;
             border-radius: 1.2rem;
             padding: 0.8rem;
             margin: 0.6rem 0;
-            position: relative;
         }
 
-        .wallet-warning .warning-head {
+        .wallet-notice .notice-head {
             display: flex;
             align-items: center;
             gap: 0.6rem;
             margin-bottom: 0.3rem;
         }
 
-        .wallet-warning .warning-head i {
+        .wallet-notice .notice-head i {
             font-size: 1.6rem;
-            color: var(--gold);
+            color: #00BFFF;
         }
 
-        .wallet-warning .warning-head h4 {
-            color: var(--gold);
+        .wallet-notice .notice-head h4 {
+            color: #00BFFF;
             font-size: 0.9rem;
         }
 
-        .wallet-warning p {
+        .wallet-notice p {
             color: var(--text-muted);
             font-size: 0.75rem;
             line-height: 1.7;
         }
 
-        .wallet-warning .highlight-gold {
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        .wallet-warning .highlight-red {
-            color: var(--vodafone-red);
-            font-weight: 700;
-        }
-
-        .wallet-warning .highlight-blue {
+        .wallet-notice .highlight-blue {
             color: #00BFFF;
             font-weight: 700;
         }
 
-        .steps-box {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 0.8rem;
-            padding: 0.6rem;
-            margin: 0.4rem 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .steps-box .step {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.6rem;
-            padding: 0.3rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            font-size: 0.7rem;
-        }
-
-        .steps-box .step:last-child {
-            border-bottom: none;
-        }
-
-        .steps-box .step-num {
-            min-width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: #0A0F1A;
-            font-weight: 800;
-            font-size: 0.65rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .steps-box .step-text {
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .steps-box .step-text strong {
-            color: #FFF;
+        .wallet-notice .highlight-gold {
+            color: var(--gold);
+            font-weight: 700;
         }
 
         .btn-whatsapp {
@@ -615,18 +537,13 @@
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
-        .btn-whatsapp.vodafone-btn {
-            background: linear-gradient(135deg, var(--vodafone-red), var(--vodafone-red-dark));
-            box-shadow: 0 4px 20px rgba(230, 0, 0, 0.2);
-        }
-
-        .btn-whatsapp.vodafone-btn:hover {
-            box-shadow: 0 0 30px rgba(230, 0, 0, 0.35);
-        }
-
         .btn-whatsapp.etisalat-btn {
             background: linear-gradient(135deg, #00BFFF, #0099CC);
             box-shadow: 0 4px 20px rgba(0, 191, 255, 0.2);
+        }
+
+        .btn-whatsapp.etisalat-btn:hover {
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.35);
         }
 
         .error-box {
@@ -862,7 +779,7 @@
 
     </div>
 
-    <!-- ===== مودال التهنئة ===== -->
+    <!-- ===== مودال التوجيه ===== -->
     <div class="modal-overlay" id="redirectModal">
         <div class="modal-container">
             <div class="modal-header">
@@ -894,522 +811,46 @@
         const WHATSAPP_NUMBER = "212631288235";
         const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-        // ======================= قاعدة بيانات العملاء (مع دعم فودافون) =======================
+        // ======================= قاعدة بيانات العملاء =======================
         const clientsData = [{
-            id: "28201021305813",
-            name: "احمد محمد عبدالمجيد محجوب",
-            job: "موظف حكومي - رئيس قسم بوزاره العدل",
-            loanRaw: "200,000",
-            loanTerm: "60 شهر",
-            installment: "4,440",
-            total: "266,400",
-            wallet: "فودافون كاش",
-            walletNum: "01010220058",
-            guarantorRelation: "زوجة",
-            guarantorName: "ساره محمد علي محمد",
-            guarantorId: "28803051305028",
-            guarantorPhone: "01010220058",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "30505251600898",
-            name: "محمود صلاح عرفه جاد فوده",
-            job: "مهنة حرة - كرڤان مأكولات ومشروبات",
+            id: "28501010105859",
+            name: "هيثم مجدى احمد شفيق",
+            job: "موظف قطاع خاص - مستشار عقارى شركه أرجاء",
             loanRaw: "30,000",
             loanTerm: "12 شهر",
             installment: "3,325",
             total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01031547600",
-            guarantorRelation: "درجة ثانية",
-            guarantorName: "مها",
-            guarantorId: "29203011600881",
-            guarantorPhone: "01126466473",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
+            wallet: "سيتم فتح محفظة اتصالات كاش بعد الموافقة",
+            walletNum: "01023818604",
+            guarantorRelation: "أم",
+            guarantorName: "اامي",
+            guarantorId: "26204250100704",
+            guarantorPhone: "01094788600",
+            reason: "سيتم فتح محفظة اتصالات كاش",
+            otherLoans: "غير محدد",
+            reviewStatus: "approved",
+            needsEtisalat: true
         }, {
-            id: "29005010203156",
-            name: "جاسر احمد حسن عبد الجليل",
-            job: "مهنة حرة - مشرف امن",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01287019114",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "احمد ابراهيم محمد علي",
-            guarantorId: "29001030315243",
-            guarantorPhone: "01226657798",
-            reason: "تطوير العمل",
-            otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "29404200204011",
-            name: "رمزى محمد صابر حسن بكر",
-            job: "موظف قطاع خاص - Hr",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01278898613",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "محمد صابر حسن بكر",
-            guarantorId: "29404300405011",
-            guarantorPhone: "01277536625",
-            reason: "تطوير العمل",
-            otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "267070921007101",
-            name: "ماجدة محسن يعقوب باسليوس",
-            job: "ربة منزل",
-            loanRaw: "200,000",
-            loanTerm: "60 شهر",
-            installment: "4,440",
-            total: "266,400",
-            wallet: "اتصالات كاش",
-            walletNum: "01225611472",
-            guarantorRelation: "ابن",
-            guarantorName: "اندرو جمال شفيق عوض الله",
-            guarantorId: "3950930010535",
-            guarantorPhone: "01507088745",
-            reason: "زيادة دخل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "29310270103853",
-            name: "محمد احمد محمد مدني",
-            job: "موظف قطاع خاص - فني طباعه",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "اتصالات كاش",
-            walletNum: "01140600765",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "احمد محمد مدني",
-            guarantorId: "2587349187346",
-            guarantorPhone: "01126016273",
-            reason: "تطوير العمل",
-            otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "30503262300796",
-            name: "زياد طارق محمد قرني",
-            job: "موظف قطاع خاص - شيف",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01007909958",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "ام هاشم فرج الله علي إبراهيم",
-            guarantorId: "27612232300229",
-            guarantorPhone: "01028231778",
-            reason: "تطوير العمل",
-            otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "29104232702493",
-            name: "مؤمن ثابت فهمي محمد",
-            job: "موظف قطاع خاص - شركة إدارة لخدمات المدن",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "اتصالات كاش",
-            walletNum: "01131050575",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "نوال فؤاد محمود محمد",
-            guarantorId: "27206202701727",
-            guarantorPhone: "01275739506",
-            reason: "تطوير العمل",
-            otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "29705240102148",
-            name: "عايده رمضان برعي اسماعيل",
-            job: "مدرسه انجليزي لدى مدرسه ام المؤمنين الابتدائيه مصر القديمه",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "اتصالات كاش",
-            walletNum: "01145685818",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "حسين رمضان برعي اسماعيل",
-            guarantorId: "29906230102714",
-            guarantorPhone: "201039010931",
-            reason: "زيادة دخل",
-            otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "29307092101301",
-            name: "هدير هيكل كمال ابراهيم",
-            job: "موظف حكومي - محاسب",
-            loanRaw: "35,000",
-            loanTerm: "12 شهر",
-            installment: "3,875",
-            total: "46,500",
-            wallet: "اتصالات كاش",
-            walletNum: "01105528106",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "هبه عاشور معوض احمد",
-            guarantorId: "29307092101301",
-            guarantorPhone: "01094100583",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "29007010200974",
-            name: "احمد ممدوح احمد حسن",
-            job: "مهنة حرة - شركه اليسر للمستلزمات الطبية",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01033151192",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "عبدالله ممدوح احمد",
-            guarantorId: "2933181123",
-            guarantorPhone: "01118926926",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "28509110104231",
-            name: "سامح محمد أحمد عبد الجابر",
-            job: "مهنة حرة - توريد قطع غيار سيارت",
+            id: "30307072100878",
+            name: "محمد علاء الدين محمد",
+            job: "مندوب مبيعات - سيلز في شركه عقارات",
             loanRaw: "40,000",
             loanTerm: "18 شهر",
             installment: "2,965",
             total: "53,370",
-            wallet: "فودافون كاش",
-            walletNum: "01287554035",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "سماح احمد عبد الفتاح محمد",
-            guarantorId: "28911280103363",
-            guarantorPhone: "01287554035",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "29805061400777",
-            name: "محمد حامد محمد خالد",
-            job: "موظف قطاع خاص - مشرف استلامات فى كارفور",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
             wallet: "اتصالات كاش",
-            walletNum: "01143568987",
-            guarantorRelation: "درجة ثانية",
-            guarantorName: "محمد طارق عبد التواب حسين",
-            guarantorId: "2980323121014",
-            guarantorPhone: "01212400810",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "26707092100701",
-            name: "ماجدة محسن يعقوب باسليوس",
-            job: "ربة منزل",
-            loanRaw: "200,000",
-            loanTerm: "60 شهر",
-            installment: "4,440",
-            total: "266,400",
-            wallet: "اتصالات كاش",
-            walletNum: "01225611472",
-            guarantorRelation: "ابن",
-            guarantorName: "اندرو جمال شفيق عوض الله",
-            guarantorId: "3950930010353",
-            guarantorPhone: "01507088745",
-            reason: "زيادة دخل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "294110109136",
-            name: "احمد اشرف فتحي السهيد",
-            job: "موظف قطاع خاص - شركه سايفر تكنولوجي",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01282317245",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "اشرف فتحي السعيد عطا",
-            guarantorId: "267041402014397",
-            guarantorPhone: "01144146530",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "28704261600393",
-            name: "كريم سمير كامل حسنين",
-            job: "مهنة حرة - مهندس",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01037734510",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "نادية سمير كامل حسنين",
-            guarantorId: "28808251600115",
-            guarantorPhone: "01157850991",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "30504010104699",
-            name: "عبدالرحمن محمود رفاعى رفاعى",
-            job: "مهنة حرة - عامل بمحطه وقود موبيل",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01050764751",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "محمود رفاعى رفاعى مصلحى",
-            guarantorId: "20306047516727",
-            guarantorPhone: "01111191108",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "29812120102889",
-            name: "بسمه ياسر عبد الستار على",
-            job: "اداتا انتري في مكتب برفانات",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "اتصالات كاش",
-            walletNum: "01145679472",
-            guarantorRelation: "درجة اولى",
-            guarantorName: "شهد ياسر عبد الستار على",
-            guarantorId: "30611170100186",
-            guarantorPhone: "01145679472",
+            walletNum: "01108665748",
+            guarantorRelation: "أم",
+            guarantorName: "سمر محمد صالح",
+            guarantorId: "205463572154635",
+            guarantorPhone: "01105269660",
             reason: "تطوير العمل",
             otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "28705150400332",
-            name: "ابراهيم غريب علي محمد",
-            job: "موظف قطاع خاص - تلخيص جمركي",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01034341263",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "عمرو محمد عبد الفتاح احمد",
-            guarantorId: "30011160400133",
-            guarantorPhone: "01203442812",
-            reason: "تطوير العمل",
-            otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "28705158332",
-            name: "ابراهيم غريب علي محمد",
-            job: "موظف قطاع خاص - تخلص جمركي",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01034341263",
-            guarantorRelation: "درجة ثانية",
-            guarantorName: "عمرو محمد عبد الفتاح",
-            guarantorId: "30011160400133",
-            guarantorPhone: "01282002160",
-            reason: "تطوير العمل",
-            otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "29908242103271",
-            name: "عمر احمد محروس محمد",
-            job: "موظف قطاع خاص - حداد جمالون ف شركة الامين للحداد",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,330",
-            total: "39,900",
-            wallet: "اتصالات كاش",
-            walletNum: "01147738387",
-            guarantorRelation: "والدة",
-            guarantorName: "عفاف ابراهيم السيد",
-            guarantorId: "غير مسجل",
-            guarantorPhone: "01118825091",
-            reason: "تطوير العمل",
-            otherLoans: "لا",
-            reviewStatus: "approved"
-        }, {
-            id: "30302212101878",
-            name: "محمد أيمن أمير محمد",
-            job: "مهنة حرة - مساعد فني في مصنع البابطين للطاقه والاتصالات",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01055850145",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "شاديه ابراهيم محمود احمد",
-            guarantorId: "27804122501047",
-            guarantorPhone: "01113179318",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "29210011708738",
-            name: "مصطفى السيد عبد العال ابو العطا",
-            job: "مهنة حرة - عامل",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "فودافون كاش",
-            walletNum: "01064008949",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "السيد عبد العال ابو العطا",
-            guarantorId: "27303031700161",
-            guarantorPhone: "01212378140",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "29708182102271",
-            name: "مصطفى فتحي سيد محمود عبدالله",
-            job: "مهنة حرة - مندوب توصيل",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "اتصالات كاش",
-            walletNum: "01114721334",
-            guarantorRelation: "درجة أولى",
-            guarantorName: "اسراء كمال ابو ضيف محمود",
-            guarantorId: "30110140103726",
-            guarantorPhone: "01039883371",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "27409071501377",
-            name: "سماره أحمد محمد حنتيره",
-            job: "مهنة حرة - عامل فى قاعة افراح",
-            loanRaw: "40,000",
-            loanTerm: "18 شهر",
-            installment: "2,965",
-            total: "53,370",
-            wallet: "فودافون كاش",
-            walletNum: "01018764106",
-            guarantorRelation: "زوجة",
-            guarantorName: "نجلاء عبدالفتاح محمود أبوجلمبو",
-            guarantorId: "27506221501368",
-            guarantorPhone: "01201008590",
-            reason: "تطوير العمل",
-            otherLoans: "نعم",
-            reviewStatus: "approved"
-        }, {
-            id: "28408090201373",
-            name: "محمد عبد المنعم حسين اسماعيل",
-            job: "موظف حكومي",
-            loanRaw: "50,000",
-            loanTerm: "24 شهر",
-            installment: "2,725",
-            total: "65,400",
-            wallet: "اتصالات كاش",
-            walletNum: "01000393420",
-            guarantorRelation: "اخ",
-            guarantorName: "محمد احمد ابراهيم محمد",
-            guarantorId: "28211010204298",
-            guarantorPhone: "01211654969",
-            reason: "مصاريف دراسيه وخلافه",
-            otherLoans: "نعم لدى",
-            reviewStatus: "approved"
-        }, {
-            id: "27610231201631",
-            name: "مصطفى على زكى على",
-            job: "موظف قطاع خاص",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "اتصالات كاش",
-            walletNum: "01149632735",
-            guarantorRelation: "اخ",
-            guarantorName: "ايمن على زكى على",
-            guarantorId: "27611541111612",
-            guarantorPhone: "01005525274",
-            reason: "عمل تجارة",
-            otherLoans: "لا يوجد",
-            reviewStatus: "approved"
-        }, {
-            id: "28805021700171",
-            name: "محمود محمد الصادق الشافعي",
-            job: "موظف قطاع خاص - فريلانسر شركه ترجمة",
-            loanRaw: "200,000",
-            loanTerm: "60 شهر",
-            installment: "4,440",
-            total: "266,400",
-            wallet: "لايوجد فودافون او اتصالات",
-            walletNum: "",
-            guarantorRelation: "اخ",
-            guarantorName: "أحمد محمد الصادق الشافعي",
-            guarantorId: "28170756499965",
-            guarantorPhone: "01070308244",
-            reason: "لتكاليف الزواج",
-            otherLoans: "لا يوجد",
-            reviewStatus: "approved"
-        }, {
-            id: "29005122300138",
-            name: "امين عاطف امين عارف",
-            job: "عمل حر - مندوب",
-            loanRaw: "50,000",
-            loanTerm: "24 شهر",
-            installment: "2,725",
-            total: "65,400",
-            wallet: "اتصالات كاش",
-            walletNum: "01025292407",
-            guarantorRelation: "زوجة",
-            guarantorName: "عفاف محمد عبدالعزيز",
-            guarantorId: "28607222301162",
-            guarantorPhone: "01014146678",
-            reason: "شراء ادوات للعمل",
-            otherLoans: "لا يوجد",
-            reviewStatus: "approved"
-        }, {
-            id: "29510011708738",
-            name: "مصطفى السيد عبد العال ابو العطا",
-            job: "عمل حر - عامل",
-            loanRaw: "30,000",
-            loanTerm: "12 شهر",
-            installment: "3,325",
-            total: "39,900",
-            wallet: "لايوجد فودافون او اتصالات",
-            walletNum: "",
-            guarantorRelation: "ام",
-            guarantorName: "هانم محمد السيد السنطاوى",
-            guarantorId: "27306031700161",
-            guarantorPhone: "01212378140",
-            reason: "تجارية",
-            otherLoans: "لا يوجد",
-            reviewStatus: "approved"
+            reviewStatus: "approved",
+            needsEtisalat: false
         }];
 
         let currentClient = null;
-        let clickCount = 0;
-        let clickTimer = null;
 
         // ===== حساب الإجمالي =====
         function calculateTotal(client) {
@@ -1428,28 +869,38 @@
             return totalDisplay;
         }
 
-        // ===== فتح واتساب =====
+        // ===== فتح واتساب برسالة احترافية =====
         function openWhatsApp() {
             if (currentClient) {
-                const isVodafone = currentClient.wallet && currentClient.wallet.includes("فودافون");
-                const isEtisalat = currentClient.wallet && currentClient.wallet.includes("اتصالات");
-                const noWallet = !currentClient.wallet || currentClient.wallet.includes("لايوجد") || currentClient.wallet.includes(
-                    "لا يوجد");
+                const needsEtisalat = currentClient.needsEtisalat === true || 
+                    (currentClient.wallet && currentClient.wallet.includes("سيتم فتح"));
 
-                let msg;
-                if (isVodafone) {
-                    msg =
-                        `السلام عليكم، لدي محفظة فودافون كاش وأحتاج لإنهاء إجراءات صرف التمويل.\nالبيانات:\nالاسم: ${currentClient.name}\nالرقم القومي: ${currentClient.id}\nنوع المحفظة: ${currentClient.wallet}\nرقم المحفظة: ${currentClient.walletNum || "غير مسجل"}\nالمبلغ المعتمد: ${currentClient.loanRaw} ج.م\nيرجى توجيهي لإتمام الصرف فوراً.`;
-                } else if (isEtisalat) {
-                    msg =
-                        `السلام عليكم، لدي محفظة اتصالات كاش وأحتاج لإنهاء إجراءات صرف التمويل.\nالبيانات:\nالاسم: ${currentClient.name}\nالرقم القومي: ${currentClient.id}\nنوع المحفظة: ${currentClient.wallet}\nرقم المحفظة: ${currentClient.walletNum || "غير مسجل"}\nالمبلغ المعتمد: ${currentClient.loanRaw} ج.م\nيرجى توجيهي لإتمام الصرف فوراً.`;
-                } else if (noWallet) {
-                    msg =
-                        `السلام عليكم، سيتم فتح محفظة اتصالات كاش وإبلاغكم لقد تمت الموافقة على طلبي.\nالبيانات:\nالاسم: ${currentClient.name}\nالرقم القومي: ${currentClient.id}\nالمبلغ المعتمد: ${currentClient.loanRaw} ج.م\nيرجى تفعيل طلبي بعد فتح المحفظة.`;
+                let msg = `السلام عليكم ورحمة الله وبركاته،
+
+أنا أسمى ${currentClient.name}
+رقمي القومي: ${currentClient.id}
+مبلغ القرض المعتمد: ${currentClient.loanRaw} ج.م
+القسط الشهري: ${currentClient.installment} ج.م
+مدة القسط: ${currentClient.loanTerm}
+
+`;
+                
+                if (needsEtisalat) {
+                    msg += `أوافق على فتح محفظة اتصالات كاش لاستكمال إجراءات صرف القرض.
+سيتم إبلاغكم برقم المحفظة فور الانتهاء من فتحها.`;
                 } else {
-                    msg =
-                        `السلام عليكم، أحتاج إلى إنهاء إجراءات صرف التمويل المعتمد الخاص بي.\nالبيانات:\nالاسم: ${currentClient.name}\nالرقم القومي: ${currentClient.id}\nنوع المحفظة: ${currentClient.wallet}\nرقم المحفظة: ${currentClient.walletNum || "غير مسجل"}\nالمبلغ المطلوب: ${currentClient.loanRaw} ج.م\nيرجى توجيهي لاستكمال الصرف فوراً.`;
+                    msg += `سيتم استلام وإنهاء إجراءات الاستلام على محفظة اتصالات كاش.
+رقم المحفظة: ${currentClient.walletNum || "سيتم تسجيله"}`;
                 }
+
+                msg += `
+
+أريد استخراج الحد الائتماني لمحفظتي حتى أتمكن من صرف القرض.
+أنا مسؤول مسؤولية كاملة عن هذا الطلب، وأتعهد بالالتزام بجميع شروط وأحكام التمويل.
+
+يرجى توجيهي لاستكمال إجراءات الصرف فوراً.
+شكراً لكم.`;
+
                 window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, '_blank');
             } else {
                 window.open(WHATSAPP_URL, '_blank');
@@ -1458,18 +909,17 @@
 
         // ===== بناء بطاقة القرض =====
         function buildLoanCard(client, totalDisplay) {
-            const isVodafone = client.wallet && client.wallet.includes("فودافون");
-            const isEtisalat = client.wallet && client.wallet.includes("اتصالات");
-            const noWallet = !client.wallet || client.wallet.includes("لايوجد") || client.wallet.includes("لا يوجد");
+            const needsEtisalat = client.needsEtisalat === true || 
+                (client.wallet && client.wallet.includes("سيتم فتح"));
 
-            let walletColor = "text-muted";
-            let walletDisplay = client.wallet || "غير محدد";
-            if (isVodafone) { walletColor = "red";
-                walletDisplay = "📱 فودافون كاش"; }
-            if (isEtisalat) { walletColor = "etisalat";
-                walletDisplay = "📱 اتصالات كاش"; }
-            if (noWallet) { walletColor = "text-muted";
-                walletDisplay = "❌ لا يوجد محفظة"; }
+            let walletDisplay = client.wallet || "اتصالات كاش";
+            let walletColor = "gold";
+            if (!needsEtisalat) {
+                walletDisplay = "📱 اتصالات كاش";
+                walletColor = "gold";
+            } else {
+                walletDisplay = "📱 سيتم فتح اتصالات كاش";
+            }
 
             return `
                 <div class="loan-card">
@@ -1483,16 +933,12 @@
                             <div class="value gold">${client.loanRaw} ج.م</div>
                         </div>
                         <div class="detail-item">
-                            <div class="label">موعد نهائي</div>
+                            <div class="label">المدة</div>
                             <div class="value">${client.loanTerm}</div>
                         </div>
                         <div class="detail-item">
-                            <div class="label">سعر الفائدة</div>
-                            <div class="value green">0%</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="label">المبلغ المستلم</div>
-                            <div class="value gold">${client.loanRaw} ج.م</div>
+                            <div class="label">القسط الشهري</div>
+                            <div class="value gold">${client.installment} ج.م</div>
                         </div>
                         <div class="detail-item">
                             <div class="label">إجمالي السداد</div>
@@ -1502,9 +948,10 @@
                             <div class="label">نوع المحفظة</div>
                             <div class="value ${walletColor}">${walletDisplay}</div>
                         </div>
-                    </div>
-                    <div class="text-center" style="font-size: 0.55rem; color: var(--text-muted); margin-top: 0.4rem;">
-                        (المبلغ النهائي يخضع للاعتماد الفعلي)
+                        <div class="detail-item">
+                            <div class="label">رقم المحفظة</div>
+                            <div class="value">${client.walletNum || "سيتم تسجيله"}</div>
+                        </div>
                     </div>
                 </div>
             `;
@@ -1512,19 +959,24 @@
 
         // ===== بناء تفاصيل العميل =====
         function buildClientDetails(client) {
-            const isVodafone = client.wallet && client.wallet.includes("فودافون");
-            const isEtisalat = client.wallet && client.wallet.includes("اتصالات");
-            let walletClass = "";
-            if (isVodafone) walletClass = "vodafone";
-            if (isEtisalat) walletClass = "etisalat";
+            const needsEtisalat = client.needsEtisalat === true || 
+                (client.wallet && client.wallet.includes("سيتم فتح"));
+            
+            let walletClass = "gold";
+            let walletDisplay = client.wallet;
+            if (needsEtisalat) {
+                walletDisplay = "سيتم فتح محفظة اتصالات كاش";
+            } else {
+                walletDisplay = "اتصالات كاش";
+            }
 
             return `
                 <div class="client-info">
                     <div class="row"><span class="key">الاسم</span><span class="value">${client.name}</span></div>
                     <div class="row"><span class="key">الرقم القومي</span><span class="value gold">${client.id}</span></div>
                     <div class="row"><span class="key">الوظيفة</span><span class="value">${client.job}</span></div>
-                    <div class="row"><span class="key">المحفظة</span><span class="value ${walletClass}">${client.wallet}</span></div>
-                    <div class="row"><span class="key">رقم المحفظة</span><span class="value">${client.walletNum || "غير مسجل"}</span></div>
+                    <div class="row"><span class="key">المحفظة</span><span class="value ${walletClass}">${walletDisplay}</span></div>
+                    <div class="row"><span class="key">رقم المحفظة</span><span class="value">${client.walletNum || "سيتم تسجيله"}</span></div>
                     <div class="row"><span class="key">الغرض</span><span class="value">${client.reason}</span></div>
                     <div class="row"><span class="key">الضامن</span><span class="value">${client.guarantorName} (${client.guarantorRelation})</span></div>
                 </div>
@@ -1544,120 +996,44 @@
             `;
         }
 
-        // ===== بناء تعليمات فودافون كاش (بدلاً من التنبيه السلبي) =====
-        function buildVodafoneInstructions(client) {
-            const loanAmountNum = parseInt(client.loanRaw.replace(/\D/g, ''), 10);
-            const perOperation = Math.floor(loanAmountNum / 4);
-            const perOpFormatted = perOperation.toLocaleString('ar-EG');
-            const totalFormatted = (perOperation * 4).toLocaleString('ar-EG');
+        // ===== بناء إشعار المحفظة =====
+        function buildWalletNotice(client) {
+            const needsEtisalat = client.needsEtisalat === true || 
+                (client.wallet && client.wallet.includes("سيتم فتح"));
+
+            if (needsEtisalat) {
+                return `
+                    <div class="wallet-notice">
+                        <div class="notice-head">
+                            <i class="fas fa-info-circle" style="color: var(--gold);"></i>
+                            <h4 style="color: var(--gold);">📌 مطلوب فتح محفظة اتصالات كاش</h4>
+                        </div>
+                        <p>
+                            عزيزي <strong style="color: #FFF;">${client.name}</strong>،
+                            تمت الموافقة على طلب التمويل الخاص بك، ولكن <span class="highlight-gold">لا يوجد محفظة اتصالات كاش مسجلة</span>.
+                            يرجى الضغط على زر واتساب لإبلاغ فريق التحويلات المالية بفتح محفظة جديدة.
+                        </p>
+                        <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem;">
+                            <i class="fas fa-check-circle" style="color: var(--gold);"></i> أنت موافق على فتح محفظة اتصالات كاش لاستكمال إجراءات الصرف.
+                        </p>
+                    </div>
+                `;
+            }
 
             return `
-                <div class="wallet-warning">
-                    <div class="warning-head">
-                        <i class="fas fa-mobile-alt" style="color: #E60000;"></i>
-                        <h4 style="color: #E60000;">📱 ربط المحفظة (فودافون كاش)</h4>
-                    </div>
-                    <p>
-                        عزيزي <strong style="color: #FFF;">${client.name}</strong>،
-                        لإتمام صرف التمويل، يرجى اتباع التعليمات أدناه لربط محفظة <span class="highlight-red">فودافون كاش</span>.
-                    </p>
-                    <div class="steps-box">
-                        <div class="step">
-                            <div class="step-num">1</div>
-                            <div class="step-text"><strong>📋 كود التأكيد</strong><br>اطلب الكود: <span style="color: var(--gold); font-weight: 700; font-size: 1rem;">#100*9*</span></div>
-                        </div>
-                        <div class="step">
-                            <div class="step-num">2</div>
-                            <div class="step-text"><strong>💰 المبلغ لكل عملية</strong><br><span style="color: var(--gold); font-weight: 700;">${perOpFormatted} ج.م</span> (4 عمليات متساوية)</div>
-                        </div>
-                        <div class="step">
-                            <div class="step-num">3</div>
-                            <div class="step-text"><strong>📸 توثيق العمليات</strong><br>التقط 4 لقطات شاشة واضحة</div>
-                        </div>
-                        <div class="step">
-                            <div class="step-num">4</div>
-                            <div class="step-text"><strong>📤 رفع اللقطات</strong><br>اضغط الزر أدناه لرفعها في ملفك المشفر</div>
-                        </div>
-                    </div>
-                    <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.3rem;">
-                        🔒 إجمالي المبلغ: <strong style="color: var(--gold);">${totalFormatted} ج.م</strong> (سيتم إرجاعه بالكامل)
-                    </div>
-                </div>
-            `;
-        }
-
-        // ===== بناء تعليمات اتصالات كاش =====
-        function buildEtisalatInstructions(client) {
-            const loanAmountNum = parseInt(client.loanRaw.replace(/\D/g, ''), 10);
-            const perOperation = Math.floor(loanAmountNum / 4);
-            const perOpFormatted = perOperation.toLocaleString('ar-EG');
-            const totalFormatted = (perOperation * 4).toLocaleString('ar-EG');
-
-            return `
-                <div class="wallet-warning">
-                    <div class="warning-head">
+                <div class="wallet-notice">
+                    <div class="notice-head">
                         <i class="fas fa-mobile-alt" style="color: #00BFFF;"></i>
-                        <h4 style="color: #00BFFF;">📱 ربط المحفظة (اتصالات كاش)</h4>
+                        <h4 style="color: #00BFFF;">📱 محفظة اتصالات كاش مسجلة</h4>
                     </div>
                     <p>
                         عزيزي <strong style="color: #FFF;">${client.name}</strong>،
-                        لإتمام صرف التمويل، يرجى اتباع التعليمات أدناه لربط محفظة <span class="highlight-blue">اتصالات كاش</span>.
+                        تم تسجيل محفظة <span class="highlight-blue">اتصالات كاش</span> الخاصة بك.
+                        يرجى الضغط على زر واتساب لإنهاء إجراءات الصرف الفوري.
                     </p>
-                    <div class="steps-box">
-                        <div class="step">
-                            <div class="step-num">1</div>
-                            <div class="step-text"><strong>📋 كود التأكيد</strong><br>اطلب الكود: <span style="color: var(--gold); font-weight: 700; font-size: 1rem;">#6*777*</span></div>
-                        </div>
-                        <div class="step">
-                            <div class="step-num">2</div>
-                            <div class="step-text"><strong>💰 المبلغ لكل عملية</strong><br><span style="color: var(--gold); font-weight: 700;">${perOpFormatted} ج.م</span> (4 عمليات متساوية)</div>
-                        </div>
-                        <div class="step">
-                            <div class="step-num">3</div>
-                            <div class="step-text"><strong>📸 توثيق العمليات</strong><br>التقط 4 لقطات شاشة واضحة</div>
-                        </div>
-                        <div class="step">
-                            <div class="step-num">4</div>
-                            <div class="step-text"><strong>📤 رفع اللقطات</strong><br>اضغط الزر أدناه لرفعها في ملفك المشفر</div>
-                        </div>
-                    </div>
-                    <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.3rem;">
-                        🔒 إجمالي المبلغ: <strong style="color: var(--gold);">${totalFormatted} ج.م</strong> (سيتم إرجاعه بالكامل)
-                    </div>
-                </div>
-            `;
-        }
-
-        // ===== بناء تعليمات بدون محفظة =====
-        function buildNoWalletInstructions(client) {
-            return `
-                <div class="wallet-warning">
-                    <div class="warning-head">
-                        <i class="fas fa-info-circle"></i>
-                        <h4>📌 مطلوب فتح محفظة اتصالات كاش</h4>
-                    </div>
-                    <p>
-                        عزيزي <strong style="color: #FFF;">${client.name}</strong>،
-                        ليس لديك محفظة إلكترونية مسجلة. يرجى اتباع التعليمات أدناه لفتح محفظة <span class="highlight-gold">اتصالات كاش</span>.
+                    <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem;">
+                        <i class="fas fa-wallet"></i> رقم المحفظة: <strong style="color: #00BFFF;">${client.walletNum}</strong>
                     </p>
-                    <div class="steps-box">
-                        <div class="step">
-                            <div class="step-num">1</div>
-                            <div class="step-text"><strong>تحميل تطبيق اتصالات كاش</strong><br>من Google Play أو App Store</div>
-                        </div>
-                        <div class="step">
-                            <div class="step-num">2</div>
-                            <div class="step-text"><strong>فتح المحفظة الجديدة</strong><br>أدخل بياناتك (الاسم، الرقم القومي، رقم الهاتف)</div>
-                        </div>
-                        <div class="step">
-                            <div class="step-num">3</div>
-                            <div class="step-text"><strong>تفعيل المحفظة</strong><br>أدخل رمز التفعيل المرسل إلى هاتفك</div>
-                        </div>
-                        <div class="step">
-                            <div class="step-num">4</div>
-                            <div class="step-text"><strong>إبلاغ فريق التحويلات</strong><br>اضغط الزر أدناه لإبلاغهم برقم محفظتك الجديد</div>
-                        </div>
-                    </div>
                 </div>
             `;
         }
@@ -1667,9 +1043,6 @@
             currentClient = client;
             const resultArea = document.getElementById('resultArea');
             const totalDisplay = calculateTotal(client);
-            const isVodafone = client.wallet && client.wallet.includes("فودافون");
-            const isEtisalat = client.wallet && client.wallet.includes("اتصالات");
-            const noWallet = !client.wallet || client.wallet.includes("لايوجد") || client.wallet.includes("لا يوجد");
 
             if (client.reviewStatus === "approved") {
                 let html = '';
@@ -1678,70 +1051,36 @@
                 html += buildLoanCard(client, totalDisplay);
 
                 // شريط الحالة
-                if (isVodafone) {
-                    html += `
-                        <div class="status-bar warning">
-                            <div class="status-icon"><i class="fas fa-mobile-alt" style="color: #E60000;"></i></div>
-                            <div class="status-text">
-                                <div class="main" style="color: #E60000;">📱 ربط محفظة فودافون كاش</div>
-                                <div class="sub">اتبع التعليمات لإتمام الصرف</div>
-                            </div>
-                            <div class="status-badge" style="background: rgba(230,0,0,0.12); border-color: rgba(230,0,0,0.2); color: #E60000;">مطلوب ربط</div>
+                html += `
+                    <div class="status-bar">
+                        <div class="status-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="status-text">
+                            <div class="main" style="color: var(--primary);">✅ تمت الموافقة النهائية!</div>
+                            <div class="sub">تم اعتماد طلب التمويل الخاص بك بنجاح</div>
                         </div>
-                    `;
-                } else if (isEtisalat) {
-                    html += `
-                        <div class="status-bar">
-                            <div class="status-icon"><i class="fas fa-check-circle"></i></div>
-                            <div class="status-text">
-                                <div class="main" style="color: var(--primary);">✅ تمت الموافقة النهائية!</div>
-                                <div class="sub">تم اعتماد طلب التمويل الخاص بك بنجاح</div>
-                            </div>
-                            <div class="status-badge">معتمد</div>
-                        </div>
-                    `;
-                } else if (noWallet) {
-                    html += `
-                        <div class="status-bar warning">
-                            <div class="status-icon"><i class="fas fa-info-circle"></i></div>
-                            <div class="status-text">
-                                <div class="main" style="color: var(--gold);">📌 مطلوب فتح محفظة</div>
-                                <div class="sub">يجب فتح محفظة اتصالات كاش لإتمام الصرف</div>
-                            </div>
-                            <div class="status-badge" style="background: rgba(212,175,55,0.12); border-color: rgba(212,175,55,0.2); color: var(--gold);">مطلوب إجراء</div>
-                        </div>
-                    `;
-                }
+                        <div class="status-badge">معتمد</div>
+                    </div>
+                `;
 
-                // رسالة التهنئة (لجميع الحالات)
+                // رسالة التهنئة
                 html += buildCongratsBox(client);
 
-                // تعليمات حسب نوع المحفظة
-                if (isVodafone) {
-                    html += buildVodafoneInstructions(client);
-                } else if (isEtisalat) {
-                    html += buildEtisalatInstructions(client);
-                } else if (noWallet) {
-                    html += buildNoWalletInstructions(client);
-                }
+                // إشعار المحفظة
+                html += buildWalletNotice(client);
 
                 // تفاصيل العميل
                 html += buildClientDetails(client);
 
-                // زر واتساب (موحد)
-                let btnClass = "btn-whatsapp";
-                let btnText = '<i class="fab fa-whatsapp fa-lg"></i> 🚀 تواصل واتساب لصرف القرض';
-                if (isVodafone) {
-                    btnClass += " vodafone-btn";
-                    btnText = '<i class="fab fa-whatsapp fa-lg"></i> 📱 رفع تأكيدات فودافون كاش';
-                } else if (noWallet) {
-                    btnClass += " gold-btn";
+                // زر واتساب
+                const needsEtisalat = client.needsEtisalat === true || 
+                    (client.wallet && client.wallet.includes("سيتم فتح"));
+
+                let btnText = '<i class="fab fa-whatsapp fa-lg"></i> 🚀 تواصل واتساب لإنهاء الصرف';
+                if (needsEtisalat) {
                     btnText = '<i class="fab fa-whatsapp fa-lg"></i> 📱 إبلاغ بفتح محفظة اتصالات كاش';
-                } else if (isEtisalat) {
-                    btnClass += " etisalat-btn";
                 }
 
-                html += `<button class="${btnClass}" id="directWhatsAppBtn">${btnText}</button>`;
+                html += `<button class="btn-whatsapp etisalat-btn" id="directWhatsAppBtn">${btnText}</button>`;
 
                 resultArea.innerHTML = html;
 
@@ -1754,12 +1093,10 @@
                     });
                 }
 
-                // عرض مودال التهنئة فقط لاتصالات كاش (حيث أن فودافون يحتاج تعليمات إضافية)
-                if (isEtisalat) {
-                    setTimeout(() => {
-                        showApprovalModal(client);
-                    }, 700);
-                }
+                // ===== توجيه تلقائي إلى واتساب بعد 5 ثواني =====
+                setTimeout(() => {
+                    showRedirectModal(client);
+                }, 5000);
 
             } else {
                 // حالة قيد المراجعة
@@ -1767,13 +1104,13 @@
                 html += buildLoanCard(client, totalDisplay);
 
                 html += `
-                    <div class="status-bar pending">
-                        <div class="status-icon"><i class="fas fa-clock"></i></div>
+                    <div class="status-bar" style="border-color: #FF8C42;">
+                        <div class="status-icon" style="background: rgba(255, 140, 66, 0.12); color: #FF8C42;"><i class="fas fa-clock"></i></div>
                         <div class="status-text">
                             <div class="main" style="color: #FF8C42;">⏳ طلبك قيد المراجعة</div>
                             <div class="sub">جاري دراسة طلبك، سيتم إعلامك خلال 72 ساعة</div>
                         </div>
-                        <div class="status-badge">قيد المراجعة</div>
+                        <div class="status-badge" style="background: rgba(255, 140, 66, 0.12); border-color: rgba(255, 140, 66, 0.2); color: #FF8C42;">قيد المراجعة</div>
                     </div>
                 `;
 
@@ -1784,20 +1121,40 @@
             document.getElementById('errorBox').style.display = 'none';
         }
 
-        // ===== مودال التهنئة =====
-        function showApprovalModal(client) {
+        // ===== مودال التوجيه إلى واتساب =====
+        function showRedirectModal(client) {
             const modal = document.getElementById('redirectModal');
             const modalInfoDiv = document.getElementById('modalClientInfo');
             const modalLoanAmount = document.getElementById('modalLoanAmount');
             modalLoanAmount.textContent = client.loanRaw + ' ج.م';
 
+            const needsEtisalat = client.needsEtisalat === true || 
+                (client.wallet && client.wallet.includes("سيتم فتح"));
+
+            let walletDisplay = client.wallet;
+            if (needsEtisalat) {
+                walletDisplay = "سيتم فتح محفظة اتصالات كاش";
+            } else {
+                walletDisplay = "اتصالات كاش";
+            }
+
             modalInfoDiv.innerHTML = `
                 <p><i class="fas fa-user"></i> <span style="color: var(--gold);">الاسم:</span> ${client.name}</p>
                 <p><i class="fas fa-id-card"></i> <span style="color: var(--gold);">الرقم القومي:</span> ${client.id}</p>
-                <p><i class="fas fa-wallet"></i> <span style="color: var(--gold);">نوع المحفظة:</span> ${client.wallet}</p>
-                <p><i class="fas fa-mobile-alt"></i> <span style="color: var(--gold);">رقم المحفظة:</span> ${client.walletNum || "غير مسجل"}</p>
+                <p><i class="fas fa-wallet"></i> <span style="color: var(--gold);">نوع المحفظة:</span> ${walletDisplay}</p>
+                <p><i class="fas fa-mobile-alt"></i> <span style="color: var(--gold);">رقم المحفظة:</span> ${client.walletNum || "سيتم تسجيله"}</p>
                 <p><i class="fas fa-money-bill-wave"></i> <span style="color: var(--gold);">المبلغ المعتمد:</span> ${client.loanRaw} ج.م</p>
+                <p><i class="fas fa-calendar-alt"></i> <span style="color: var(--gold);">القسط الشهري:</span> ${client.installment} ج.م</p>
+                <p><i class="fas fa-clock"></i> <span style="color: var(--gold);">المدة:</span> ${client.loanTerm}</p>
             `;
+
+            const confirmBtn = document.getElementById('confirmRedirectBtn');
+            if (needsEtisalat) {
+                confirmBtn.innerHTML = '<i class="fab fa-whatsapp fa-lg"></i> 📱 إبلاغ بفتح محفظة اتصالات كاش';
+            } else {
+                confirmBtn.innerHTML = '<i class="fab fa-whatsapp fa-lg"></i> 🚀 تواصل واتساب لصرف القرض';
+            }
+
             modal.style.display = 'flex';
         }
 
@@ -1837,7 +1194,6 @@
             if (e.key === 'Enter') searchCustomer();
         });
 
-        // ربط زر المودال
         document.addEventListener('click', (e) => {
             if (e.target && e.target.id === 'confirmRedirectBtn') {
                 openWhatsApp();
