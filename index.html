@@ -291,7 +291,7 @@
         const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
         // ============================================================
-        // 1️⃣ قاعدة بيانات العملاء (تم استبدالها بالكامل من ملف Excel)
+        // 1️⃣ قاعدة بيانات العملاء (جميع العملاء المطلوبين)
         // ============================================================
 
         const clientsData = [
@@ -308,8 +308,6 @@
                 walletNum: "01055903976",
                 guarantorRelation: "ام",
                 guarantorName: "انجي توفيق عبد العظيم محمود",
-                guarantorId: "27710011404846",
-                guarantorPhone: "01157908487",
                 reason: "تطوير العمل",
                 otherLoans: "لا يوجد اى قروض",
                 reviewStatus: "approved",
@@ -317,7 +315,7 @@
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 2: رامي حسام احمد ابراهيم (مراجعة) =====
+            // ===== العميل 2: رامي حسام احمد ابراهيم =====
             {
                 id: "28502070101115",
                 name: "رامي حسام احمد ابراهيم",
@@ -330,16 +328,14 @@
                 walletNum: "01150232362",
                 guarantorRelation: "زوجة",
                 guarantorName: "اميره احمد سيد احمد",
-                guarantorId: "28312040101044",
-                guarantorPhone: "01154607175",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "review",
+                reviewStatus: "approved",
                 hasEtisalat: true,
                 hasVodafone: false,
                 clientStatus: "pending"
             },
-            // ===== العميل 3: رشا محمد عبده مصطفى (بيانات غير صحيحة) =====
+            // ===== العميل 3: رشا محمد عبده مصطفى =====
             {
                 id: "27412280400121",
                 name: "رشا محمد عبده مصطفى",
@@ -352,16 +348,14 @@
                 walletNum: "01005636614",
                 guarantorRelation: "بنت",
                 guarantorName: "مريم ياسر عبدالمحسن عطا",
-                guarantorId: "30509100400361",
-                guarantorPhone: "01019161638",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 4: محمد احمد رياض شبل (جارى حصولك ع الموافقة) =====
+            // ===== العميل 4: محمد احمد رياض شبل =====
             {
                 id: "27010291800618",
                 name: "محمد احمد رياض شبل",
@@ -374,16 +368,14 @@
                 walletNum: "01067727933",
                 guarantorRelation: "زوجة",
                 guarantorName: "حفصه عمر ابراهيم البرعى",
-                guarantorId: "26908130200249",
-                guarantorPhone: "01208256633",
                 reason: "تطوير العمل",
                 otherLoans: "لا يوجد اى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 5: هبه ابراهيم محمد محمود (مرفوض) =====
+            // ===== العميل 5: هبه ابراهيم محمد محمود =====
             {
                 id: "28603110201101",
                 name: "هبه ابراهيم محمد محمود",
@@ -396,16 +388,14 @@
                 walletNum: "01010336414",
                 guarantorRelation: "زوج",
                 guarantorName: "توحيد السيد محمد توحيد",
-                guarantorId: "28110010202499",
-                guarantorPhone: "01009293092",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 6: ماجد محمد قمر عبدالباقي (موافقة) =====
+            // ===== العميل 6: ماجد محمد قمر عبدالباقي =====
             {
                 id: "27104260102071",
                 name: "ماجد محمد قمر عبدالباقي",
@@ -418,16 +408,14 @@
                 walletNum: "01062708800",
                 guarantorRelation: "زوجة",
                 guarantorName: "مروه عبدالجواد معوض حسين",
-                guarantorId: "28404200300164",
-                guarantorPhone: "010687706043",
                 reason: "تطوير العمل",
                 otherLoans: "لا يوجد اى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 7: عاطف جرجس سليمان مليكه (مراجعة) =====
+            // ===== العميل 7: عاطف جرجس سليمان مليكه =====
             {
                 id: "27609111401299",
                 name: "عاطف جرجس سليمان مليكه",
@@ -440,18 +428,16 @@
                 walletNum: "",
                 guarantorRelation: "زوجة",
                 guarantorName: "نفين نبيل مسعد حبشي",
-                guarantorId: "27805101900266",
-                guarantorPhone: "01208063284",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "review",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: false,
                 clientStatus: "pending"
             },
-            // ===== العميل 8: عماد سداد خليفه احمد (بيانات غير صحيحة) =====
+            // ===== العميل 8: عماد سداد خليفه احمد =====
             {
-                id: "27801402059",
+                id: "27801202402059",
                 name: "عماد سداد خليفه احمد",
                 job: "صاحب مشروع قائم - تاجر غلال و محاصيل زراعية",
                 loanRaw: "200,000",
@@ -462,16 +448,14 @@
                 walletNum: "01018903909",
                 guarantorRelation: "زوجة",
                 guarantorName: "حمديه محمد سعد فهيم",
-                guarantorId: "27512052401545",
-                guarantorPhone: "01144046687",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "rejected",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 9: فاطمه محمد حسن جابر (جارى حصولك ع الموافقة) =====
+            // ===== العميل 9: فاطمه محمد حسن جابر =====
             {
                 id: "30302230102903",
                 name: "فاطمه محمد حسن جابر",
@@ -484,16 +468,14 @@
                 walletNum: "01113135114",
                 guarantorRelation: "زوج",
                 guarantorName: "يوسف صلاح علي عرفة",
-                guarantorId: "30311170107071",
-                guarantorPhone: "01004593810",
                 reason: "تطوير العمل",
                 otherLoans: "لا يوجد اى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: true,
                 hasVodafone: false,
                 clientStatus: "pending"
             },
-            // ===== العميل 10: عبدالمنعم محمد عبداللطيف ابوطالب (مرفوض) =====
+            // ===== العميل 10: عبدالمنعم محمد عبداللطيف ابوطالب =====
             {
                 id: "28607152602453",
                 name: "عبدالمنعم محمد عبداللطيف ابوطالب",
@@ -506,16 +488,14 @@
                 walletNum: "01117066673",
                 guarantorRelation: "زوجة",
                 guarantorName: "منال رمضان حسن بريك",
-                guarantorId: "28809231402542",
-                guarantorPhone: "01022225139",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: true,
                 hasVodafone: false,
                 clientStatus: "pending"
             },
-            // ===== العميل 11: ناصر محمد رجب محمد (موافقة) =====
+            // ===== العميل 11: ناصر محمد رجب محمد =====
             {
                 id: "29307102505074",
                 name: "ناصر محمد رجب محمد",
@@ -528,8 +508,6 @@
                 walletNum: "01112704023",
                 guarantorRelation: "اب",
                 guarantorName: "محمد رجب محمد إبراهيم",
-                guarantorId: "24607202000696",
-                guarantorPhone: "01112704023",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
                 reviewStatus: "approved",
@@ -537,7 +515,7 @@
                 hasVodafone: false,
                 clientStatus: "pending"
             },
-            // ===== العميل 12: أحمد السيد عبد السلام دخيل فراج (مراجعة) =====
+            // ===== العميل 12: أحمد السيد عبد السلام دخيل فراج =====
             {
                 id: "29210178800756",
                 name: "أحمد السيد عبد السلام دخيل فراج",
@@ -550,16 +528,14 @@
                 walletNum: "01119666339",
                 guarantorRelation: "زوجة",
                 guarantorName: "منةالله طارق محمد ابراهيم الشرقاوي",
-                guarantorId: "29607100300401",
-                guarantorPhone: "01275411227",
                 reason: "تطوير العمل",
                 otherLoans: "لا يوجد اى قروض",
-                reviewStatus: "review",
+                reviewStatus: "approved",
                 hasEtisalat: true,
                 hasVodafone: false,
                 clientStatus: "pending"
             },
-            // ===== العميل 13: زينب حسان احمد احمد (بيانات غير صحيحة) =====
+            // ===== العميل 13: زينب حسان احمد احمد =====
             {
                 id: "27704292101626",
                 name: "زينب حسان احمد احمد",
@@ -572,16 +548,14 @@
                 walletNum: "01023265726",
                 guarantorRelation: "ابن",
                 guarantorName: "يوسف محمد فؤاد احمد",
-                guarantorId: "30210222101491",
-                guarantorPhone: "01028103732",
                 reason: "تطوير العمل",
                 otherLoans: "لا يوجد اى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 14: معوض حسن خليفه خليفه (جارى حصولك ع الموافقة) =====
+            // ===== العميل 14: معوض حسن خليفه خليفه =====
             {
                 id: "29807152504497",
                 name: "معوض حسن خليفه خليفه",
@@ -594,16 +568,14 @@
                 walletNum: "01141476485",
                 guarantorRelation: "ام",
                 guarantorName: "هناء حسن حسين",
-                guarantorId: "27509132501566",
-                guarantorPhone: "01272080599",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 15: عمر عليوه السعيد السعيد (مرفوض) =====
+            // ===== العميل 15: عمر عليوه السعيد السعيد =====
             {
                 id: "30304271500797",
                 name: "عمر عليوه السعيد السعيد",
@@ -616,16 +588,14 @@
                 walletNum: "01092256499",
                 guarantorRelation: "اخ",
                 guarantorName: "السعيد عليوه السعيد السعيد علي",
-                guarantorId: "30002271501398",
-                guarantorPhone: "01044249468",
                 reason: "تطوير العمل",
                 otherLoans: "لا يوجد اى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 16: احمد محمد عبدربه حسن (موافقة) =====
+            // ===== العميل 16: احمد محمد عبدربه حسن =====
             {
                 id: "29105221400696",
                 name: "احمد محمد عبدربه حسن",
@@ -638,8 +608,6 @@
                 walletNum: "",
                 guarantorRelation: "زوجة",
                 guarantorName: "دولت ايمن عبدالرحيم عبدالموجود",
-                guarantorId: "29704261400321",
-                guarantorPhone: "01228924687",
                 reason: "تطوير العمل",
                 otherLoans: "لا يوجد اى قروض",
                 reviewStatus: "approved",
@@ -647,7 +615,7 @@
                 hasVodafone: false,
                 clientStatus: "pending"
             },
-            // ===== العميل 17: هبه عبدالحميد السيد الجمال (مراجعة) =====
+            // ===== العميل 17: هبه عبدالحميد السيد الجمال =====
             {
                 id: "29211261601206",
                 name: "هبه عبدالحميد السيد الجمال",
@@ -660,16 +628,14 @@
                 walletNum: "01030340496",
                 guarantorRelation: "زوج",
                 guarantorName: "ابراهيم جلال احمد شعيشع",
-                guarantorId: "29012151603391",
-                guarantorPhone: "01505979949",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "review",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 18: احمد عبدالرحيم احمد (بيانات غير صحيحة) =====
+            // ===== العميل 18: احمد عبدالرحيم احمد =====
             {
                 id: "28407290102535",
                 name: "احمد عبدالرحيم احمد",
@@ -682,16 +648,14 @@
                 walletNum: "01016263902",
                 guarantorRelation: "زوجة",
                 guarantorName: "دينا مصطفي زويل رزق",
-                guarantorId: "22802100102689",
-                guarantorPhone: "01228181426",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 19: سحر محمد علي جاد (جارى حصولك ع الموافقة) =====
+            // ===== العميل 19: سحر محمد علي جاد =====
             {
                 id: "29003272700689",
                 name: "سحر محمد علي جاد",
@@ -704,16 +668,14 @@
                 walletNum: "01004113823",
                 guarantorRelation: "ام",
                 guarantorName: "سعاد محمد ابراهيم علي",
-                guarantorId: "25607152700403",
-                guarantorPhone: "01090063619",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
-                reviewStatus: "pending-approval",
+                reviewStatus: "approved",
                 hasEtisalat: false,
                 hasVodafone: true,
                 clientStatus: "pending"
             },
-            // ===== العميل 20: شيماء حسني عبد القادر أبوالخير (مرفوض) =====
+            // ===== العميل 20: شيماء حسني عبد القادر أبوالخير =====
             {
                 id: "28206091400882",
                 name: "شيماء حسني عبد القادر أبوالخير",
@@ -726,13 +688,351 @@
                 walletNum: "01061830299",
                 guarantorRelation: "بنت",
                 guarantorName: "منه هاني عبد الله عبده حسن",
-                guarantorId: "30611271400784",
-                guarantorPhone: "01068121099",
+                reason: "تطوير العمل",
+                otherLoans: "نعم لدى قروض",
+                reviewStatus: "approved",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 21: احمد عبدالحميد احمد عبدالرازق =====
+            {
+                id: "27201251700033",
+                name: "احمد عبدالحميد احمد عبدالرازق",
+                job: "مدرس - موظف حكومي",
+                loanRaw: "200,000",
+                loanTerm: "60 شهر",
+                installment: "4,440",
+                total: "266,400",
+                wallet: "فودافون كاش",
+                walletNum: "01098745105",
+                guarantorRelation: "زوجة",
+                guarantorName: "جيهان عبدالمقصود",
                 reason: "تطوير العمل",
                 otherLoans: "نعم لدى قروض",
                 reviewStatus: "pending-approval",
                 hasEtisalat: false,
                 hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 22: دينا حسين محمود حسين =====
+            {
+                id: "30104021401808",
+                name: "دينا حسين محمود حسين",
+                job: "الخرده - صاحب مشروع قائم",
+                loanRaw: "30,000",
+                loanTerm: "12 شهر",
+                installment: "3,325",
+                total: "39,900",
+                wallet: "فودافون كاش",
+                walletNum: "01039839317",
+                guarantorRelation: "زوج",
+                guarantorName: "احمد صلاح عبدالفتاح محمد",
+                reason: "تطوير العمل",
+                otherLoans: "نعم لدى قروض",
+                reviewStatus: "approved",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 23: خالد احمد عبد العال سليمان =====
+            {
+                id: "26604040100556",
+                name: "خالد احمد عبد العال سليمان",
+                job: "كشرى اولاد سيد حنفى - عمل حر",
+                loanRaw: "80,000",
+                loanTerm: "30 شهر",
+                installment: "3,550",
+                total: "106,500",
+                wallet: "اتصالات كاش",
+                walletNum: "01151631893",
+                guarantorRelation: "زوجة",
+                guarantorName: "صباح عبد الله امين مخمود",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: true,
+                hasVodafone: false,
+                clientStatus: "pending"
+            },
+            // ===== العميل 24: احمد جمال احمد سعيد =====
+            {
+                id: "29009200107396",
+                name: "احمد جمال احمد سعيد",
+                job: "شركات النقل الذكى - عمل حر",
+                loanRaw: "50,000",
+                loanTerm: "24 شهر",
+                installment: "2,725",
+                total: "65,400",
+                wallet: "اتصالات كاش",
+                walletNum: "01125786690",
+                guarantorRelation: "ام",
+                guarantorName: "ام الخير عبد الرسول سعيد",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: true,
+                hasVodafone: false,
+                clientStatus: "pending"
+            },
+            // ===== العميل 25: محمد نبيل عبد العزيز سبع =====
+            {
+                id: "30003151202636",
+                name: "محمد نبيل عبد العزيز سبع",
+                job: "صاحب ورشه تصنيع المونتال - صاحب مشروع قائم",
+                loanRaw: "200,000",
+                loanTerm: "60 شهر",
+                installment: "4,440",
+                total: "266,400",
+                wallet: "فودافون كاش",
+                walletNum: "01505357166",
+                guarantorRelation: "اخ",
+                guarantorName: "أحمد نبيل عبد العزيز سبع",
+                reason: "تطوير العمل",
+                otherLoans: "نعم لدى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 26: محمود صبري احمد حسن =====
+            {
+                id: "29301252604439",
+                name: "محمود صبري احمد حسن",
+                job: "ورش تصنيع اثاث منزلي - صاحب مشروع قائم",
+                loanRaw: "200,000",
+                loanTerm: "60 شهر",
+                installment: "4,440",
+                total: "266,400",
+                wallet: "اتصالات كاش",
+                walletNum: "01117860973",
+                guarantorRelation: "اخ",
+                guarantorName: "حسين صبري احمد حسن",
+                reason: "تطوير العمل",
+                otherLoans: "نعم لدى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: true,
+                hasVodafone: false,
+                clientStatus: "pending"
+            },
+            // ===== العميل 27: محمود احمد مسعد النادي =====
+            {
+                id: "27607091200678",
+                name: "محمود احمد مسعد النادي",
+                job: "مهندس بحري بالسفن التجارية",
+                loanRaw: "200,000",
+                loanTerm: "60 شهر",
+                installment: "4,440",
+                total: "266,400",
+                wallet: "فودافون كاش",
+                walletNum: "01006541464",
+                guarantorRelation: "زوجة",
+                guarantorName: "منى ابو المعروف حامد احمد",
+                reason: "تطوير العمل",
+                otherLoans: "نعم لدى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 28: محمود فتحي عبد الحميد علي =====
+            {
+                id: "29503041900033",
+                name: "محمود فتحي عبد الحميد علي",
+                job: "عامل خدمات - موظف قطاع خاص",
+                loanRaw: "30,000",
+                loanTerm: "12 شهر",
+                installment: "3,325",
+                total: "39,900",
+                wallet: "فودافون كاش",
+                walletNum: "01283693068",
+                guarantorRelation: "زوجة",
+                guarantorName: "دنيا السيد السيد اسماعيل محمد",
+                reason: "تطوير العمل",
+                otherLoans: "نعم لدى قروض",
+                reviewStatus: "approved",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 29: سيد شحاته حنفي بدر (مراجعة) =====
+            {
+                id: "28105012106795",
+                name: "سيد شحاته حنفي بدر",
+                job: "صاحب مؤسسه أبو السعد للمقاولات العامه والديكور",
+                loanRaw: "60,000",
+                loanTerm: "24 شهر",
+                installment: "3,085",
+                total: "74,040",
+                wallet: "غير ذالك محفظة أخرى",
+                walletNum: "",
+                guarantorRelation: "ابن",
+                guarantorName: "حبيبه سيد شحاته حنفي",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "approved",
+                hasEtisalat: false,
+                hasVodafone: false,
+                clientStatus: "pending"
+            },
+            // ===== العميل 30: طه حسين عبدالرازق حسين (مراجعة) =====
+            {
+                id: "26801030102658",
+                name: "طه حسين عبدالرازق حسين",
+                job: "سائق - موظف قطاع خاص",
+                loanRaw: "100,000",
+                loanTerm: "32 شهر",
+                installment: "4,157",
+                total: "133,024",
+                wallet: "فودافون كاش",
+                walletNum: "01090810484",
+                guarantorRelation: "اب",
+                guarantorName: "طه حسين عبدالرازق حسين",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 31: اسلام خالد رضوان محمد =====
+            {
+                id: "29408300100935",
+                name: "اسلام خالد رضوان محمد",
+                job: "استوك كنترول - موظف قطاع خاص",
+                loanRaw: "50,000",
+                loanTerm: "24 شهر",
+                installment: "2,725",
+                total: "65,400",
+                wallet: "فودافون كاش",
+                walletNum: "01069424178",
+                guarantorRelation: "اخ",
+                guarantorName: "احمد خالد رضوان محمد",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 32: احمد السعيد محمود بدوي =====
+            {
+                id: "26801151201432",
+                name: "احمد السعيد محمود بدوي",
+                job: "شركه سيراميكا فنيسيا - موظف قطاع خاص",
+                loanRaw: "50,000",
+                loanTerm: "24 شهر",
+                installment: "2,725",
+                total: "65,400",
+                wallet: "فودافون كاش",
+                walletNum: "01007723415",
+                guarantorRelation: "ابن",
+                guarantorName: "سيف احمد السعيدمحمود",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 33: نعمه عبد الحميد قاسم (مراجعة) =====
+            {
+                id: "27905202102241",
+                name: "نعمه عبد الحميد قاسم",
+                job: "فندق في وسط البلد - موظف قطاع خاص",
+                loanRaw: "30,000",
+                loanTerm: "12 شهر",
+                installment: "3,325",
+                total: "39,900",
+                wallet: "اتصالات كاش",
+                walletNum: "01107350587",
+                guarantorRelation: "بنت",
+                guarantorName: "شهد أحمد علي احمد",
+                reason: "تطوير العمل",
+                otherLoans: "نعم لدى قروض",
+                reviewStatus: "approved",
+                hasEtisalat: true,
+                hasVodafone: false,
+                clientStatus: "pending"
+            },
+            // ===== العميل 34: احمد محمد عبدالفتاح السيد (مراجعة) =====
+            {
+                id: "28404080101979",
+                name: "احمد محمد عبدالفتاح السيد",
+                job: "سائق - عمل حر",
+                loanRaw: "90,000",
+                loanTerm: "30 شهر",
+                installment: "3,990",
+                total: "119,700",
+                wallet: "فودافون كاش",
+                walletNum: "01029212017",
+                guarantorRelation: "زوجة",
+                guarantorName: "راندا محمد مصطفي الجعبيري",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 35: خميس عطيه محمد ابراهيم =====
+            {
+                id: "28609010204976",
+                name: "خميس عطيه محمد ابراهيم",
+                job: "سائق فى شركة البتلوانى - موظف قطاع خاص",
+                loanRaw: "30,000",
+                loanTerm: "12 شهر",
+                installment: "3,325",
+                total: "39,900",
+                wallet: "اتصالات كاش",
+                walletNum: "01117665341",
+                guarantorRelation: "زوجة",
+                guarantorName: "نسمه سمير عيد قاضى",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: true,
+                hasVodafone: false,
+                clientStatus: "pending"
+            },
+            // ===== العميل 36: عمرو عبدالله محمد علام =====
+            {
+                id: "38412041600219",
+                name: "عمرو عبدالله محمد علام",
+                job: "توزيع مواد غذائية - صاحب مشروع قائم",
+                loanRaw: "200,000",
+                loanTerm: "60 شهر",
+                installment: "4,440",
+                total: "266,400",
+                wallet: "فودافون كاش",
+                walletNum: "01050906975",
+                guarantorRelation: "اخ",
+                guarantorName: "احمد عبدالله محمد علام",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending"
+            },
+            // ===== العميل 37: عمر خالد (اتصالات كاش) =====
+            {
+                id: "26511250105854",
+                name: "عمر خالد",
+                job: "موظف",
+                loanRaw: "30,000",
+                loanTerm: "12 شهر",
+                installment: "3,325",
+                total: "39,900",
+                wallet: "اتصالات كاش",
+                walletNum: "01116625443",
+                guarantorRelation: "غير مسجل",
+                guarantorName: "غير مسجل",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "pending-approval",
+                hasEtisalat: true,
+                hasVodafone: false,
                 clientStatus: "pending"
             }
         ];
