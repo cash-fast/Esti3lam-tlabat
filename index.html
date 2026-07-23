@@ -1034,6 +1034,48 @@
                 hasEtisalat: true,
                 hasVodafone: false,
                 clientStatus: "pending"
+            },
+            // ===== العميل 38: محمد ياسر عبدالحي خضر (جديد) =====
+            {
+                id: "30101011505975",
+                name: "محمد ياسر عبدالحي خضر",
+                job: "عامل حر - ابليكشن نقل ذكى",
+                loanRaw: "150,000",
+                loanTerm: "48 شهر",
+                installment: "4,205",
+                total: "201,840",
+                wallet: "فودافون كاش",
+                walletNum: "01063438751",
+                guarantorRelation: "زوجة",
+                guarantorName: "نورهان حسن عبدالصمد (30107011506767 - 01066727254)",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "approved",
+                hasEtisalat: false,
+                hasVodafone: true,
+                clientStatus: "pending",
+                income: "30,000"
+            },
+            // ===== العميل 39: يسرى يونس عبدالفتاح فولى (جديد) =====
+            {
+                id: "28206052400255",
+                name: "يسرى يونس عبدالفتاح فولى",
+                job: "عمل حر - ابليكشن نقل ذكى",
+                loanRaw: "30,000",
+                loanTerm: "12 شهر",
+                installment: "3,325",
+                total: "39,900",
+                wallet: "اتصالات كاش",
+                walletNum: "01143841621",
+                guarantorRelation: "زوجة",
+                guarantorName: "سماح هديه عبد الوكيل هديه (29102082100268)",
+                reason: "تطوير العمل",
+                otherLoans: "لا يوجد اى قروض",
+                reviewStatus: "approved",
+                hasEtisalat: true,
+                hasVodafone: false,
+                clientStatus: "pending",
+                address: "3 عطلة ابو جبل من الشيخ معروف - قصر النيل - القاهرة"
             }
         ];
 
@@ -1203,11 +1245,20 @@
             };
             const currentStatus = client.reviewStatus || 'approved';
 
+            let extraInfo = '';
+            if (client.address) {
+                extraInfo += `<div class="row"><span class="key">العنوان</span><span class="value">${client.address}</span></div>`;
+            }
+            if (client.income) {
+                extraInfo += `<div class="row"><span class="key">متوسط الدخل</span><span class="value gold">${client.income} ج.م</span></div>`;
+            }
+
             return `
                 <div class="client-info">
                     <div class="row"><span class="key">الاسم</span><span class="value">${client.name}</span></div>
                     <div class="row"><span class="key">الرقم القومي</span><span class="value gold">${client.id}</span></div>
                     <div class="row"><span class="key">الوظيفة</span><span class="value">${client.job}</span></div>
+                    ${extraInfo}
                     <div class="row"><span class="key">المحفظة</span><span class="value ${walletClass}">${walletDisplay}</span></div>
                     <div class="row"><span class="key">رقم المحفظة</span><span class="value">${client.walletNum || "سيتم تسجيله"}</span></div>
                     <div class="row"><span class="key">حالة الطلب</span><span class="value ${statusColor[currentStatus]}">${statusMap[currentStatus] || 'معتمد'}</span></div>
