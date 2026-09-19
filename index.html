@@ -1,903 +1,1257 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>كاش فاستر | الاستعلام الفوري عن طلب العميل</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #2ECC71; --primary-dark: #27AE60;
-            --gold: #D4AF37; --gold-dark: #B8960F;
-            --bg-dark: #0A0F1A; --bg-card: #0F1625;
-            --text-light: #F8FAFC; --text-muted: #8899AA;
-            --border-color: #1E2A3A; --shadow: 0 8px 32px rgba(0,0,0,0.4);
-            --whatsapp: #25D366; --danger: #EF4444; --warning: #FF8C42;
-            --vodafone-red: #E60000;
-            --review-color: #F59E0B;
-            --invalid-color: #EF4444;
-            --pending-approval: #8B5CF6;
-            --facebook-blue: #1877F2;
-            --etisalat-blue: #00BFFF;
-        }
-        body { font-family: 'Cairo', sans-serif; background: var(--bg-dark); color: var(--text-light); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 0.8rem; }
-        .app-container { max-width: 420px; width: 100%; background: var(--bg-card); border-radius: 1.8rem; padding: 1.2rem 1rem; box-shadow: var(--shadow); border: 1px solid var(--border-color); position: relative; overflow: hidden; }
-        .app-container::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, rgba(46,204,113,0.03), transparent 60%); pointer-events: none; z-index: 0; }
-        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border-color); position: relative; z-index: 1; }
-        .header .brand { display: flex; align-items: center; gap: 0.4rem; cursor: pointer; }
-        .header .brand .icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary), var(--gold)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #0A0F1A; font-weight: 900; }
-        .header .brand h1 { font-size: 1.2rem; font-weight: 800; background: linear-gradient(135deg, #FFF, var(--primary), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .header .brand h1 span { color: var(--gold); -webkit-text-fill-color: var(--gold); }
-        .header .badge { background: rgba(46,204,113,0.12); border: 1px solid rgba(46,204,113,0.2); border-radius: 2rem; padding: 0.2rem 0.6rem; font-size: 0.55rem; color: var(--primary); display: flex; align-items: center; gap: 0.3rem; }
-        .header .badge i { font-size: 0.4rem; }
-        .nav-tabs { display: flex; gap: 0.3rem; margin: 0.8rem 0 1rem 0; background: rgba(255,255,255,0.03); border-radius: 2rem; padding: 0.25rem; position: relative; z-index: 1; border: 1px solid var(--border-color); }
-        .nav-tabs .tab { flex: 1; text-align: center; padding: 0.4rem 0.2rem; border-radius: 2rem; font-size: 0.6rem; font-weight: 600; color: var(--text-muted); cursor: default; transition: 0.2s; background: transparent; }
-        .nav-tabs .tab.active { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #0A0F1A; box-shadow: 0 4px 15px rgba(46,204,113,0.25); }
-        .nav-tabs .tab i { margin-left: 0.2rem; }
-        .search-box { display: flex; gap: 0.4rem; margin: 0.6rem 0 0.8rem 0; position: relative; z-index: 1; }
-        .search-box input { flex: 1; padding: 0.7rem 1rem; border-radius: 2rem; border: 2px solid var(--border-color); background: rgba(255,255,255,0.04); color: white; font-size: 0.85rem; text-align: center; transition: 0.2s; font-family: 'Cairo', sans-serif; }
-        .search-box input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 20px rgba(46,204,113,0.1); }
-        .search-box input::placeholder { color: var(--text-muted); }
-        .search-box button { padding: 0.7rem 1.2rem; border: none; border-radius: 2rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #0A0F1A; font-weight: 800; cursor: pointer; transition: 0.2s; font-family: 'Cairo', sans-serif; font-size: 0.8rem; display: flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
-        .search-box button:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(46,204,113,0.25); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Cash Faster | الاستعلام الفوري عن طلب العميل</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: #1A8C4A;
+    --primary-light: #E8F5EE;
+    --primary-dark: #0F6B38;
+    --gold: #B8912E;
+    --gold-light: #FBF6E8;
+    --gold-dark: #8E6F1F;
+    --bg: #F7F9FB;
+    --bg-card: #FFFFFF;
+    --bg-soft: #F0F4F8;
+    --text: #1A2332;
+    --text-muted: #6B7A8F;
+    --border: #E1E8F0;
+    --shadow-sm: 0 2px 8px rgba(26,35,50,0.04);
+    --shadow: 0 8px 32px rgba(26,35,50,0.08);
+    --shadow-lg: 0 16px 48px rgba(26,35,50,0.12);
+    --success: #16A34A;
+    --success-light: #DCFCE7;
+    --info: #2563EB;
+    --info-light: #DBEAFE;
+    --warning: #D97706;
+    --warning-light: #FEF3C7;
+    --danger: #DC2626;
+    --danger-light: #FEE2E2;
+    --purple: #7C3AED;
+    --purple-light: #EDE9FE;
+    --etisalat-blue: #0284C7;
+    --etisalat-light: #E0F2FE;
+    --review-color: #D97706;
+    --invalid-color: #DC2626;
+    --pending-approval: #7C3AED;
+    --pending-light: #EDE9FE;
+    --font: 'Cairo', sans-serif;
+    --radius: 1.4rem;
+    --radius-sm: 0.9rem;
+  }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
 
-        .loan-card { background: linear-gradient(145deg, #111B2B, #0A1220); border-radius: 1.2rem; padding: 1.2rem 1rem; border: 1px solid var(--border-color); margin-bottom: 0.8rem; position: relative; z-index: 1; }
-        .loan-card .loan-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; text-align: center; }
-        .loan-card .loan-amount-main { text-align: center; font-size: 2.6rem; font-weight: 900; color: #FFF; margin: 0.2rem 0; letter-spacing: 1px; }
-        .loan-card .loan-amount-main .currency { font-size: 1.2rem; color: var(--text-muted); font-weight: 600; }
-        .loan-card .loan-percent { text-align: center; font-size: 0.9rem; color: var(--gold); font-weight: 700; }
-        .loan-card .loan-percent i { color: var(--gold); margin-left: 0.3rem; }
-        .loan-details-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border-color); }
-        .loan-details-grid .detail-item { text-align: center; }
-        .loan-details-grid .detail-item .label { font-size: 0.5rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-        .loan-details-grid .detail-item .value { font-size: 0.9rem; font-weight: 700; color: #FFF; margin-top: 0.1rem; }
-        .loan-details-grid .detail-item .value.gold { color: var(--gold); }
-        .loan-details-grid .detail-item .value.green { color: var(--primary); }
-        .loan-details-grid .detail-item .value.danger { color: var(--danger); }
-        .loan-details-grid .detail-item .value.warning { color: var(--warning); }
-        .loan-details-grid .detail-item .value.vodafone { color: var(--vodafone-red); }
-        .loan-details-grid .detail-item .value.review { color: var(--review-color); }
-        .loan-details-grid .detail-item .value.pending-approval { color: var(--pending-approval); }
+  .watermark {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .watermark::before {
+    content: 'CASH FASTER';
+    position: absolute;
+    font-size: 9rem;
+    font-weight: 900;
+    color: rgba(26,140,74,0.045);
+    letter-spacing: 0.3rem;
+    transform: rotate(-32deg);
+    white-space: nowrap;
+    font-family: var(--font);
+  }
+  .watermark::after {
+    content: 'CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER';
+    position: absolute;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: rgba(184,145,46,0.04);
+    letter-spacing: 0.2rem;
+    transform: rotate(-32deg);
+    white-space: nowrap;
+    line-height: 5rem;
+    width: 200%;
+    text-align: center;
+    font-family: var(--font);
+  }
 
-        .status-bar { display: flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.03); border-radius: 1.2rem; padding: 0.5rem 0.8rem; border: 1px solid var(--border-color); margin: 0.6rem 0; }
-        .status-bar .status-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
-        .status-bar .status-text { flex: 1; }
-        .status-bar .status-text .main { font-weight: 700; font-size: 0.85rem; }
-        .status-bar .status-text .sub { font-size: 0.6rem; color: var(--text-muted); }
-        .status-bar .status-badge { border-radius: 2rem; padding: 0.15rem 0.6rem; font-size: 0.55rem; font-weight: 600; }
-        .status-bar.approved .status-icon { background: rgba(46,204,113,0.12); color: var(--primary); }
-        .status-bar.approved .status-badge { background: rgba(46,204,113,0.12); border: 1px solid rgba(46,204,113,0.2); color: var(--primary); }
-        .status-bar.review .status-icon { background: rgba(245,158,11,0.12); color: var(--review-color); }
-        .status-bar.review .status-badge { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.2); color: var(--review-color); }
-        .status-bar.rejected .status-icon { background: rgba(239,68,68,0.12); color: var(--danger); }
-        .status-bar.rejected .status-badge { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.2); color: var(--danger); }
-        .status-bar.invalid .status-icon { background: rgba(239,68,68,0.12); color: var(--invalid-color); }
-        .status-bar.invalid .status-badge { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.2); color: var(--invalid-color); }
-        .status-bar.pending-approval .status-icon { background: rgba(139,92,246,0.12); color: var(--pending-approval); }
-        .status-bar.pending-approval .status-badge { background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.2); color: var(--pending-approval); }
+  .app-container {
+    max-width: 480px;
+    width: 100%;
+    background: var(--bg-card);
+    border-radius: 2rem;
+    padding: 1.4rem 1.2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1rem;
+  }
 
-        .client-info { background: rgba(255,255,255,0.02); border-radius: 1rem; padding: 0.6rem 0.8rem; border: 1px solid var(--border-color); margin: 0.6rem 0; }
-        .client-info .row { display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.75rem; }
-        .client-info .row:last-child { border-bottom: none; }
-        .client-info .row .key { color: var(--text-muted); }
-        .client-info .row .value { font-weight: 600; text-align: left; color: #FFF; }
-        .client-info .row .value.gold { color: var(--gold); }
-        .client-info .row .value.green { color: var(--primary); }
-        .client-info .row .value.danger { color: var(--danger); }
-        .client-info .row .value.warning { color: var(--warning); }
-        .client-info .row .value.vodafone { color: var(--vodafone-red); }
-        .client-info .row .value.review { color: var(--review-color); }
-        .client-info .row .value.pending-approval { color: var(--pending-approval); }
+  .promo-strip {
+    background: linear-gradient(135deg, var(--primary-light), var(--gold-light));
+    border: 1px solid rgba(26,140,74,0.12);
+    border-radius: 3rem;
+    padding: 0.55rem 1.2rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-weight: 600;
+  }
+  .promo-strip i { color: var(--primary); }
+  .promo-strip .highlight { color: var(--gold-dark); font-weight: 800; }
 
-        .status-message-box { border-radius: 1.2rem; padding: 1rem; margin: 0.6rem 0; text-align: center; position: relative; z-index: 1; }
-        .status-message-box .status-icon { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
-        .status-message-box h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.3rem; }
-        .status-message-box p { font-size: 0.8rem; line-height: 1.8; }
-        .status-message-box .highlight { font-weight: 700; }
-        .status-message-box.approved { background: rgba(46,204,113,0.08); border: 2px solid var(--primary); }
-        .status-message-box.approved h3 { color: var(--primary); }
-        .status-message-box.review { background: rgba(245,158,11,0.08); border: 2px solid var(--review-color); }
-        .status-message-box.review h3 { color: var(--review-color); }
-        .status-message-box.rejected { background: rgba(239,68,68,0.08); border: 2px solid var(--danger); }
-        .status-message-box.rejected h3 { color: var(--danger); }
-        .status-message-box.invalid { background: rgba(239,68,68,0.08); border: 2px solid var(--invalid-color); }
-        .status-message-box.invalid h3 { color: var(--invalid-color); }
-        .status-message-box.pending-approval { background: rgba(139,92,246,0.08); border: 2px solid var(--pending-approval); }
-        .status-message-box.pending-approval h3 { color: var(--pending-approval); }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
+  .brand .icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    box-shadow: 0 6px 20px rgba(26,140,74,0.25);
+  }
+  .brand h1 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+  }
+  .brand h1 span {
+    color: var(--gold);
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .header .badge {
+    background: var(--success-light);
+    border: 1px solid rgba(22,163,74,0.2);
+    border-radius: 3rem;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.65rem;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+  }
+  .header .badge i { font-size: 0.45rem; animation: dotPulse 1.8s ease-in-out infinite; }
+  @keyframes dotPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        .wallet-notice { background: rgba(0,191,255,0.08); border: 2px solid var(--etisalat-blue); border-radius: 1.2rem; padding: 0.8rem; margin: 0.6rem 0; }
-        .wallet-notice .notice-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem; }
-        .wallet-notice .notice-head i { font-size: 1.6rem; color: var(--etisalat-blue); }
-        .wallet-notice .notice-head h4 { color: var(--etisalat-blue); font-size: 0.9rem; }
-        .wallet-notice p { color: var(--text-muted); font-size: 0.75rem; line-height: 1.7; }
-        .wallet-notice .highlight-blue { color: var(--etisalat-blue); font-weight: 700; }
-        .wallet-notice .highlight-gold { color: var(--gold); font-weight: 700; }
-        .wallet-notice .highlight-red { color: var(--vodafone-red); font-weight: 700; }
+  .nav-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin: 1.1rem 0;
+    background: var(--bg-soft);
+    border-radius: 3rem;
+    padding: 0.35rem;
+  }
+  .nav-tabs .tab {
+    flex: 1;
+    text-align: center;
+    padding: 0.55rem 0.3rem;
+    border-radius: 3rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+  .nav-tabs .tab.active {
+    background: var(--bg-card);
+    color: var(--primary-dark);
+    box-shadow: var(--shadow-sm);
+  }
 
-        /* ===== زر التحويلات المالية المحسن ===== */
-        .btn-whatsapp-transfer {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            border: none;
-            border-radius: 2rem;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            font-weight: 800;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.7rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 6px 30px rgba(37,211,102,0.3);
-            margin-top: 0.6rem;
-            position: relative;
-            z-index: 1;
-            animation: pulseWhatsApp 2s ease-in-out infinite;
-        }
-        @keyframes pulseWhatsApp {
-            0%,100% { box-shadow: 0 6px 25px rgba(37,211,102,0.3); transform: scale(1); }
-            50% { box-shadow: 0 6px 45px rgba(37,211,102,0.5), 0 0 70px rgba(37,211,102,0.1); transform: scale(1.02); }
-        }
-        .btn-whatsapp-transfer:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 40px rgba(37,211,102,0.5);
-        }
-        .btn-whatsapp-transfer i {
-            font-size: 1.5rem;
-        }
-        .btn-whatsapp-transfer .btn-icon-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        .btn-whatsapp-transfer .arrow-icon {
-            animation: arrowMove 1.2s ease-in-out infinite;
-        }
-        @keyframes arrowMove {
-            0%,100% { transform: translateX(0); }
-            50% { transform: translateX(6px); }
-        }
-        .btn-whatsapp-transfer.gold-btn {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            box-shadow: 0 6px 30px rgba(212,175,55,0.3);
-            color: #0A0F1A;
-        }
-        .btn-whatsapp-transfer.gold-btn:hover {
-            box-shadow: 0 8px 40px rgba(212,175,55,0.5);
-        }
-        .btn-whatsapp-transfer.etisalat-btn {
-            background: linear-gradient(135deg, var(--etisalat-blue), #0099CC);
-            box-shadow: 0 6px 30px rgba(0,191,255,0.25);
-        }
-        .btn-whatsapp-transfer.etisalat-btn:hover {
-            box-shadow: 0 8px 40px rgba(0,191,255,0.4);
-        }
-        .btn-whatsapp-transfer .badge-new {
-            background: rgba(255,255,255,0.2);
-            border-radius: 2rem;
-            padding: 0.1rem 0.6rem;
-            font-size: 0.6rem;
-            font-weight: 700;
-            color: #FFF;
-            margin-right: 0.3rem;
-        }
+  .search-box {
+    display: flex;
+    gap: 0.6rem;
+    margin: 0.9rem 0 1.3rem 0;
+  }
+  .search-box input {
+    flex: 1;
+    padding: 0.95rem 1.2rem;
+    border-radius: 3rem;
+    border: 2px solid var(--border);
+    background: var(--bg-soft);
+    color: var(--text);
+    font-size: 0.95rem;
+    text-align: center;
+    transition: 0.25s;
+    font-family: var(--font);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 4px rgba(26,140,74,0.1);
+  }
+  .search-box input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .search-box button {
+    padding: 0.95rem 1.6rem;
+    border: none;
+    border-radius: 3rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #FFFFFF;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.25s;
+    font-family: var(--font);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 6px 20px rgba(26,140,74,0.25);
+    white-space: nowrap;
+  }
+  .search-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(26,140,74,0.35);
+  }
 
-        .btn-whatsapp {
-            width: 100%;
-            padding: 0.7rem;
-            border: none;
-            border-radius: 2rem;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            font-weight: 800;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 4px 20px rgba(37,211,102,0.25);
-            margin-top: 0.4rem;
-        }
-        .btn-whatsapp:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(37,211,102,0.4);
-        }
-        .btn-whatsapp.gold-btn {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            box-shadow: 0 4px 20px rgba(212,175,55,0.25);
-            color: #0A0F1A;
-        }
-        .btn-whatsapp.gold-btn:hover {
-            box-shadow: 0 0 30px rgba(212,175,55,0.4);
-        }
-        .btn-whatsapp.etisalat-btn {
-            background: linear-gradient(135deg, var(--etisalat-blue), #0099CC);
-            box-shadow: 0 4px 20px rgba(0,191,255,0.2);
-        }
-        .btn-whatsapp.etisalat-btn:hover {
-            box-shadow: 0 0 30px rgba(0,191,255,0.35);
-        }
+  .loan-card {
+    background: linear-gradient(145deg, #FFFFFF, #FAFCFE);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.2rem;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .loan-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(184,145,46,0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .loan-card .loan-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    font-weight: 700;
+  }
+  .loan-card .loan-amount-main {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--primary-dark);
+    margin: 0.3rem 0;
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+  .loan-card .loan-amount-main .currency {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+  .loan-card .loan-percent {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--success);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+  }
+  .loan-card .loan-percent i { margin-left: 0.4rem; }
 
-        .error-box { background: rgba(239,68,68,0.08); border: 1px solid #EF4444; border-radius: 1rem; padding: 0.8rem; text-align: center; color: #EF4444; font-size: 0.8rem; display: none; margin-top: 0.6rem; }
-        .loader { text-align: center; display: none; padding: 0.8rem 0; }
-        .loader i { color: var(--primary); font-size: 1.5rem; }
-        .loader p { color: var(--text-muted); font-size: 0.7rem; margin-top: 0.2rem; }
+  .loan-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+  }
+  .loan-details-grid .detail-item {
+    text-align: center;
+    background: var(--bg-soft);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.3rem;
+    transition: 0.2s;
+  }
+  .loan-details-grid .detail-item:hover { background: var(--primary-light); }
+  .loan-details-grid .detail-item .label {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+  }
+  .loan-details-grid .detail-item .value {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-top: 0.2rem;
+  }
+  .loan-details-grid .detail-item .value.gold { color: var(--gold-dark); }
+  .loan-details-grid .detail-item .value.green { color: var(--success); }
+  .loan-details-grid .detail-item .value.danger { color: var(--danger); }
+  .loan-details-grid .detail-item .value.warning { color: var(--warning); }
+  .loan-details-grid .detail-item .value.vodafone { color: var(--danger); }
+  .loan-details-grid .detail-item .value.review { color: var(--review-color); }
+  .loan-details-grid .detail-item .value.pending-approval { color: var(--pending-approval); }
 
-        .auto-redirect-notice {
-            background: rgba(37,211,102,0.08);
-            border: 2px solid var(--whatsapp);
-            border-radius: 1.2rem;
-            padding: 0.8rem;
-            margin: 0.6rem 0;
-            text-align: center;
-            animation: pulseGreen 1.5s ease-in-out infinite;
-        }
-        @keyframes pulseGreen {
-            0%,100% { box-shadow: 0 0 15px rgba(37,211,102,0.05); }
-            50% { box-shadow: 0 0 30px rgba(37,211,102,0.15); }
-        }
-        .auto-redirect-notice .redirect-icon {
-            font-size: 2rem;
-            color: var(--whatsapp);
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-        .auto-redirect-notice h4 {
-            color: var(--whatsapp);
-            font-size: 0.9rem;
-            font-weight: 800;
-            margin-bottom: 0.2rem;
-        }
-        .auto-redirect-notice p {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            line-height: 1.7;
-        }
-        .auto-redirect-notice .countdown {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--whatsapp);
-            font-family: 'Courier New', monospace;
-            display: block;
-            margin: 0.3rem 0;
-        }
-        .auto-redirect-notice .countdown.danger {
-            color: var(--danger);
-            animation: blink 0.8s ease-in-out infinite;
-        }
-        @keyframes blink {
-            0%,100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
+  .status-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--border);
+    margin: 0.9rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .status-bar .status-icon {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .status-bar .status-text { flex: 1; }
+  .status-bar .status-text .main {
+    font-weight: 800;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  .status-bar .status-text .sub {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+  .status-bar .status-badge {
+    border-radius: 3rem;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.6rem;
+    font-weight: 700;
+  }
+  .status-bar.approved { border-color: rgba(22,163,74,0.25); background: linear-gradient(135deg, #FFFFFF, var(--success-light)); }
+  .status-bar.approved .status-icon { background: var(--success-light); color: var(--success); }
+  .status-bar.approved .status-text .main { color: var(--success); }
+  .status-bar.approved .status-badge { background: var(--success-light); border: 1px solid rgba(22,163,74,0.25); color: var(--success); }
+  .status-bar.review { border-color: rgba(217,119,6,0.25); background: linear-gradient(135deg, #FFFFFF, var(--warning-light)); }
+  .status-bar.review .status-icon { background: var(--warning-light); color: var(--warning); }
+  .status-bar.review .status-text .main { color: var(--warning); }
+  .status-bar.review .status-badge { background: var(--warning-light); border: 1px solid rgba(217,119,6,0.25); color: var(--warning); }
+  .status-bar.rejected { border-color: rgba(220,38,38,0.25); background: linear-gradient(135deg, #FFFFFF, var(--danger-light)); }
+  .status-bar.rejected .status-icon { background: var(--danger-light); color: var(--danger); }
+  .status-bar.rejected .status-text .main { color: var(--danger); }
+  .status-bar.rejected .status-badge { background: var(--danger-light); border: 1px solid rgba(220,38,38,0.25); color: var(--danger); }
+  .status-bar.invalid { border-color: rgba(220,38,38,0.25); background: linear-gradient(135deg, #FFFFFF, var(--danger-light)); }
+  .status-bar.invalid .status-icon { background: var(--danger-light); color: var(--invalid-color); }
+  .status-bar.invalid .status-text .main { color: var(--invalid-color); }
+  .status-bar.invalid .status-badge { background: var(--danger-light); border: 1px solid rgba(220,38,38,0.25); color: var(--invalid-color); }
+  .status-bar.pending-approval { border-color: rgba(124,58,237,0.25); background: linear-gradient(135deg, #FFFFFF, var(--pending-light)); }
+  .status-bar.pending-approval .status-icon { background: var(--pending-light); color: var(--pending-approval); }
+  .status-bar.pending-approval .status-text .main { color: var(--pending-approval); }
+  .status-bar.pending-approval .status-badge { background: var(--pending-light); border: 1px solid rgba(124,58,237,0.25); color: var(--pending-approval); }
 
-        .admin-panel { display: none; background: rgba(255,255,255,0.03); border-radius: 1rem; padding: 0.8rem; margin: 0.6rem 0; border: 1px solid var(--border-color); }
-        .admin-panel.show { display: block; }
-        .admin-panel .admin-title { font-size: 0.8rem; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; text-align: center; }
-        .admin-panel .btn-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-        .admin-panel .btn-group button { flex: 1; min-width: 80px; padding: 0.4rem 0.6rem; border: none; border-radius: 2rem; font-size: 0.65rem; font-weight: 700; cursor: pointer; transition: 0.2s; font-family: 'Cairo', sans-serif; }
-        .admin-panel .btn-group button:hover { transform: scale(1.02); }
-        .btn-status-approved { background: var(--primary); color: #0A0F1A; }
-        .btn-status-review { background: var(--review-color); color: #0A0F1A; }
-        .btn-status-rejected { background: var(--danger); color: white; }
-        .btn-status-invalid { background: var(--invalid-color); color: white; }
-        .btn-status-pending-approval { background: var(--pending-approval); color: white; }
-        .admin-status-current { font-size: 0.65rem; color: var(--text-muted); text-align: center; margin-top: 0.3rem; }
+  .client-info {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border);
+    margin: 0.9rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .client-info .info-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .client-info .info-title i { color: var(--primary); }
+  .client-info .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+  .client-info .row:last-child { border-bottom: none; }
+  .client-info .row .key {
+    color: var(--text-muted);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .client-info .row .value {
+    font-weight: 700;
+    text-align: left;
+    color: var(--text);
+    word-break: break-word;
+  }
+  .client-info .row .value.gold { color: var(--gold-dark); }
+  .client-info .row .value.green { color: var(--success); }
+  .client-info .row .value.danger { color: var(--danger); }
+  .client-info .row .value.warning { color: var(--warning); }
+  .client-info .row .value.review { color: var(--review-color); }
+  .client-info .row .value.pending-approval { color: var(--pending-approval); }
 
-        .text-center { text-align: center; }
-        .text-muted { color: var(--text-muted); }
-        .text-gold { color: var(--gold); }
-        .text-green { color: var(--primary); }
-        .fw-700 { font-weight: 700; }
-        .fs-small { font-size: 0.7rem; }
-        .mt-1 { margin-top: 0.4rem; }
-        .mb-1 { margin-bottom: 0.4rem; }
-        .hidden { display: none !important; }
+  /* ===== صورة التحقق من الهوية ===== */
+  .id-verification {
+    background: linear-gradient(135deg, #FFFFFF, var(--gold-light));
+    border: 2px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 1.1rem;
+    margin: 0.9rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .id-verification .idv-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(184,145,46,0.2);
+  }
+  .id-verification .idv-header .idv-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .id-verification .idv-header h4 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--gold-dark);
+    line-height: 1.3;
+  }
+  .id-verification .idv-header p {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+  }
+  .id-verification .idv-image-box {
+    background: #FFFFFF;
+    border: 1px dashed var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  .id-verification .idv-image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.6rem;
+    display: block;
+    margin: 0 auto;
+    max-height: 320px;
+    object-fit: contain;
+  }
+  .id-verification .idv-image-box .idv-placeholder {
+    padding: 1.5rem 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .id-verification .idv-image-box .idv-placeholder i {
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .id-verification .idv-caption {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
 
-        @media (max-width: 440px) {
-            .app-container { padding: 0.8rem 0.6rem; border-radius: 1.2rem; }
-            .loan-card .loan-amount-main { font-size: 2rem; }
-            .loan-details-grid { grid-template-columns: 1fr 1fr 1fr; gap: 0.3rem; }
-            .loan-details-grid .detail-item .value { font-size: 0.75rem; }
-            .client-info .row { font-size: 0.65rem; flex-wrap: wrap; gap: 0.1rem; }
-            .search-box { flex-direction: column; }
-            .search-box button { width: 100%; justify-content: center; }
-            .nav-tabs .tab { font-size: 0.5rem; padding: 0.3rem 0.1rem; }
-            .header .brand h1 { font-size: 1rem; }
-            .admin-panel .btn-group button { font-size: 0.55rem; padding: 0.3rem 0.4rem; min-width: 60px; }
-            .btn-whatsapp-transfer { font-size: 0.85rem; padding: 0.7rem; }
-            .btn-whatsapp-transfer i { font-size: 1.2rem; }
-        }
-        @media (max-width: 360px) {
-            .loan-card .loan-amount-main { font-size: 1.6rem; }
-            .loan-details-grid { grid-template-columns: 1fr 1fr; }
-            .header .badge { display: none; }
-        }
-    </style>
+  .status-message-box {
+    border-radius: var(--radius);
+    padding: 1.1rem;
+    margin: 0.9rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .status-message-box .status-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .status-message-box h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+  }
+  .status-message-box p {
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+  }
+  .status-message-box.approved { background: linear-gradient(135deg, #FFFFFF, var(--success-light)); border: 2px solid var(--success); }
+  .status-message-box.approved h3 { color: var(--success); }
+  .status-message-box.review { background: linear-gradient(135deg, #FFFFFF, var(--warning-light)); border: 2px solid var(--warning); }
+  .status-message-box.review h3 { color: var(--warning); }
+  .status-message-box.rejected { background: linear-gradient(135deg, #FFFFFF, var(--danger-light)); border: 2px solid var(--danger); }
+  .status-message-box.rejected h3 { color: var(--danger); }
+  .status-message-box.invalid { background: linear-gradient(135deg, #FFFFFF, var(--danger-light)); border: 2px solid var(--invalid-color); }
+  .status-message-box.invalid h3 { color: var(--invalid-color); }
+  .status-message-box.pending-approval { background: linear-gradient(135deg, #FFFFFF, var(--pending-light)); border: 2px solid var(--pending-approval); }
+  .status-message-box.pending-approval h3 { color: var(--pending-approval); }
+
+  .wallet-notice {
+    border-radius: var(--radius);
+    padding: 1.1rem;
+    margin: 0.9rem 0;
+    position: relative;
+  }
+  .wallet-notice .notice-head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+  .wallet-notice .notice-head i { font-size: 1.6rem; flex-shrink: 0; }
+  .wallet-notice .notice-head h4 { font-size: 0.9rem; font-weight: 800; }
+  .wallet-notice p { color: var(--text-muted); font-size: 0.78rem; line-height: 1.9; }
+  .wallet-notice.etisalat {
+    background: linear-gradient(135deg, #FFFFFF, var(--etisalat-light));
+    border: 2px solid var(--etisalat-blue);
+  }
+  .wallet-notice.etisalat .notice-head i,
+  .wallet-notice.etisalat .notice-head h4 { color: var(--etisalat-blue); }
+  .wallet-notice.vodafone {
+    background: linear-gradient(135deg, #FFFFFF, var(--danger-light));
+    border: 2px solid var(--danger);
+  }
+  .wallet-notice.vodafone .notice-head i,
+  .wallet-notice.vodafone .notice-head h4 { color: var(--danger); }
+  .wallet-notice.none {
+    background: linear-gradient(135deg, #FFFFFF, var(--gold-light));
+    border: 2px solid var(--gold);
+  }
+  .wallet-notice.none .notice-head i,
+  .wallet-notice.none .notice-head h4 { color: var(--gold-dark); }
+
+  .btn-whatsapp-transfer {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: none;
+    border-radius: 3rem;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 8px 28px rgba(37,211,102,0.3);
+    margin-top: 0.8rem;
+    font-family: var(--font);
+    position: relative;
+    z-index: 1;
+    animation: pulseWhatsApp 2s ease-in-out infinite;
+  }
+  @keyframes pulseWhatsApp {
+    0%,100% { box-shadow: 0 8px 28px rgba(37,211,102,0.3); transform: scale(1); }
+    50% { box-shadow: 0 8px 42px rgba(37,211,102,0.5), 0 0 60px rgba(37,211,102,0.15); transform: scale(1.015); }
+  }
+  .btn-whatsapp-transfer:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 38px rgba(37,211,102,0.45);
+  }
+  .btn-whatsapp-transfer i { font-size: 1.3rem; }
+  .btn-whatsapp-transfer .badge-new {
+    background: rgba(255,255,255,0.22);
+    border-radius: 3rem;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.6rem;
+    font-weight: 800;
+  }
+  .btn-whatsapp-transfer .arrow-icon {
+    animation: arrowMove 1.2s ease-in-out infinite;
+  }
+  @keyframes arrowMove {
+    0%,100% { transform: translateX(0); }
+    50% { transform: translateX(-6px); }
+  }
+  .btn-whatsapp-transfer.etisalat-btn {
+    background: linear-gradient(135deg, #0284C7, #0369A1);
+    box-shadow: 0 8px 28px rgba(2,132,199,0.3);
+  }
+  .btn-whatsapp-transfer.gold-btn {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #FFFFFF;
+    box-shadow: 0 8px 28px rgba(184,145,46,0.3);
+  }
+
+  .error-box {
+    background: var(--danger-light);
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: var(--radius);
+    padding: 1.2rem;
+    text-align: center;
+    color: var(--danger);
+    font-size: 0.85rem;
+    display: none;
+    margin-top: 0.8rem;
+    font-weight: 600;
+    line-height: 1.8;
+  }
+  .error-box i { font-size: 1.8rem; display: block; margin-bottom: 0.4rem; }
+
+  .loader { text-align: center; display: none; padding: 1.5rem 0; }
+  .loader i { color: var(--primary); font-size: 2rem; }
+  .loader p { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.4rem; font-weight: 600; }
+
+  .admin-panel {
+    display: none;
+    background: var(--bg-soft);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin: 0.8rem 0;
+    border: 1px solid var(--border);
+  }
+  .admin-panel.show { display: block; }
+  .admin-panel .admin-title {
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    font-weight: 800;
+    margin-bottom: 0.7rem;
+    text-align: center;
+  }
+  .admin-panel .btn-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .admin-panel .btn-group button {
+    flex: 1; min-width: 90px; padding: 0.5rem 0.6rem;
+    border: none; border-radius: 3rem;
+    font-size: 0.7rem; font-weight: 700;
+    cursor: pointer; transition: 0.2s;
+    font-family: var(--font); color: #FFFFFF;
+  }
+  .admin-panel .btn-group button:hover { transform: translateY(-1px); }
+  .btn-status-approved { background: var(--success); }
+  .btn-status-review { background: var(--warning); }
+  .btn-status-rejected { background: var(--danger); }
+  .btn-status-invalid { background: var(--invalid-color); }
+  .btn-status-pending-approval { background: var(--pending-approval); }
+  .admin-status-current {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 440px) {
+    body { padding: 0.6rem; }
+    .app-container { padding: 1rem 0.9rem; border-radius: 1.6rem; }
+    .watermark::before { font-size: 5rem; }
+    .watermark::after { font-size: 1rem; line-height: 3rem; }
+    .loan-card .loan-amount-main { font-size: 2.2rem; }
+    .loan-details-grid { gap: 0.4rem; }
+    .loan-details-grid .detail-item .value { font-size: 0.78rem; }
+    .search-box { flex-direction: column; }
+    .search-box button { width: 100%; justify-content: center; }
+    .brand h1 { font-size: 1.15rem; }
+    .brand .icon { width: 42px; height: 42px; font-size: 1.3rem; }
+    .promo-strip { font-size: 0.62rem; padding: 0.45rem 0.8rem; }
+    .client-info .row { font-size: 0.78rem; }
+    .nav-tabs .tab { font-size: 0.55rem; }
+    .admin-panel .btn-group button { font-size: 0.6rem; padding: 0.4rem 0.5rem; min-width: 70px; }
+  }
+  @media (max-width: 360px) {
+    .loan-card .loan-amount-main { font-size: 1.8rem; }
+    .loan-details-grid { grid-template-columns: 1fr 1fr; }
+    .header .badge { display: none; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="app-container">
+  <div class="watermark"></div>
 
-        <div class="header">
-            <div class="brand" id="brandLogo">
-                <div class="icon">⚡</div>
-                <h1>Cash<span>Fast</span></h1>
-            </div>
-            <div class="badge">
-                <i class="fas fa-circle" style="color: var(--primary);"></i>
-                <span>نشط</span>
-            </div>
-        </div>
+  <div class="app-container">
 
-        <div class="nav-tabs">
-            <div class="tab active"><i class="fas fa-check-circle"></i> الاستعلام المبدئي</div>
-            <div class="tab"><i class="fas fa-spinner"></i> التالى ربط الحساب</div>
-            <div class="tab"><i class="fas fa-list"></i> آخر مرحلة ملف التحويل</div>
-        </div>
-
-        <div class="search-box">
-            <input type="text" id="nationalId" placeholder="الرقم القومي (14 رقم)" maxlength="14" inputmode="numeric">
-            <button onclick="searchCustomer()"><i class="fas fa-search"></i> استعلام</button>
-        </div>
-
-        <div id="resultArea"></div>
-
-        <div class="error-box" id="errorBox">
-            <i class="fas fa-exclamation-triangle"></i>
-            <p>⚠️ الرقم القومي غير مسجل حاليا انتظر لحين تحديث الطلبات وسيتم ظهور لك .</p>
-        </div>
-
-        <div class="loader" id="loader">
-            <i class="fas fa-spinner fa-pulse"></i>
-            <p>جاري جلب البيانات...</p>
-        </div>
-
-        <div class="admin-panel" id="adminPanel">
-            <div class="admin-title"><i class="fas fa-cog"></i> تغيير حالة الطلب</div>
-            <div class="btn-group">
-                <button class="btn-status-approved" onclick="changeStatus('approved')">✅ موافقة</button>
-                <button class="btn-status-review" onclick="changeStatus('review')">⏳ مراجعة</button>
-                <button class="btn-status-rejected" onclick="changeStatus('rejected')">❌ رفض</button>
-                <button class="btn-status-invalid" onclick="changeStatus('invalid')">⚠️ بيانات غير صحيحة</button>
-                <button class="btn-status-pending-approval" onclick="changeStatus('pending-approval')">🔄 جارى حصولك ع الموافقة</button>
-            </div>
-            <div class="admin-status-current" id="adminStatusDisplay">الحالة الحالية: <span id="currentStatusText">غير محدد</span></div>
-        </div>
-
+    <div class="promo-strip">
+      <i class="fas fa-shield-alt"></i>
+      <span>💰 تمويل آمن وشفاف | <span class="highlight">بدون أي رسوم مسبقة</span></span>
+      <i class="fas fa-lock" style="color: var(--success);"></i>
     </div>
 
-    <script>
-        // ===== روابط خارجية =====
-        const WHATSAPP_NUMBER = "+639976737886";
-        const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+    <div class="header">
+      <div class="brand" id="brandLogo">
+        <div class="icon"><i class="fas fa-bolt"></i></div>
+        <h1>Cash Faster<span>كاش فاستر</span></h1>
+      </div>
+      <div class="badge">
+        <i class="fas fa-circle"></i>
+        <span>🟢 نشط</span>
+      </div>
+    </div>
 
-        // ================================================================
-// قاعدة العملاء - نسخة نظيفة (بدون تكرار أو أرقام ناقصة)
-// ================================================================
-const customersDatabase = {};
+    <div class="nav-tabs">
+      <div class="tab active"><i class="fas fa-search"></i> 🔍 استعلام عن الطلب</div>
+      <div class="tab"><i class="fas fa-list-check"></i> 📋 خطوات التسييل</div>
+      <div class="tab"><i class="fas fa-shield-halved"></i> 🛡️ شفافية وأمان</div>
+    </div>
 
+    <div class="search-box">
+      <input type="text" id="nationalId" placeholder="🔢 أدخل الرقم القومي (14 رقم)" maxlength="14" inputmode="numeric">
+      <button onclick="searchCustomer()"><i class="fas fa-search"></i> 🔍 استعلام</button>
+    </div>
 
-};
+    <div id="resultArea"></div>
 
-        let currentClient = null;
-        let currentIndex = -1;
-        let currentNationalId = '';
-        let isAdmin = false;
-        let adminClickCount = 0;
-        let redirectTimer = null;
+    <div class="error-box" id="errorBox">
+      <i class="fas fa-circle-info"></i>
+      <p>⚠️ لم نجد طلبًا مسجلًا بهذا الرقم القومي.<br>💡 يرجى التأكد من الرقم أو التواصل مع خدمة العملاء.</p>
+    </div>
 
-        function calculateTotal(client) {
-            let totalDisplay = client.total || "يحدد لاحقاً";
-            if (client.loan && client.loanTerm) {
-                const termMatch = String(client.loanTerm).match(/(\d+)/);
-                if (termMatch) {
-                    const months = parseInt(termMatch[0]);
-                    if (months > 0 && client.installment) {
-                        const installmentNum = parseFloat(String(client.installment).replace(/,/g, ''));
-                        if (!isNaN(installmentNum)) {
-                            totalDisplay = (installmentNum * months).toFixed(0) + " ج.م";
-                        }
-                    }
-                }
-            }
-            return totalDisplay;
+    <div class="loader" id="loader">
+      <i class="fas fa-spinner fa-pulse"></i>
+      <p>⏳ جاري جلب بيانات طلبك...</p>
+    </div>
+
+    <div class="admin-panel" id="adminPanel">
+      <div class="admin-title"><i class="fas fa-cog"></i> ⚙️ تغيير حالة الطلب</div>
+      <div class="btn-group">
+        <button class="btn-status-approved" onclick="changeStatus('approved')">✅ موافقة</button>
+        <button class="btn-status-review" onclick="changeStatus('review')">⏳ مراجعة</button>
+        <button class="btn-status-rejected" onclick="changeStatus('rejected')">❌ رفض</button>
+        <button class="btn-status-invalid" onclick="changeStatus('invalid')">⚠️ بيانات غير صحيحة</button>
+        <button class="btn-status-pending-approval" onclick="changeStatus('pending-approval')">🔄 قيد الموافقة</button>
+      </div>
+      <div class="admin-status-current" id="adminStatusDisplay">الحالة الحالية: <span id="currentStatusText">غير محدد</span></div>
+    </div>
+
+  </div>
+
+<script>
+  // ================================================================
+  //  إعدادات عامة
+  // ================================================================
+  const WHATSAPP_NUMBER = "+639976737886";
+  const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+  // ================================================================
+  //  قاعدة بيانات العملاء
+  // ================================================================
+  const customersDatabase = {
+
+    "11111111": {
+      id: "11111111111111",
+      name: "أحمد محمد علي",
+      job: "موظف حكومي",
+      loan: 50000,
+      loanTerm: "12 شهر",
+      installment: "4500",
+      total: "54000 ج.م",
+      hasEtisalat: true,
+      hasVodafone: false,
+      wallet: "اتصالات كاش",
+      walletNum: "01112345678",
+      status: "approved",
+      idVerificationImage: "https://picsum.photos/seed/id1/600/400",
+      guarantor: { name: "محمد أحمد إبراهيم", relation: "أخ" },
+      address: "القاهرة - مدينة نصر"
+    },
+
+    "222222222": {
+      id: "22222222222222",
+      name: "محمود سعيد حسن",
+      job: "مهندس",
+      loan: 75000,
+      loanTerm: "18 شهر",
+      installment: "5200",
+      total: "93600 ج.م",
+      hasEtisalat: false,
+      hasVodafone: true,
+      wallet: "فودافون كاش",
+      walletNum: "01098765432",
+      status: "approved",
+      idVerificationImage: "https://picsum.photos/seed/id2/600/400",
+      guarantor: { name: "سعيد حسن محمود", relation: "والد" },
+      address: "الجيزة - الدقي"
+    },
+
+   "28602020202519": {
+  id: "28602020202519",
+  name: "السيد احمد احمد على",
+  job: "سائق لدى شركة مصر اكسبرس",
+  loan: 80000,
+  loanTerm: "30 شهر",
+  installment: "3550",
+  total: "106500 ج.م",
+  hasEtisalat: false,
+  hasVodafone: false,
+  wallet: "محفظة أخرى",
+  walletNum: "01060840787",
+  status: "pending-approval",   // 🔄 في المراجعة النهائية
+  idVerificationImage: "https://pdftourl.net/images/1789838920577-a273ec16-b096-40bf-8130-c3aae517354f.jpg",
+  guarantor: { name: "رانيا ابراهيم", relation: "زوجة", phone: "01211187813" },
+  address: "شارع مكه المكرمه متفرع من شارع الفتح - الحضرة الجديدة - الزهور"
+},
+
+    "444444": {
+      id: "4444444",
+      name: "عمرو ياسر فتحي",
+      job: "طبيب",
+      loan: 120000,
+      loanTerm: "24 شهر",
+      installment: "7000",
+      total: "168000 ج.م",
+      hasEtisalat: false,
+      hasVodafone: false,
+      wallet: "",
+      walletNum: "",
+      status: "pending-approval",
+      idVerificationImage: "https://picsum.photos/seed/id4/600/400",
+      guarantor: { name: "ياسر فتحي", relation: "والد" },
+      address: "المنصورة - المشاية"
+    }
+  };
+
+  let currentClient = null;
+  let currentNationalId = '';
+  let isAdmin = false;
+  let adminClickCount = 0;
+
+  // ===== دوال مساعدة =====
+  function calculateTotal(client) {
+    let totalDisplay = client.total || "يحدد لاحقاً";
+    if (client.loan && client.loanTerm) {
+      const termMatch = String(client.loanTerm).match(/(\d+)/);
+      if (termMatch) {
+        const months = parseInt(termMatch[0]);
+        if (months > 0 && client.installment) {
+          const installmentNum = parseFloat(String(client.installment).replace(/,/g, ''));
+          if (!isNaN(installmentNum)) {
+            totalDisplay = (installmentNum * months).toFixed(0) + " ج.م";
+          }
         }
+      }
+    }
+    return totalDisplay;
+  }
 
-        function openWhatsApp() {
-            if (currentClient) {
-                const hasEtisalat = currentClient.hasEtisalat || false;
-                const hasVodafone = currentClient.hasVodafone || false;
+  function openWhatsApp() {
+    if (currentClient) {
+      const hasEtisalat = currentClient.hasEtisalat || false;
+      const hasVodafone = currentClient.hasVodafone || false;
+      const loanAmount = typeof currentClient.loan === 'number'
+        ? currentClient.loan.toLocaleString('ar-EG')
+        : currentClient.loan;
 
-                let msg = `السلام عليكم ورحمة الله وبركاته،
+      let msg = `السلام عليكم ورحمة الله وبركاته 👋\n\n👤 أنا أسمى: ${currentClient.name}\n🔢 رقمي القومي: ${currentClient.id || currentNationalId}\n💰 مبلغ القرض المعتمد: ${loanAmount} ج.م\n💵 القسط الشهري: ${currentClient.installment || "يحدد لاحقاً"} ج.م\n📅 مدة القسط: ${currentClient.loanTerm || "يحدد لاحقاً"}\n\n`;
 
-أنا أسمى ${currentClient.name}
-رقمي القومي: ${currentClient.id || currentNationalId}
-مبلغ القرض المعتمد: ${currentClient.loan.toLocaleString('ar-EG')} ج.م
-القسط الشهري: ${currentClient.installment || "يحدد لاحقاً"} ج.م
-مدة القسط: ${currentClient.loanTerm || "يحدد لاحقاً"}
+      if (hasEtisalat) {
+        msg += `📱 لدي محفظة اتصالات كاش مسجلة باسمي.\n🔢 رقم المحفظة: ${currentClient.walletNum || "سيتم تسجيله"}\n\n✅ أطلب استلام ملف التسيل الخاص بي لإنهاء إجراءات صرف القرض.\n🎯 أنا جاهز ومستعد لاستقبال ملف التسيل فوراً عبر هذه المحادثة.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل، وأنا مسؤول مسؤولية كاملة عن هذا الطلب.\n\n📩 يرجى إرسال ملف التسيل لي في أقرب وقت.\n🙏 شكراً لكم.`;
+      } else if (hasVodafone) {
+        msg += `📱 لدي محفظة فودافون كاش حالياً.\n🔢 رقم المحفظة: ${currentClient.walletNum || "سيتم تسجيله"}\n\n⚠️ أوافق وأقر بفتح محفظة اتصالات كاش مسجلة باسمي لاستكمال إجراءات صرف القرض.\n📱 سأقوم بفتح المحفظة وإبلاغكم برقمها الجديد في أقرب وقت.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل، وأنا مسؤول مسؤولية كاملة عن هذا الطلب.\n\n🙏 يرجى توجيهي للخطوات التالية.\nشكراً لكم.`;
+      } else {
+        msg += `⚠️ لا أملك أي محفظة إلكترونية حالياً.\n\n✅ أوافق وأقر بفتح محفظة اتصالات كاش مسجلة باسمي لاستكمال إجراءات صرف القرض.\n📱 سأقوم بفتح المحفظة وإبلاغكم برقمها الجديد في أقرب وقت.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل، وأنا مسؤول مسؤولية كاملة عن هذا الطلب.\n\n🙏 يرجى توجيهي للخطوات التالية.\nشكراً لكم.`;
+      }
 
-`;
+      window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, '_blank');
+    } else {
+      window.open(WHATSAPP_URL, '_blank');
+    }
+  }
 
-                if (hasEtisalat) {
-                    msg += `لدي محفظة اتصالات كاش.
-رقم المحفظة: ${currentClient.walletNum}
-أريد إنهاء إجراءات الصرف لتفعيل مبلغ القرض في حسابي.`;
-                } else if (hasVodafone) {
-                    msg += `لدي محفظة فودافون كاش.
-رقم المحفظة: ${currentClient.walletNum}
-لكنني أوافق على فتح محفظة اتصالات كاش لاستكمال إجراءات صرف القرض.`;
-                } else {
-                    msg += `أوافق على فتح محفظة اتصالات كاش لاستكمال إجراءات صرف القرض.
-سيتم إبلاغكم برقم المحفظة فور الانتهاء من فتحها.`;
-                }
+  function createTransferButton(client) {
+    const hasEtisalat = client.hasEtisalat || false;
+    let btnClass = "btn-whatsapp-transfer";
+    let btnText, btnIcon;
 
-                msg += `
+    if (hasEtisalat) {
+      btnClass += " etisalat-btn";
+      btnIcon = '<i class="fab fa-whatsapp"></i>';
+      btnText = '📤 اطلب ملف التسيل الآن عبر واتساب';
+    } else {
+      btnClass += " gold-btn";
+      btnIcon = '<i class="fas fa-triangle-exclamation"></i>';
+      btnText = '⚠️ أوافق على فتح محفظة اتصالات كاش';
+    }
 
-أريد إنهاء الإجراءات اللازمة لتفعيل مبلغ القرض في حسابي.
-أنا مسؤول مسؤولية كاملة عن هذا الطلب، وأتعهد بالالتزام بجميع شروط وأحكام التمويل.
+    return `
+      <button class="${btnClass}" onclick="openWhatsApp()">
+        ${btnIcon}
+        <span class="badge-new">✨ متاح الآن</span>
+        <span>${btnText}</span>
+        <span class="arrow-icon"><i class="fas fa-arrow-left"></i></span>
+      </button>
+    `;
+  }
 
-يرجى توجيهي لاستكمال إجراءات الصرف فوراً.
-شكراً لكم.`;
+  function buildLoanCard(client, totalDisplay) {
+    const hasEtisalat = client.hasEtisalat || false;
+    const hasVodafone = client.hasVodafone || false;
 
-                window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, '_blank');
-            } else {
-                window.open(WHATSAPP_URL, '_blank');
-            }
-        }
+    let walletDisplay, walletColor;
+    if (hasEtisalat) {
+      walletDisplay = "📱 اتصالات كاش";
+      walletColor = "gold";
+    } else if (hasVodafone) {
+      walletDisplay = "📱 فودافون كاش";
+      walletColor = "vodafone";
+    } else {
+      walletDisplay = "📱 سيتم فتح محفظة اتصالات كاش";
+      walletColor = "warning";
+    }
 
-        function createTransferButton(client) {
-            const hasEtisalat = client.hasEtisalat || false;
-            let btnClass = "btn-whatsapp-transfer";
-            let btnText = '📱 اضغط للتواصل مع التحويلات المالية الآن';
-            let btnIcon = '<i class="fab fa-whatsapp"></i>';
+    const statusMap = {
+      'approved': '✅ معتمد',
+      'review': '⏳ قيد المراجعة',
+      'rejected': '❌ مرفوض',
+      'invalid': '⚠️ بيانات غير صحيحة',
+      'pending-approval': '🔄 قيد الموافقة'
+    };
+    const currentStatus = client.status || 'pending-approval';
 
-            if (!hasEtisalat) {
-                btnClass += " gold-btn";
-                btnIcon = '<i class="fas fa-exclamation-triangle"></i>';
-            } else {
-                btnClass += " etisalat-btn";
-            }
+    return `
+      <div class="loan-card">
+        <div class="loan-label">💰 مبلغ القرض</div>
+        <div class="loan-amount-main">${client.loan.toLocaleString('ar-EG')} <span class="currency">ج.م</span></div>
+        <div class="loan-percent"><i class="fas fa-circle-check"></i> ${statusMap[currentStatus] || 'قيد المراجعة'}</div>
 
-            return `
-                <button class="${btnClass}" id="transferWhatsAppBtn" onclick="openWhatsApp()">
-                    <span class="btn-icon-wrapper">
-                        ${btnIcon}
-                        <span class="badge-new">متاح الآن</span>
-                    </span>
-                    ${btnText}
-                    <span class="arrow-icon"><i class="fas fa-arrow-left"></i></span>
-                </button>
-            `;
-        }
+        <div class="loan-details-grid">
+          <div class="detail-item"><div class="label">💰 مبلغ القرض</div><div class="value gold">${client.loan.toLocaleString('ar-EG')} ج.م</div></div>
+          <div class="detail-item"><div class="label">📅 المدة</div><div class="value">${client.loanTerm || "يحدد لاحقاً"}</div></div>
+          <div class="detail-item"><div class="label">💵 القسط الشهري</div><div class="value gold">${client.installment || "يحدد لاحقاً"} ج.م</div></div>
+          <div class="detail-item"><div class="label">💳 إجمالي السداد</div><div class="value">${totalDisplay}</div></div>
+          <div class="detail-item"><div class="label">📱 نوع المحفظة</div><div class="value ${walletColor}">${walletDisplay}</div></div>
+          <div class="detail-item"><div class="label">🔢 رقم المحفظة</div><div class="value">${client.walletNum || "سيتم تسجيله"}</div></div>
+        </div>
+      </div>
+    `;
+  }
 
-        function buildLoanCard(client, totalDisplay) {
-            const hasEtisalat = client.hasEtisalat || false;
-            const hasVodafone = client.hasVodafone || false;
+  function buildIdVerification(client) {
+    if (!client.idVerificationImage || client.idVerificationImage.trim() === "") {
+      return '';
+    }
+    return `
+      <div class="id-verification">
+        <div class="idv-header">
+          <div class="idv-icon"><i class="fas fa-id-card"></i></div>
+          <div>
+            <h4>🆔 التحقق من هوية العميل</h4>
+            <p>📸 صورة الهوية الموثقة في ملفك على السيستم</p>
+          </div>
+        </div>
+        <div class="idv-image-box">
+          <img src="${client.idVerificationImage}" alt="صورة التحقق من الهوية" onerror="this.parentElement.innerHTML='<div class=\\'idv-placeholder\\'><i class=\\'fas fa-image\\'></i>⚠️ تعذر تحميل الصورة</div>'">
+        </div>
+        <div class="idv-caption">
+          🔒 <i class="fas fa-shield-halved"></i> هذه الصورة محفوظة بشكل آمن في ملفك الشخصي
+        </div>
+      </div>
+    `;
+  }
 
-            let walletDisplay = client.wallet || "غير محدد";
-            let walletColor = "gold";
-            if (hasEtisalat) {
-                walletDisplay = "📱 اتصالات كاش";
-                walletColor = "gold";
-            } else if (hasVodafone) {
-                walletDisplay = "?? فودافون كاش";
-                walletColor = "vodafone";
-            } else {
-                walletDisplay = "📱 سيتم فتح محفظة اتصالات كاش";
-                walletColor = "warning";
-            }
+  function buildClientDetails(client) {
+    const hasEtisalat = client.hasEtisalat || false;
+    const hasVodafone = client.hasVodafone || false;
 
-            const statusMap = {
-                'approved': '✅ معتمد',
-                'review': '⏳ قيد المراجعة',
-                'rejected': '❌ مرفوض',
-                'invalid': '⚠️ بيانات غير صحيحة',
-                'pending-approval': '🔄 جارى حصولك ع الموافقة'
-            };
-            const statusColor = {
-                'approved': 'green',
-                'review': 'review',
-                'rejected': 'danger',
-                'invalid': 'danger',
-                'pending-approval': 'pending-approval'
-            };
-            const currentStatus = client.status || 'pending-approval';
+    let walletClass, walletDisplay;
+    if (hasEtisalat) {
+      walletDisplay = "اتصالات كاش";
+      walletClass = "gold";
+    } else if (hasVodafone) {
+      walletDisplay = "فودافون كاش";
+      walletClass = "vodafone";
+    } else {
+      walletDisplay = "سيتم فتح محفظة اتصالات كاش";
+      walletClass = "warning";
+    }
 
-            return `
-                <div class="loan-card">
-                    <div class="loan-label">مبلغ القرض</div>
-                    <div class="loan-amount-main">${client.loan.toLocaleString('ar-EG')} <span class="currency">ج.م</span></div>
-                    <div class="loan-percent"><i class="fas fa-check-circle"></i> ${statusMap[currentStatus] || 'قيد المراجعة'}</div>
+    const statusMap = {
+      'approved': '✅ معتمد',
+      'review': '⏳ قيد المراجعة',
+      'rejected': '❌ مرفوض',
+      'invalid': '⚠️ بيانات غير صحيحة',
+      'pending-approval': '🔄 قيد الموافقة'
+    };
+    const statusColor = {
+      'approved': 'green',
+      'review': 'review',
+      'rejected': 'danger',
+      'invalid': 'danger',
+      'pending-approval': 'pending-approval'
+    };
+    const currentStatus = client.status || 'pending-approval';
 
-                    <div class="loan-details-grid">
-                        <div class="detail-item">
-                            <div class="label">مبلغ القرض</div>
-                            <div class="value gold">${client.loan.toLocaleString('ar-EG')} ج.م</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="label">المدة</div>
-                            <div class="value">${client.loanTerm || "يحدد لاحقاً"}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="label">القسط الشهري</div>
-                            <div class="value gold">${client.installment || "يحدد لاحقاً"} ج.م</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="label">إجمالي السداد</div>
-                            <div class="value">${totalDisplay}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="label">نوع المحفظة</div>
-                            <div class="value ${walletColor}">${walletDisplay}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="label">رقم المحفظة</div>
-                            <div class="value">${client.walletNum || "سيتم تسجيله"}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
+    return `
+      <div class="client-info">
+        <div class="info-title"><i class="fas fa-user-circle"></i> 👤 بيانات العميل</div>
+        <div class="row"><span class="key">👤 الاسم</span><span class="value">${client.name}</span></div>
+        <div class="row"><span class="key">🔢 الرقم القومي</span><span class="value gold">${client.id || currentNationalId}</span></div>
+        <div class="row"><span class="key">💼 الوظيفة</span><span class="value">${client.job || "غير مسجل"}</span></div>
+        <div class="row"><span class="key">📱 المحفظة</span><span class="value ${walletClass}">${walletDisplay}</span></div>
+        <div class="row"><span class="key">🔢 رقم المحفظة</span><span class="value">${client.walletNum || "سيتم تسجيله"}</span></div>
+        <div class="row"><span class="key">📊 حالة الطلب</span><span class="value ${statusColor[currentStatus]}">${statusMap[currentStatus] || 'قيد المراجعة'}</span></div>
+        ${client.guarantor ? `<div class="row"><span class="key">👥 الضامن</span><span class="value">${client.guarantor.name} (${client.guarantor.relation})</span></div>` : ''}
+        ${client.address ? `<div class="row"><span class="key">🏠 العنوان</span><span class="value">${client.address}</span></div>` : ''}
+      </div>
+    `;
+  }
 
-        function buildClientDetails(client) {
-            const hasEtisalat = client.hasEtisalat || false;
-            const hasVodafone = client.hasVodafone || false;
+  function buildStatusMessage(client) {
+    const status = client.status || 'pending-approval';
+    const messages = {
+      'approved': {
+        class: 'approved',
+        icon: '🏆',
+        title: '🎉 تهانينا! تمت الموافقة النهائية!',
+        desc: `✅ تم اعتماد طلب التمويل الخاص بك بنجاح.<br>💰 <strong style="color: var(--gold-dark);">اضغط على زر التواصل مع التحويلات المالية</strong> لإنهاء إجراءات الصرف فوراً.`
+      },
+      'review': {
+        class: 'review',
+        icon: '⏳',
+        title: '⏳ طلبك قيد المراجعة',
+        desc: `🔍 جاري دراسة طلبك من قبل فريق الائتمان.<br>💡 <strong style="color: var(--warning);">يرجى متابعة طلبك من حين لآخر حتى تظهر النتيجة النهائية.</strong>`
+      },
+      'rejected': {
+        class: 'rejected',
+        icon: '❌',
+        title: '❌ تم رفض طلبك',
+        desc: `😔 نأسف لإبلاغك بأن طلب التمويل الخاص بك لم تتم الموافقة عليه.<br>📞 يمكنك التواصل مع خدمة العملاء لمعرفة الأسباب.`
+      },
+      'invalid': {
+        class: 'invalid',
+        icon: '⚠️',
+        title: '⚠️ بيانات غير صحيحة',
+        desc: `📋 تبين أن بعض البيانات المقدمة غير صحيحة أو غير مكتملة.<br>✏️ يرجى تحديث بياناتك وإعادة التقديم.`
+      },
+      'pending-approval': {
+        class: 'pending-approval',
+        icon: '🔄',
+        title: '🔄 جارى حصولك على الموافقة',
+        desc: `📊 طلبك في المرحلة النهائية من التقييم.<br>💡 <strong style="color: var(--pending-approval);">يرجى متابعة طلبك من حين لآخر حتى تظهر النتيجة النهائية.</strong>`
+      }
+    };
+    const msg = messages[status] || messages['pending-approval'];
+    return `
+      <div class="status-message-box ${msg.class}">
+        <span class="status-icon">${msg.icon}</span>
+        <h3>${msg.title}</h3>
+        <p>${msg.desc}</p>
+      </div>
+    `;
+  }
 
-            let walletClass = "gold";
-            let walletDisplay = client.wallet;
-            if (hasEtisalat) {
-                walletDisplay = "اتصالات كاش";
-                walletClass = "gold";
-            } else if (hasVodafone) {
-                walletDisplay = "فودافون كاش";
-                walletClass = "vodafone";
-            } else {
-                walletDisplay = "سيتم فتح محفظة اتصالات كاش";
-                walletClass = "warning";
-            }
+  function buildWalletNotice(client) {
+    const hasEtisalat = client.hasEtisalat || false;
+    const hasVodafone = client.hasVodafone || false;
 
-            const statusMap = {
-                'approved': '✅ معتمد',
-                'review': '⏳ قيد المراجعة',
-                'rejected': '❌ مرفوض',
-                'invalid': '⚠️ بيانات غير صحيحة',
-                'pending-approval': '🔄 جارى حصولك ع الموافقة'
-            };
-            const statusColor = {
-                'approved': 'green',
-                'review': 'review',
-                'rejected': 'danger',
-                'invalid': 'danger',
-                'pending-approval': 'pending-approval'
-            };
-            const currentStatus = client.status || 'pending-approval';
+    if (hasEtisalat) {
+      return `
+        <div class="wallet-notice etisalat">
+          <div class="notice-head">
+            <i class="fas fa-mobile-screen-button"></i>
+            <h4>📱 محفظة اتصالات كاش مسجلة</h4>
+          </div>
+          <p>💚 عزيزي <strong style="color: var(--text);">${client.name}</strong>،<br>تم تسجيل محفظة <strong style="color: var(--etisalat-blue);">اتصالات كاش</strong> الخاصة بك.</p>
+          <p style="font-size: 0.72rem; margin-top: 0.4rem;">🔢 <i class="fas fa-wallet"></i> رقم المحفظة: <strong style="color: var(--etisalat-blue);">${client.walletNum}</strong></p>
+        </div>
+      `;
+    } else if (hasVodafone) {
+      return `
+        <div class="wallet-notice vodafone">
+          <div class="notice-head">
+            <i class="fas fa-triangle-exclamation"></i>
+            <h4>⚠️ محفظة فودافون كاش غير مدعومة</h4>
+          </div>
+          <p>💚 عزيزي <strong style="color: var(--text);">${client.name}</strong>،<br>نخدم حالياً <strong style="color: var(--etisalat-blue);">اتصالات كاش</strong> فقط.<br>📱 يرجى فتح محفظة اتصالات كاش في أسرع وقت ممكن.</p>
+        </div>
+      `;
+    } else {
+      return `
+        <div class="wallet-notice none">
+          <div class="notice-head">
+            <i class="fas fa-circle-info"></i>
+            <h4>📌 مطلوب فتح محفظة اتصالات كاش</h4>
+          </div>
+          <p>💚 عزيزي <strong style="color: var(--text);">${client.name}</strong>،<br>نخدم حالياً <strong style="color: var(--etisalat-blue);">اتصالات كاش</strong> فقط.<br>📱 يرجى فتح محفظة اتصالات كاش في أسرع وقت ممكن.</p>
+        </div>
+      `;
+    }
+  }
 
-            return `
-                <div class="client-info">
-                    <div class="row"><span class="key">الاسم</span><span class="value">${client.name}</span></div>
-                    <div class="row"><span class="key">الرقم القومي</span><span class="value gold">${client.id || currentNationalId}</span></div>
-                    <div class="row"><span class="key">الوظيفة</span><span class="value">${client.job || "غير مسجل"}</span></div>
-                    <div class="row"><span class="key">المحفظة</span><span class="value ${walletClass}">${walletDisplay}</span></div>
-                    <div class="row"><span class="key">رقم المحفظة</span><span class="value">${client.walletNum || "سيتم تسجيله"}</span></div>
-                    <div class="row"><span class="key">حالة الطلب</span><span class="value ${statusColor[currentStatus]}">${statusMap[currentStatus] || 'قيد المراجعة'}</span></div>
-                    ${client.guarantor ? `
-                        <div class="row"><span class="key">الضامن</span><span class="value">${client.guarantor.name} (${client.guarantor.relation})</span></div>
-                    ` : ''}
-                    ${client.address ? `
-                        <div class="row"><span class="key">العنوان</span><span class="value">${client.address}</span></div>
-                    ` : ''}
-                </div>
-            `;
-        }
+  function displayResult(client, nationalId) {
+    currentClient = client;
+    currentNationalId = nationalId;
+    const resultArea = document.getElementById('resultArea');
+    const totalDisplay = calculateTotal(client);
+    updateAdminStatus(client.status || 'pending-approval');
 
-        function buildStatusMessage(client) {
-            const status = client.status || 'pending-approval';
+    let html = '';
+    html += buildLoanCard(client, totalDisplay);
+    html += buildIdVerification(client);
+    html += buildClientDetails(client);
 
-            const messages = {
-                'approved': {
-                    class: 'approved',
-                    icon: '🏆',
-                    title: '🎉 تهانينا! تمت الموافقة النهائية!',
-                    desc: `تم اعتماد طلب التمويل الخاص بك بنجاح. <strong style="color: var(--gold);">اضغط على زر التواصل مع التحويلات المالية</strong> لإنهاء إجراءات الصرف فوراً.`
-                },
-                'review': {
-                    class: 'review',
-                    icon: '⏳',
-                    title: '⏳ طلبك قيد المراجعة',
-                    desc: `جاري دراسة طلبك من قبل فريق الائتمان. <br><strong style="color: var(--review-color);">يرجى متابعة طلبك من حين لآخر حتى تظهر النتيجة النهائية.</strong>`
-                },
-                'rejected': {
-                    class: 'rejected',
-                    icon: '❌',
-                    title: '❌ تم رفض طلبك',
-                    desc: `نأسف لإبلاغك بأن طلب التمويل الخاص بك لم تتم الموافقة عليه. يمكنك التواصل مع خدمة العملاء لمعرفة الأسباب.`
-                },
-                'invalid': {
-                    class: 'invalid',
-                    icon: '⚠️',
-                    title: '⚠️ بيانات غير صحيحة',
-                    desc: `تبين أن بعض البيانات المقدمة غير صحيحة أو غير مكتملة. يرجى تحديث بياناتك وإعادة التقديم.`
-                },
-                'pending-approval': {
-                    class: 'pending-approval',
-                    icon: '🔄',
-                    title: '🔄 جارى حصولك على الموافقة',
-                    desc: `طلبك في المرحلة النهائية من التقييم. يجري حالياً المراجعة النهائية من قبل لجنة الائتمان. <br><strong style="color: var(--pending-approval);">يرجى متابعة طلبك من حين لآخر حتى تظهر النتيجة النهائية.</strong>`
-                }
-            };
+    const status = client.status || 'pending-approval';
+    const statusMap = {
+      'approved': { class: 'approved', icon: 'fa-circle-check', main: '✅ تمت الموافقة النهائية!', sub: '💚 تم اعتماد طلب التمويل الخاص بك بنجاح', badge: '✅ معتمد' },
+      'review': { class: 'review', icon: 'fa-clock', main: '⏳ طلبك قيد المراجعة', sub: '💡 يرجى متابعة طلبك من حين لآخر', badge: '⏳ قيد المراجعة' },
+      'rejected': { class: 'rejected', icon: 'fa-circle-xmark', main: '❌ تم رفض طلبك', sub: '😔 نأسف، لم تتم الموافقة على طلب التمويل', badge: '❌ مرفوض' },
+      'invalid': { class: 'invalid', icon: 'fa-triangle-exclamation', main: '⚠️ بيانات غير صحيحة', sub: '✏️ يرجى تحديث بياناتك وإعادة التقديم', badge: '⚠️ بيانات غير صحيحة' },
+      'pending-approval': { class: 'pending-approval', icon: 'fa-arrows-rotate', main: '🔄 جارى حصولك على الموافقة', sub: '💡 يرجى متابعة طلبك من حين لآخر', badge: '🔄 قيد الموافقة النهائية' }
+    };
+    const s = statusMap[status] || statusMap['pending-approval'];
 
-            const msg = messages[status] || messages['pending-approval'];
+    html += `
+      <div class="status-bar ${s.class}">
+        <div class="status-icon"><i class="fas ${s.icon}"></i></div>
+        <div class="status-text">
+          <div class="main">${s.main}</div>
+          <div class="sub">${s.sub}</div>
+        </div>
+        <div class="status-badge">${s.badge}</div>
+      </div>
+    `;
 
-            return `
-                <div class="status-message-box ${msg.class}">
-                    <span class="status-icon">${msg.icon}</span>
-                    <h3>${msg.title}</h3>
-                    <p>${msg.desc}</p>
-                </div>
-            `;
-        }
+    html += buildStatusMessage(client);
+    html += buildWalletNotice(client);
 
-        function buildWalletNotice(client) {
-            const hasEtisalat = client.hasEtisalat || false;
-            const hasVodafone = client.hasVodafone || false;
+    // 🔒 زر التواصل مع التحويلات المالية على واتساب يظهر ONLY في حالة الموافقة
+    if (status === 'approved') {
+      html += createTransferButton(client);
+    }
+    // ❌ في باقي الحالات: لا يظهر أي زر تواصل مع التحويلات المالية
 
-            if (hasEtisalat) {
-                return `
-                    <div class="wallet-notice" style="border-color: var(--etisalat-blue); background: rgba(0,191,255,0.05);">
-                        <div class="notice-head">
-                            <i class="fas fa-mobile-alt" style="color: var(--etisalat-blue);"></i>
-                            <h4 style="color: var(--etisalat-blue);">📱 محفظة اتصالات كاش مسجلة</h4>
-                        </div>
-                        <p>
-                            عزيزي <strong style="color: #FFF;">${client.name}</strong>،
-                            تم تسجيل محفظة <span style="color: var(--etisalat-blue); font-weight: 700;">اتصالات كاش</span> الخاصة بك.
-                            <span style="color: var(--gold); font-weight: 700;">اضغط على زر التواصل مع التحويلات المالية</span> لإنهاء إجراءات الصرف.
-                        </p>
-                        <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem;">
-                            <i class="fas fa-wallet"></i> رقم المحفظة: <strong style="color: var(--etisalat-blue);">${client.walletNum}</strong>
-                        </p>
-                    </div>
-                `;
-            } else if (hasVodafone) {
-                return `
-                    <div class="wallet-notice" style="border-color: var(--vodafone-red); background: rgba(230,0,0,0.05);">
-                        <div class="notice-head">
-                            <i class="fas fa-exclamation-triangle" style="color: var(--vodafone-red);"></i>
-                            <h4 style="color: var(--vodafone-red);">⚠️ محفظة فودافون كاش غير مدعومة</h4>
-                        </div>
-                        <p>
-                            عزيزي <strong style="color: #FFF;">${client.name}</strong>،
-                            نخدم حالياً <span style="color: var(--etisalat-blue); font-weight: 700;">اتصالات كاش</span> فقط.
-                            <span style="color: var(--gold); font-weight: 700;">يرجى فتح محفظة اتصالات كاش</span> في أسرع وقت ممكن،
-                            ثم اضغط على زر التواصل مع التحويلات المالية.
-                        </p>
-                        <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem;">
-                            <i class="fas fa-check-circle" style="color: var(--gold);"></i> أنت موافق على فتح محفظة اتصالات كاش لاستكمال إجراءات الصرف.
-                        </p>
-                    </div>
-                `;
-            } else {
-                return `
-                    <div class="wallet-notice" style="border-color: var(--gold); background: rgba(212,175,55,0.05);">
-                        <div class="notice-head">
-                            <i class="fas fa-info-circle" style="color: var(--gold);"></i>
-                            <h4 style="color: var(--gold);">📌 مطلوب فتح محفظة اتصالات كاش</h4>
-                        </div>
-                        <p>
-                            عزيزي <strong style="color: #FFF;">${client.name}</strong>،
-                            نخدم حالياً <span style="color: var(--etisalat-blue); font-weight: 700;">اتصالات كاش</span> فقط.
-                            <span style="color: var(--gold); font-weight: 700;">يرجى فتح محفظة اتصالات كاش</span> في أسرع وقت ممكن،
-                            ثم اضغط على زر التواصل مع التحويلات المالية.
-                        </p>
-                        <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem;">
-                            <i class="fas fa-check-circle" style="color: var(--gold);"></i> أنت موافق على فتح محفظة اتصالات كاش لاستكمال إجراءات الصرف.
-                        </p>
-                    </div>
-                `;
-            }
-        }
+    resultArea.innerHTML = html;
+    document.getElementById('errorBox').style.display = 'none';
+  }
 
-        function buildAutoRedirectNotice(client) {
-            const status = client.status || 'pending-approval';
-            if (status !== 'approved') return '';
+  function toggleAdmin() {
+    isAdmin = !isAdmin;
+    document.getElementById('adminPanel').classList.toggle('show', isAdmin);
+  }
 
-            const hasEtisalat = client.hasEtisalat || false;
+  function updateAdminStatus(status) {
+    const statusMap = {
+      'approved': '✅ موافقة',
+      'review': '⏳ قيد المراجعة',
+      'rejected': '❌ مرفوض',
+      'invalid': '⚠️ بيانات غير صحيحة',
+      'pending-approval': '🔄 قيد الموافقة'
+    };
+    const el = document.getElementById('currentStatusText');
+    if (el) el.textContent = statusMap[status] || 'غير محدد';
+  }
 
-            let msg = 'سيتم تحويلك تلقائياً خلال 5 ثوانٍ للتواصل مع فريق التحويلات المالية.';
-            if (!hasEtisalat) {
-                msg = '⚠️ يرجى فتح محفظة اتصالات كاش أولاً، ثم سيتم تحويلك للتواصل مع فريق التحويلات المالية.';
-            }
+  function changeStatus(newStatus) {
+    if (!currentClient || !currentNationalId) { alert('⚠️ يرجى البحث عن عميل أولاً.'); return; }
+    if (customersDatabase[currentNationalId]) {
+      customersDatabase[currentNationalId].status = newStatus;
+      currentClient.status = newStatus;
+      updateAdminStatus(newStatus);
+      displayResult(customersDatabase[currentNationalId], currentNationalId);
+      alert(`✅ تم تغيير حالة العميل ${currentClient.name} إلى "${newStatus}" بنجاح.`);
+    }
+  }
 
-            return `
-                <div class="auto-redirect-notice">
-                    <span class="redirect-icon"><i class="fab fa-whatsapp"></i></span>
-                    <h4>🔄 جاري التحويل التلقائي...</h4>
-                    <p>${msg}</p>
-                    <span class="countdown" id="redirectCountdown">5</span>
-                    <p style="font-size: 0.65rem; color: var(--text-muted);">سيتم توجيهك إلى واتساب للتواصل مع فريق التحويلات المالية</p>
-                </div>
-            `;
-        }
+  function searchCustomer() {
+    const nationalId = document.getElementById('nationalId').value.trim();
+    if (!nationalId) { alert('⚠️ الرجاء إدخال الرقم القومي'); return; }
+    if (nationalId.length !== 14) { alert('⚠️ الرقم القومي يجب أن يكون 14 رقمًا'); return; }
 
-        function displayResult(client, nationalId) {
-            if (redirectTimer) {
-                clearTimeout(redirectTimer);
-                redirectTimer = null;
-            }
+    document.getElementById('loader').style.display = 'block';
+    document.getElementById('resultArea').innerHTML = '';
+    document.getElementById('errorBox').style.display = 'none';
 
-            currentClient = client;
-            currentNationalId = nationalId;
-            const resultArea = document.getElementById('resultArea');
-            const totalDisplay = calculateTotal(client);
+    setTimeout(() => {
+      document.getElementById('loader').style.display = 'none';
+      const found = customersDatabase[nationalId];
+      if (found) {
+        found.id = nationalId;
+        displayResult(found, nationalId);
+      } else {
+        document.getElementById('errorBox').style.display = 'block';
+        currentClient = null;
+        currentNationalId = '';
+        updateAdminStatus('غير محدد');
+      }
+    }, 800);
+  }
 
-            updateAdminStatus(client.status || 'pending-approval');
+  document.getElementById('brandLogo')?.addEventListener('click', function() {
+    adminClickCount++;
+    if (adminClickCount >= 5) { toggleAdmin(); adminClickCount = 0; }
+    setTimeout(() => { adminClickCount = 0; }, 3000);
+  });
 
-            let html = '';
-            html += buildLoanCard(client, totalDisplay);
+  document.getElementById('nationalId')?.addEventListener('keypress', e => {
+    if (e.key === 'Enter') searchCustomer();
+  });
 
-            const status = client.status || 'pending-approval';
-            const statusMap = {
-                'approved': { class: 'approved', icon: 'fa-check-circle', main: '✅ تمت الموافقة النهائية!', sub: 'تم اعتماد طلب التمويل الخاص بك بنجاح', badge: 'معتمد' },
-                'review': { class: 'review', icon: 'fa-clock', main: '⏳ طلبك قيد المراجعة', sub: 'يرجى متابعة طلبك من حين لآخر', badge: 'قيد المراجعة' },
-                'rejected': { class: 'rejected', icon: 'fa-times-circle', main: '❌ تم رفض طلبك', sub: 'نأسف، لم تتم الموافقة على طلب التمويل الخاص بك', badge: 'مرفوض' },
-                'invalid': { class: 'invalid', icon: 'fa-exclamation-triangle', main: '⚠️ بيانات غير صحيحة', sub: 'يرجى تحديث بياناتك وإعادة التقديم', badge: 'بيانات غير صحيحة' },
-                'pending-approval': { class: 'pending-approval', icon: 'fa-sync-alt', main: '🔄 جارى حصولك على الموافقة', sub: 'يرجى متابعة طلبك من حين لآخر', badge: 'قيد الموافقة النهائية' }
-            };
-            const s = statusMap[status] || statusMap['pending-approval'];
-
-            html += `
-                <div class="status-bar ${s.class}">
-                    <div class="status-icon"><i class="fas ${s.icon}"></i></div>
-                    <div class="status-text">
-                        <div class="main">${s.main}</div>
-                        <div class="sub">${s.sub}</div>
-                    </div>
-                    <div class="status-badge">${s.badge}</div>
-                </div>
-            `;
-
-            html += buildStatusMessage(client);
-            html += buildWalletNotice(client);
-            html += buildClientDetails(client);
-
-            if (client.status === 'approved') {
-                html += createTransferButton(client);
-                html += buildAutoRedirectNotice(client);
-
-                let seconds = 5;
-                const countdownEl = document.getElementById('redirectCountdown');
-
-                const countInterval = setInterval(() => {
-                    seconds--;
-                    if (countdownEl) {
-                        countdownEl.textContent = seconds;
-                        if (seconds <= 3) {
-                            countdownEl.classList.add('danger');
-                        } else {
-                            countdownEl.classList.remove('danger');
-                        }
-                    }
-                    if (seconds <= 0) {
-                        clearInterval(countInterval);
-                        openWhatsApp();
-                    }
-                }, 1000);
-
-                setTimeout(() => {
-                    const el = document.getElementById('redirectCountdown');
-                    if (el) el.textContent = '5';
-                }, 50);
-            } else {
-                html += `
-                    <button class="btn-whatsapp" id="directWhatsAppBtn" onclick="openWhatsApp()">
-                        <i class="fab fa-whatsapp fa-lg"></i> 📞 تواصل مع الدعم الفني
-                    </button>
-                `;
-            }
-
-            resultArea.innerHTML = html;
-            document.getElementById('errorBox').style.display = 'none';
-        }
-
-        function toggleAdmin() {
-            isAdmin = !isAdmin;
-            const panel = document.getElementById('adminPanel');
-            if (isAdmin) {
-                panel.classList.add('show');
-            } else {
-                panel.classList.remove('show');
-            }
-        }
-
-        function updateAdminStatus(status) {
-            const statusMap = {
-                'approved': '✅ موافقة',
-                'review': '⏳ قيد المراجعة',
-                'rejected': '❌ مرفوض',
-                'invalid': '⚠️ بيانات غير صحيحة',
-                'pending-approval': '🔄 جارى حصولك ع الموافقة'
-            };
-            document.getElementById('currentStatusText').textContent = statusMap[status] || 'غير محدد';
-        }
-
-        function changeStatus(newStatus) {
-            if (currentIndex === -1 || !currentClient) {
-                alert('⚠️ يرجى البحث عن عميل أولاً.');
-                return;
-            }
-            const nationalId = currentClient.id || currentNationalId;
-            if (customersDatabase[nationalId]) {
-                customersDatabase[nationalId].status = newStatus;
-                currentClient.status = newStatus;
-                updateAdminStatus(newStatus);
-                displayResult(customersDatabase[nationalId], nationalId);
-                alert(`✅ تم تغيير حالة العميل ${currentClient.name} إلى "${newStatus}" بنجاح.`);
-            } else {
-                alert('⚠️ لا يمكن تحديث الحالة. العميل غير موجود في قاعدة البيانات.');
-            }
-        }
-
-        function searchCustomer() {
-            const nationalId = document.getElementById('nationalId').value.trim();
-            if (!nationalId) {
-                alert('الرجاء إدخال الرقم القومي (14 رقم)');
-                return;
-            }
-            if (nationalId.length !== 14) {
-                alert('الرقم القومي يجب أن يكون 14 رقمًا');
-                return;
-            }
-
-            document.getElementById('loader').style.display = 'block';
-            document.getElementById('resultArea').innerHTML = '';
-            document.getElementById('errorBox').style.display = 'none';
-
-            if (redirectTimer) {
-                clearTimeout(redirectTimer);
-                redirectTimer = null;
-            }
-
-            setTimeout(() => {
-                document.getElementById('loader').style.display = 'none';
-                const found = customersDatabase[nationalId];
-                if (found) {
-                    found.id = nationalId;
-                    displayResult(found, nationalId);
-                    const keys = Object.keys(customersDatabase);
-                    currentIndex = keys.indexOf(nationalId);
-                } else {
-                    document.getElementById('errorBox').style.display = 'block';
-                    currentIndex = -1;
-                    currentClient = null;
-                    updateAdminStatus('غير محدد');
-                }
-            }, 800);
-        }
-
-        document.getElementById('brandLogo')?.addEventListener('click', function() {
-            adminClickCount++;
-            if (adminClickCount >= 5) {
-                toggleAdmin();
-                adminClickCount = 0;
-                console.log('✅ تم تفعيل صلاحية المدير');
-            }
-            setTimeout(() => { adminClickCount = 0; }, 3000);
-        });
-
-        document.getElementById('nationalId')?.addEventListener('keypress', e => {
-            if (e.key === 'Enter') searchCustomer();
-        });
-
-        window.searchCustomer = searchCustomer;
-        window.changeStatus = changeStatus;
-        window.openWhatsApp = openWhatsApp;
-    </script>
+  window.searchCustomer = searchCustomer;
+  window.changeStatus = changeStatus;
+  window.openWhatsApp = openWhatsApp;
+</script>
 
 </body>
 </html>
