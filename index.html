@@ -21,7 +21,6 @@
     --danger: #DC2626; --danger-light: #FEE2E2;
     --purple: #7C3AED; --purple-light: #EDE9FE;
     --etisalat-blue: #0284C7; --etisalat-light: #E0F2FE;
-    --vodafone-red: #E60000; --vodafone-light: #FEE2E2;
     --review-color: #D97706; --invalid-color: #DC2626;
     --pending-approval: #7C3AED; --pending-light: #EDE9FE;
     --font: 'Cairo', sans-serif; --radius: 1.4rem; --radius-sm: 0.9rem;
@@ -60,7 +59,6 @@
   .loan-details-grid .detail-item .value { font-size: 0.88rem; font-weight: 800; color: var(--text); margin-top: 0.2rem; }
   .loan-details-grid .detail-item .value.gold { color: var(--gold-dark); }
   .loan-details-grid .detail-item .value.green { color: var(--success); }
-  .loan-details-grid .detail-item .value.vodafone { color: var(--danger); }
   .loan-details-grid .detail-item .value.warning { color: var(--warning); }
   .status-bar { display: flex; align-items: center; gap: 0.8rem; background: var(--bg-card); border-radius: var(--radius); padding: 0.9rem 1.1rem; border: 1px solid var(--border); margin: 0.9rem 0; box-shadow: var(--shadow-sm); }
   .status-bar .status-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
@@ -97,7 +95,6 @@
   .client-info .row .value { font-weight: 700; text-align: left; color: var(--text); word-break: break-word; }
   .client-info .row .value.gold { color: var(--gold-dark); }
   .client-info .row .value.green { color: var(--success); }
-  .client-info .row .value.vodafone { color: var(--danger); }
   .client-info .row .value.review { color: var(--review-color); }
   .client-info .row .value.pending-approval { color: var(--pending-approval); }
   .id-verification { background: linear-gradient(135deg, #FFFFFF, var(--gold-light)); border: 2px solid var(--gold); border-radius: var(--radius); padding: 1.1rem; margin: 0.9rem 0; }
@@ -130,8 +127,6 @@
   .wallet-notice p { color: var(--text-muted); font-size: 0.78rem; line-height: 1.9; }
   .wallet-notice.etisalat { background: linear-gradient(135deg, #FFFFFF, var(--etisalat-light)); border: 2px solid var(--etisalat-blue); }
   .wallet-notice.etisalat .notice-head i, .wallet-notice.etisalat .notice-head h4 { color: var(--etisalat-blue); }
-  .wallet-notice.vodafone { background: linear-gradient(135deg, #FFFFFF, var(--vodafone-light)); border: 2px solid var(--vodafone-red); }
-  .wallet-notice.vodafone .notice-head i, .wallet-notice.vodafone .notice-head h4 { color: var(--vodafone-red); }
   .wallet-notice.none { background: linear-gradient(135deg, #FFFFFF, var(--gold-light)); border: 2px solid var(--gold); }
   .wallet-notice.none .notice-head i, .wallet-notice.none .notice-head h4 { color: var(--gold-dark); }
   .btn-whatsapp-transfer { width: 100%; padding: 1rem 1.2rem; border: none; border-radius: 3rem; background: linear-gradient(135deg, #25D366, #128C7E); color: #FFFFFF; font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 0.7rem; cursor: pointer; box-shadow: 0 8px 28px rgba(37,211,102,0.3); margin-top: 0.8rem; font-family: var(--font); animation: pulseWhatsApp 2s ease-in-out infinite; }
@@ -139,7 +134,6 @@
   .btn-whatsapp-transfer i { font-size: 1.3rem; }
   .btn-whatsapp-transfer .badge-new { background: rgba(255,255,255,0.22); border-radius: 3rem; padding: 0.1rem 0.6rem; font-size: 0.6rem; font-weight: 800; }
   .btn-whatsapp-transfer.etisalat-btn { background: linear-gradient(135deg, #0284C7, #0369A1); }
-  .btn-whatsapp-transfer.vodafone-btn { background: linear-gradient(135deg, #E60000, #B30000); }
   .btn-whatsapp-transfer.gold-btn { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #FFFFFF; }
   .error-box { background: var(--danger-light); border: 1px solid rgba(220,38,38,0.2); border-radius: var(--radius); padding: 1.2rem; text-align: center; color: var(--danger); font-size: 0.85rem; display: none; margin-top: 0.8rem; font-weight: 600; line-height: 1.8; }
   .error-box i { font-size: 1.8rem; display: block; margin-bottom: 0.4rem; }
@@ -236,346 +230,28 @@
   const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
   // ================================================================
-  //  قاعدة البيانات — جميع العملاء الجدد من الملف
-  //  hasEtisalat / hasVodafone: false,false = "لا يوجد - سيفتحها"
+  //  قاعدة البيانات — تم إزالة كل الأرقام الناقصة والخاصة بفودافون
   // ================================================================
   const customersDatabase = {
     "29401122600339": { id: "29401122600339", name: "محمود عثمان محمد الزهرى", job: "نجار مسلح", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01115460649", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_2_q16_5668655447624922766.jpg?response-content-disposition=attachment%3Bfilename%3D2_16_inbound717511713917758637.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=FyKGhOaFYtkb0G5uZ0JR6A%2BJ%2FGQ%3D", guarantor: { name: "محمد عثمان محمد الزهرى", relation: "أخ", phone: "01040883985" }, address: "قرية الجزازرة مركز المراغة محافظة سوهاج" },
-    "2700912085": { id: "27009202085", name: "هاله العزب ابراهيم العزب", job: "ربه منزل بشتغل اون لاين", loan: 160000, loanTerm: "48 شهر", installment: "4435", total: "212880 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01107098779", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_3_q16_4972040725888338880.jpg?response-content-disposition=attachment%3Bfilename%3D3_16_inbound6971294268589880785.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=cVbzjx4wy2rDNEWidkFWJppSUuY%3D", guarantor: { name: "هبه عبد الرؤوف حسن ابرهيم القشلان", relation: "ابنة", phone: "01034262283" }, address: "ميت العامل مركز اجا محافظة الدقهلية" },
     "26503011100767": { id: "26503011100767", name: "بسيمه سعد محمد سلامه", job: "كبير معلمين بالمعاش", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01093752935", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_3_q16_5727682234925826793.jpg?response-content-disposition=attachment%3Bfilename%3D4_16_inbound392593090236323131.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=lAiG0vdtpEJGZqZwrckcjgYmUac%3D", guarantor: { name: "أشرف سعد محمد سلامه", relation: "أخ", phone: "01031268164" }, address: "دمياط الجديده شارع الامارات بجوار مسجد نور" },
     "29202052103054": { id: "29202052103054", name: "كامل مجدى كامل محمد", job: "مندوب مبيعات شركة أبتا للتجارة أوت سويرس فى شركة كونتكت نا", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01020488212", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_5_q16_5034207133124112555.jpg?response-content-disposition=attachment%3Bfilename%3D5_16_inbound5964923565598722539.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=YNGD39U9i9pCMAqDw0Y2R9Xuk2I%3D", guarantor: { name: "فاتن مجدى كامل محمد", relation: "أخت", phone: "01155715833" }, address: "١١ شارع الهرم ميت عقبة العجوزة الجيزة بعد نادى الزمالك بوابة رقم ٣ بالقرب من كشرى الجزيرة" },
     "28011171803311": { id: "28011171803311", name: "محمود محمد محمود سالم", job: "مدير إدارة بشركة بتروتريد للخدمات البترولية فرع الهرم ١٧١ الرئيسى أعلى بنك مصر امام كنتاكى", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01157932278", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_6_q16_5597553928959844693.jpg?response-content-disposition=attachment%3Bfilename%3D6_16_inbound6211108583759126180.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=Ee18V7VIsvqPsAAL%2BcRJlsCZboU%3D", guarantor: { name: "منة الله محمود محمد محمود سالم", relation: "ابنة", phone: "01029920109" }, address: "محافظة الجيزة ٦ أكتوبر التوسعات الشمالية كومباوند إطلالة عمارة ٤٥ شقة ٤" },
     "27907141702839": { id: "27907141702839", name: "طارق محروس محمد سلامة", job: "سائق", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01016868389", status: "approved", idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_1_q16_5166188755975827241.jpg?response-content-disposition=attachment%3Bfilename%3D1_16_inbound4877800497125790983.jpg&Expires=1793945608&OSSAccessKeyId=LTAI5tCPbxY48BbJtHn4QcZK&Signature=jrX2UGCMMaKtJitHW3LTaEioJRs%3D", guarantor: { name: "سمر إبراهيم محروس", relation: "زوجة", phone: "01556578851" }, address: "11 محمود مشرف" },
-    // ===== العملاء الجدد من الملف =====
 
-// 1
-"28207251900611": {
-  id: "28207251900611",
-  name: "احمد بدري شحات مسلوب",
-  job: "موظف حكومى - شركه هيئه قناه السويس الاسماعيليه",
-  loan: 200000,
-  loanTerm: "60 شهر",
-  installment: "4440",
-  total: "266400 ج.م",
-  hasEtisalat: false,
-  hasVodafone: false,
-  wallet: "لا يوجد - سيفتحها",
-  walletNum: "01282585702",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_1_q16_5235403848172982260.jpg",
-  guarantor: { name: "اسراء حلمي محمود حسن", relation: "زوجة", phone: "01282585702" },
-  address: "49 شارع العشرين حي السلام الاسماعيليه"
-},
-// 2
-"01006468298": {
-  id: "01006468298",
-  name: "جرجس نبيل ادوارد متياس",
-  job: "ادارى بمدرسة - موظف حكومى",
-  loan: 200000,
-  loanTerm: "60 شهر",
-  installment: "4440",
-  total: "266400 ج.م",
-  hasEtisalat: false,
-  hasVodafone: true,
-  wallet: "فودافون كاش",
-  walletNum: "01006468298",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_2_q16_4828402348803897769.jpg",
-  guarantor: { name: "عاطف مكرم", relation: "صديق", phone: "01288374738" },
-  address: "شارع الطحاويه مركز ببا محافظة بنى سويف"
-},
-// 3
-"27610070102557": {
-  id: "27610070102557",
-  name: "محمود ابراهيم محمود زايد",
-  job: "صاحب محل فاكهه - صاحب مشروع قائم",
-  loan: 85000,
-  loanTerm: "30 شهر",
-  installment: "3775",
-  total: "113250 ج.م",
-  hasEtisalat: false,
-  hasVodafone: true,
-  wallet: "فودافون كاش",
-  walletNum: "01009174521",
-  status: "approved",
-  idVerificationImage: "https://i.postimg.cc/B6bZdwWN/mjmwʿt-adwat-alaʿmal-creation-1644978644082157.jpg",
-  guarantor: { name: "مروه محمد محمد سيد", relation: "زوجة", phone: "01130858629" },
-  address: "عرب، العيايدة مركز الخانكة القليوبية"
-},
-// 4
-"2761021631": {
-  id: "27610231201631",
-  name: "مصطفى على ذكر على",
-  job: "الفيروز/ شرم الشيخ - موظف قطاع خاص",
-  loan: 115000,
-  loanTerm: "38 شهر",
-  installment: "4075",
-  total: "154850 ج.م",
-  hasEtisalat: true,
-  hasVodafone: false,
-  wallet: "اتصالات كاش",
-  walletNum: "01149632735",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_4_q16_5361751709894120852.jpg",
-  guarantor: { name: "عزه النادى ابراهيم محمد", relation: "زوجة", phone: "01002547827" },
-  address: "السلام"
-},
-// 5
-"28510012301611": {
-  id: "28510012301611",
-  name: "محمد حسني سعد محمود",
-  job: "صاحب مطعم فول وطعميه - صاحب مشروع قائم",
-  loan: 200000,
-  loanTerm: "60 شهر",
-  installment: "4440",
-  total: "266400 ج.م",
-  hasEtisalat: true,
-  hasVodafone: false,
-  wallet: "اتصالات كاش",
-  walletNum: "01114737630",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_5_q16_5000131524421064170.jpg",
-  guarantor: { name: "اسلام بدوي عبد اللطيف", relation: "زوجة", phone: "01136205080" },
-  address: "محافظة الفيوم قريه العدوه شارع الجزارين مسجد بلال"
-},
-// 6
-"2861221198": {
-  id: "286122198",
-  name: "محسن حسن اسماعيل محمد",
-  job: "مدير قطاع المشروعات بمؤسسة اجياد للمقاولات - موظف قطاع خاص",
-  loan: 200000,
-  loanTerm: "60 شهر",
-  installment: "4440",
-  total: "266400 ج.م",
-  hasEtisalat: false,
-  hasVodafone: true,
-  wallet: "فودافون كاش",
-  walletNum: "01021252131",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_6_q16_5530334608706321217.jpg",
-  guarantor: { name: "مرفت يوسف محمد رماح", relation: "والدة", phone: "01112141618" },
-  address: "مدينة الفسطاط عماره 102"
-},
-// 7
-"2761200757": {
-  id: "27612012700757",
-  name: "محمد محمود طه محمود",
-  job: "تلي سيلز شركة كونسنتركس - موظف قطاع خاص",
-  loan: 55000,
-  loanTerm: "24 شهر",
-  installment: "3075",
-  total: "73800 ج.م",
-  hasEtisalat: false,
-  hasVodafone: true,
-  wallet: "فودافون كاش",
-  walletNum: "01020661605",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_6_q16_4663397386168334026.jpg",
-  guarantor: { name: "ريم محمود طه محمود", relation: "أخت", phone: "01010121468" },
-  address: "قنا شارع بورسيعيد خلف بنك مصر"
-},
-// 8
-"28305130101934": {
-  id: "28305130101934",
-  name: "محمد حمزه عبد المعز عبدالرحمن",
-  job: "صاحب كافيه - صاحب مشروع قائم",
-  loan: 40000,
-  loanTerm: "18 شهر",
-  installment: "2965",
-  total: "53370 ج.م",
-  hasEtisalat: false,
-  hasVodafone: true,
-  wallet: "فودافون كاش",
-  walletNum: "01018149441",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_8_q16_4641287028342401368.jpg",
-  guarantor: { name: "هاجر سمير مرسي على", relation: "زوجة", phone: "01117380989" },
-  address: "42ش عصمت المعادي"
-},
-// 9
-"29807005134": {
-  id: "2980705134",
-  name: "محمدبخيت محمداحمد",
-  job: "بيع ملابس جاهز من البيت وبنزل الاسوق - عمل حر",
-  loan: 100000,
-  loanTerm: "32 شهر",
-  installment: "4157",
-  total: "133024 ج.م",
-  hasEtisalat: true,
-  hasVodafone: false,
-  wallet: "اتصالات كاش",
-  walletNum: "01150636143",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_9_q16_5633125375048399476.jpg",
-  guarantor: { name: "مروه محمود عبد الحميد", relation: "زوجة", phone: "01141292163" },
-  address: "عزبه خيرالله تبع البساتين"
-},
-// 10
-"29607230201774": {
-  id: "29607230201774",
-  name: "كريم ناصر محمد عبد الرحمن الشاذلي",
-  job: "كول سنتر لدي مطاعم البركه فرايد تشيكن - موظف قطاع خاص",
-  loan: 35000,
-  loanTerm: "12 شهر",
-  installment: "3875",
-  total: "46500 ج.م",
-  hasEtisalat: true,
-  hasVodafone: false,
-  wallet: "اتصالات كاش",
-  walletNum: "01124548767",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_10_q16_4889637742417760711.jpg",
-  guarantor: { name: "مرفت ناصف السيد أحمد", relation: "والدة", phone: "01276715060" },
-  address: "ناصيه الطوفي والزنبق راغب باشا محرم بك الإسكندريه"
-},
-// 11
-"27811251404135": {
-  id: "27811251404135",
-  name: "عبدالحميد بربرى عبدالرحمن محمد",
-  job: "سائق درجه اولى بالقطاع الخاص باحدى شركات - صاحب مهنة",
-  loan: 200000,
-  loanTerm: "60 شهر",
-  installment: "4440",
-  total: "266400 ج.م",
-  hasEtisalat: false,
-  hasVodafone: true,
-  wallet: "فودافون كاش",
-  walletNum: "01064768130",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_11_q16_5740997601222827783.jpg",
-  guarantor: { name: "احمد عبدالحميد بربرى عبدالرحمن", relation: "ابن", phone: "01274628300" },
-  address: "ش سيد فهمى بجوار مسجد الفتح كفر أبو جمعه قليوب القليوبيه"
-},
-// 12
-"28712120102392": {
-  id: "28712120102392",
-  name: "سامي صلاح اسماعيل محمد",
-  job: "محل سوبر ماركت صغير - صاحب مشروع قائم",
-  loan: 40000,
-  loanTerm: "18 شهر",
-  installment: "2965",
-  total: "53370 ج.م",
-  hasEtisalat: true,
-  hasVodafone: false,
-  wallet: "اتصالات كاش",
-  walletNum: "01128874519",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_11_q16_5178915791236668074.jpg",
-  guarantor: { name: "صفاء السيد عبد الحميد اصلان", relation: "زوجة", phone: "غير مسجل" },
-  address: "وردان منشاه القناطرجيزه"
-},
-// 13
-"29910230202414": {
-  id: "29910230202414",
-  name: "مصطفى صالح فضل مصيلحى",
-  job: "طباخ فى إحدى المطاعم - عمل حر",
-  loan: 55000,
-  loanTerm: "24 شهر",
-  installment: "3075",
-  total: "73800 ج.م",
-  hasEtisalat: false,
-  hasVodafone: false,
-  wallet: "لا يوجد - سيفتحها",
-  walletNum: "01283207544",
-  status: "approved",
-  idVerificationImage: "https://ossprivate.surveymars.com/answer/mJABbmvkQ/s_13_q16_4622985008575141485.jpg",
-  guarantor: { name: "احمد فضل مصيلحى فضل", relation: "عم", phone: "01283207544" },
-  address: "العجمى الحديد والصلب عند حلوانى اية"
-},
-// 14
-"28002204479": {
-  id: "28000104479",
-  name: "محمد سيد محمد عبد الواحد",
-  job: "موظف بشركة مصر للبترول - موظف حكومى",
-  loan: 150000,
-  loanTerm: "48 شهر",
-  installment: "4205",
-  total: "201840 ج.م",
-  hasEtisalat: false,
-  hasVodafone: false,
-  wallet: "لا يوجد - سيفتحها",
-  walletNum: "5078086750828654",
-  status: "approved",
-  idVerificationImage: "https://i.postimg.cc/rwrWv2Pz/14-16-inbound1216827915175716129.jpg",
-  guarantor: { name: "سهام حامد ابراهيم امان", relation: "زوجة", phone: "01204156962" },
-  address: "٨ شارع فواد مرقص متفرع من شارع حسنى وشارع شركات الشرابية"
-},
-// 15
-"2711203277": {
-  id: "271010203277",
-  name: "محمد ابراهيم عبد الكريم محمد",
-  job: "مدير عام مساعد بشركة الاسكندرية للبترول - موظف حكومى",
-  loan: 40000,
-  loanTerm: "18 شهر",
-  installment: "2965",
-  total: "53370 ج.م",
-  hasEtisalat: false,
-  hasVodafone: false,
-  wallet: "لا يوجد - سيفتحها",
-  walletNum: "01222496604",
-  status: "approved",
-  idVerificationImage: "https://i.postimg.cc/25XDvgCh/15-16-inbound8971202774138541097.jpg",
-  guarantor: { name: "ثريا فتحى شحاته مصطفى", relation: "زوجة", phone: "01224570377" },
-  address: "مدينة اسيد سموحة سيدى جابر ااسكندرية"
-},
-// ===== العميل الجديد: أحمد محمد سليمان محمد =====
-"289121200356": {
-  id: "289120100356",
-  name: "أحمد محمد سليمان محمد",
-  job: "نجات في شركه ماچور للمقاولات (عمل حر)",
-  loan: 40000,
-  loanTerm: "18 شهر",
-  installment: "2965",
-  total: "53370 ج.م",
-  hasEtisalat: true,
-  hasVodafone: false,
-  wallet: "اتصالات كاش",
-  walletNum: "01124159991",
-  whatsapp: "01124159991",
-  status: "approved",
-  idVerificationImage: "",
-  guarantor: { name: "فريال حسن محمد علي", relation: "زوجة", phone: "01157588386" },
-  address: "ش محمود منتاوي المطريه القاهره"
-},
-// ===== العميل الجديد: حسن طلعت حسن اسماعيل =====
-"29009160101136": {
-  id: "29009160101136",
-  name: "حسن طلعت حسن اسماعيل",
-  job: "عمل حر - عندي عربيه شغال بيها وشريك في مخبز",
-  loan: 200000,
-  loanTerm: "60 شهر",
-  installment: "4440",
-  total: "266400 ج.م",
-  hasEtisalat: true,
-  hasVodafone: false,
-  wallet: "اتصالات كاش",
-  walletNum: "01100060476",
-  whatsapp: "01110366585",
-  status: "approved",
-  idVerificationImage: "https://i.postimg.cc/ry3RWYYh/18-16-inbound8739167916959037848.jpg",
-  guarantor: { name: "رانيا عطيه رجب ابراهيم", relation: "زوجة", phone: "29010100101526" },
-  address: "34 شارع عمر المختار الاميريه"
-}, 
-// ===== العميل الجديد: عمر عبد العزيز محمد محمد =====
-"29402052101638": {
-  id: "29402052101638",
-  name: "عمر عبد العزيز محمد محمد",
-  job: "مشرف اداري (موظف قطاع خاص)",
-  loan: 50000,
-  loanTerm: "24 شهر",
-  installment: "2725",
-  total: "65400 ج.م",
-  hasEtisalat: true,
-  hasVodafone: false,
-  wallet: "اتصالات كاش",
-  walletNum: "01145396748",
-  whatsapp: "01145396748",
-  status: "approved",
-  idVerificationImage: "",
-  guarantor: { name: "هند يسن محمد مطر", relation: "زوجة", phone: "01031300956" },
-  address: "21 شارع مصطفى كامل البراجيل"
-},
+    // ===== العملاء الجدد (أرقام صحيحة فقط) =====
+    "28207251900611": { id: "28207251900611", name: "احمد بدري شحات مسلوب", job: "موظف حكومى - شركه هيئه قناه السويس الاسماعيليه", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01282585702", status: "approved", idVerificationImage: "", guarantor: { name: "اسراء حلمي محمود حسن", relation: "زوجة", phone: "01282585702" }, address: "49 شارع العشرين حي السلام الاسماعيليه" },
+    "01006468298": { id: "01006468298", name: "جرجس نبيل ادوارد متياس", job: "ادارى بمدرسة - موظف حكومى", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01006468298", status: "approved", idVerificationImage: "", guarantor: { name: "عاطف مكرم", relation: "صديق", phone: "01288374738" }, address: "شارع الطحاويه مركز ببا محافظة بنى سويف" },
+    "28510012301611": { id: "28510012301611", name: "محمد حسني سعد محمود", job: "صاحب مطعم فول وطعميه - صاحب مشروع قائم", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01114737630", status: "approved", idVerificationImage: "", guarantor: { name: "اسلام بدوي عبد اللطيف", relation: "زوجة", phone: "01136205080" }, address: "محافظة الفيوم قريه العدوه شارع الجزارين مسجد بلال" },
+    "29607230201774": { id: "29607230201774", name: "كريم ناصر محمد عبد الرحمن الشاذلي", job: "كول سنتر لدي مطاعم البركه فرايد تشيكن - موظف قطاع خاص", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01124548767", status: "approved", idVerificationImage: "", guarantor: { name: "مرفت ناصف السيد أحمد", relation: "والدة", phone: "01276715060" }, address: "ناصيه الطوفي والزنبق راغب باشا محرم بك الإسكندريه" },
+    "28712120102392": { id: "28712120102392", name: "سامي صلاح اسماعيل محمد", job: "محل سوبر ماركت صغير - صاحب مشروع قائم", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01128874519", status: "approved", idVerificationImage: "", guarantor: { name: "صفاء السيد عبد الحميد اصلان", relation: "زوجة", phone: "غير مسجل" }, address: "وردان منشاه القناطرجيزه" },
+    "29910230202414": { id: "29910230202414", name: "مصطفى صالح فضل مصيلحى", job: "طباخ فى إحدى المطاعم - عمل حر", loan: 55000, loanTerm: "24 شهر", installment: "3075", total: "73800 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01283207544", status: "approved", idVerificationImage: "", guarantor: { name: "احمد فضل مصيلحى فضل", relation: "عم", phone: "01283207544" }, address: "العجمى الحديد والصلب عند حلوانى اية" },
 
+    // ===== العميل الجديد: أحمد محمد سليمان محمد (رقم 14) =====
+    "28912120100356": { id: "28912120100356", name: "أحمد محمد سليمان محمد", job: "نجات في شركه ماچور للمقاولات (عمل حر)", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01124159991", whatsapp: "01124159991", status: "approved", idVerificationImage: "", guarantor: { name: "فريال حسن محمد علي", relation: "زوجة", phone: "01157588386" }, address: "ش محمود منتاوي المطريه القاهره" },
+
+    // ===== العميل الجديد: عمر عبد العزيز محمد محمد =====
+    "29402052101638": { id: "29402052101638", name: "عمر عبد العزيز محمد محمد", job: "مشرف اداري (موظف قطاع خاص)", loan: 50000, loanTerm: "24 شهر", installment: "2725", total: "65400 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01145396748", whatsapp: "01145396748", status: "approved", idVerificationImage: "", guarantor: { name: "هند يسن محمد مطر", relation: "زوجة", phone: "01031300956" }, address: "21 شارع مصطفى كامل البراجيل" }
   };
 
   let currentClient = null;
@@ -600,42 +276,33 @@
     return totalDisplay;
   }
 
-  // ===== رسالة واتساب حسب نوع المحفظة =====
   function openWhatsApp() {
     if (!currentClient) { window.open(WHATSAPP_URL, '_blank'); return; }
     const hasEtisalat = currentClient.hasEtisalat || false;
-    const hasVodafone = currentClient.hasVodafone || false;
     const loanAmount = typeof currentClient.loan === 'number' ? currentClient.loan.toLocaleString('ar-EG') : currentClient.loan;
 
     let msg = `السلام عليكم ورحمة الله وبركاته 👋\n\n👤 أنا أسمى: ${currentClient.name}\n🔢 رقمي القومي: ${currentClient.id || currentNationalId}\n💰 مبلغ القرض المعتمد: ${loanAmount} ج.م\n💵 القسط الشهري: ${currentClient.installment || "يحدد لاحقاً"} ج.م\n📅 مدة القسط: ${currentClient.loanTerm || "يحدد لاحقاً"}\n\n`;
 
     if (hasEtisalat) {
       msg += `📱 لدي محفظة اتصالات كاش مسجلة باسمي.\n🔢 رقم المحفظة: ${currentClient.walletNum || "سيتم تسجيله"}\n\n✅ أطلب استلام ملف التسيل الخاص بي لإنهاء إجراءات صرف المبلغ فوراً.\n🎯 أنا جاهز ومستعد لبدء استخراج الحد الائتماني والتسييل.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل.\n\n📩 يرجى إرسال ملف التسيل لي في أقرب وقت.\n🙏 شكراً لكم.`;
-    } else if (hasVodafone) {
-      msg += `📱 لدي محفظة فودافون كاش مسجلة باسمي.\n🔢 رقم المحفظة: ${currentClient.walletNum || "سيتم تسجيله"}\n\n✅ أطلب استلام ملف التسيل الخاص بي لإنهاء إجراءات صرف المبلغ فوراً.\n🎯 أنا جاهز ومستعد لبدء استخراج الحد الائتماني والتسييل.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل.\n\n📩 يرجى إرسال ملف التسيل لي في أقرب وقت.\n🙏 شكراً لكم.`;
     } else {
-      msg += `⚠️ لا أملك حالياً محفظة اتصالات كاش أو فودافون كاش.\n\n✅ أوافق وأقر بفتح محفظة كاش مسجلة باسمي لاستكمال إجراءات صرف القرض.\n📱 سأقوم بفتح المحفظة (اتصالات كاش أو فودافون كاش) وإبلاغكم برقمها الجديد في أقرب وقت.\n\n🎯 يرجى توجيهي للخطوات التالية لإنهاء إجراءات استخراج الحد الائتماني والتسييل.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل.\n\n🙏 شكراً لكم.`;
+      msg += `⚠️ لا أملك حالياً محفظة اتصالات كاش.\n\n✅ أوافق وأقر بفتح محفظة اتصالات كاش مسجلة باسمي لاستكمال إجراءات صرف القرض.\n📱 سأقوم بفتح المحفظة وإبلاغكم برقمها الجديد في أقرب وقت.\n\n🎯 يرجى توجيهي للخطوات التالية لإنهاء إجراءات استخراج الحد الائتماني والتسييل.\n\n🤝 أتعهد بالالتزام بجميع شروط وأحكام التمويل.\n\n🙏 شكراً لكم.`;
     }
     window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, '_blank');
   }
 
   function createTransferButton(client) {
     const hasEtisalat = client.hasEtisalat || false;
-    const hasVodafone = client.hasVodafone || false;
     let btnClass = "btn-whatsapp-transfer";
     let btnText, btnIcon;
     if (hasEtisalat) {
       btnClass += " etisalat-btn";
       btnIcon = '<i class="fab fa-whatsapp"></i>';
       btnText = '📤 اطلب ملف التسيل الآن (اتصالات كاش)';
-    } else if (hasVodafone) {
-      btnClass += " vodafone-btn";
-      btnIcon = '<i class="fab fa-whatsapp"></i>';
-      btnText = '📤 اطلب ملف التسيل الآن (فودافون كاش)';
     } else {
       btnClass += " gold-btn";
       btnIcon = '<i class="fas fa-triangle-exclamation"></i>';
-      btnText = '⚠️ أوافق على فتح محفظة كاش';
+      btnText = '⚠️ أوافق على فتح محفظة اتصالات كاش';
     }
     return `
       <button class="${btnClass}" onclick="openWhatsApp()">
@@ -649,11 +316,9 @@
 
   function buildLoanCard(client, totalDisplay) {
     const hasEtisalat = client.hasEtisalat || false;
-    const hasVodafone = client.hasVodafone || false;
     let walletDisplay, walletColor;
     if (hasEtisalat) { walletDisplay = "📱 اتصالات كاش"; walletColor = "gold"; }
-    else if (hasVodafone) { walletDisplay = "📱 فودافون كاش"; walletColor = "vodafone"; }
-    else { walletDisplay = "📱 سيتم فتح محفظة كاش"; walletColor = "warning"; }
+    else { walletDisplay = "📱 سيتم فتح محفظة اتصالات كاش"; walletColor = "warning"; }
     const statusMap = { 'approved': '✅ معتمد', 'review': '⏳ قيد المراجعة', 'rejected': '❌ مرفوض', 'invalid': '⚠️ بيانات غير صحيحة', 'pending-approval': '🔄 قيد الموافقة' };
     const currentStatus = client.status || 'pending-approval';
     return `
@@ -694,11 +359,9 @@
 
   function buildClientDetails(client) {
     const hasEtisalat = client.hasEtisalat || false;
-    const hasVodafone = client.hasVodafone || false;
     let walletClass, walletDisplay;
     if (hasEtisalat) { walletDisplay = "اتصالات كاش"; walletClass = "gold"; }
-    else if (hasVodafone) { walletDisplay = "فودافون كاش"; walletClass = "vodafone"; }
-    else { walletDisplay = "سيتم فتح محفظة كاش"; walletClass = "warning"; }
+    else { walletDisplay = "سيتم فتح محفظة اتصالات كاش"; walletClass = "warning"; }
     const statusMap = { 'approved': '✅ معتمد', 'review': '⏳ قيد المراجعة', 'rejected': '❌ مرفوض', 'invalid': '⚠️ بيانات غير صحيحة', 'pending-approval': '🔄 قيد الموافقة' };
     const statusColor = { 'approved': 'green', 'review': 'review', 'rejected': 'danger', 'invalid': 'danger', 'pending-approval': 'pending-approval' };
     const currentStatus = client.status || 'pending-approval';
@@ -738,7 +401,6 @@
 
   function buildWalletNotice(client) {
     const hasEtisalat = client.hasEtisalat || false;
-    const hasVodafone = client.hasVodafone || false;
     if (hasEtisalat) {
       return `
         <div class="wallet-notice etisalat">
@@ -747,19 +409,11 @@
           <p style="font-size: 0.72rem; margin-top: 0.4rem;">🔢 <i class="fas fa-wallet"></i> رقم المحفظة: <strong style="color: var(--etisalat-blue);">${client.walletNum}</strong></p>
         </div>
       `;
-    } else if (hasVodafone) {
-      return `
-        <div class="wallet-notice vodafone">
-          <div class="notice-head"><i class="fas fa-mobile-screen-button"></i><h4>📱 محفظة فودافون كاش مسجلة</h4></div>
-          <p>💚 عزيزي <strong style="color: var(--text);">${client.name}</strong>،<br>تم تسجيل محفظة <strong style="color: var(--vodafone-red);">فودافون كاش</strong> الخاصة بك.</p>
-          <p style="font-size: 0.72rem; margin-top: 0.4rem;">🔢 <i class="fas fa-wallet"></i> رقم المحفظة: <strong style="color: var(--vodafone-red);">${client.walletNum}</strong></p>
-        </div>
-      `;
     } else {
       return `
         <div class="wallet-notice none">
-          <div class="notice-head"><i class="fas fa-circle-info"></i><h4>📌 مطلوب فتح محفظة كاش</h4></div>
-          <p>💚 عزيزي <strong style="color: var(--text);">${client.name}</strong>،<br>نخدم حالياً <strong style="color: var(--etisalat-blue);">اتصالات كاش</strong> أو <strong style="color: var(--vodafone-red);">فودافون كاش</strong> فقط.<br>📱 يرجى فتح محفظة كاش في أسرع وقت ممكن، ثم التواصل معنا مرة أخرى وإرسال رقم المحفظة ليتم إضافته بطلبك.</p>
+          <div class="notice-head"><i class="fas fa-circle-info"></i><h4>📌 مطلوب فتح محفظة اتصالات كاش</h4></div>
+          <p>💚 عزيزي <strong style="color: var(--text);">${client.name}</strong>،<br>نخدم حالياً <strong style="color: var(--etisalat-blue);">اتصالات كاش</strong> فقط.<br>📱 يرجى فتح محفظة اتصالات كاش في أسرع وقت ممكن، ثم التواصل معنا مرة أخرى وإرسال رقم المحفظة ليتم إضافته بطلبك.</p>
         </div>
       `;
     }
