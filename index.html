@@ -230,110 +230,69 @@
   const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
   // ================================================================
-  //  قاعدة البيانات — تم إزالة كل الأرقام الناقصة والخاصة بفودافون
+  //  قاعدة البيانات — جميع العملاء بحالة approved
   // ================================================================
   const customersDatabase = {
-    // ===== جميع العملاء الجدد من الملف (دفعة 19) =====
-
-// 1
-"29807202102379": {
-  id: "29807202102379", name: "محمد عبدالوهاب محمود احمد عوض", job: "عامل زرعي عندي ارض زراعيه (عمل حر)", loan: 80000, loanTerm: "30 شهر", installment: "3550", total: "106500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01120520935", whatsapp: "01066590637", status: "pending-approval", idVerificationImage: "", guarantor: { name: "دينا عبدالناصر علي محجوب", relation: "زوجة", phone: "01120520935" }, address: "البحيرة مركز بدر قرية حراء"
-},
-// 2
-"28503070102495": {
-  id: "28503070102495", name: "احمد موسى محمد موسى", job: "مراقب امن (موظف قطاع خاص)", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01147851350", whatsapp: "01270603174", status: "pending-approval", idVerificationImage: "", guarantor: { name: "هدى فرحان عوض محمد", relation: "زوجة", phone: "01147851350" }, address: "بلوك 12مدخل 21مجاوره 1المشروع الامريكى حلوان"
-},
-// 3
-"28505020200413": {
-  id: "28505020200413", name: "احمد محمد محمود عبد العزيز", job: "اسواق فتح الله للجملة مشرف متابعة تنفيذى", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01093420139", whatsapp: "01093420139", status: "pending-approval", idVerificationImage: "", guarantor: { name: "احمد ابراهيم", relation: "والدة", phone: "01279747237" }, address: "21ش الطيبين من ش الزهور الحضرة الجديدة باب شرق الإسكندرية"
-},
-// 4
-"30007011710076": {
-  id: "30007011710076", name: "محمد عبدالله عبدالله سلامه", job: "مشرف قسم الجزاره لدي هايبر برايم مارت", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01106128206", whatsapp: "01154518198", status: "pending-approval", idVerificationImage: "", guarantor: { name: "حسين عبدالله عبدالله سلامه", relation: "أخت", phone: "01028205032" }, address: "المنوفيه مركز بركه السبع قريه الدبايبه"
-},
-// 5
-"28401192201136": {
-  id: "28401192201136", name: "عيد ثابت عطاللة مقار", job: "مشرف امن لدي شركة ادوية", loan: 100000, loanTerm: "32 شهر", installment: "4157", total: "133024 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01221006594", whatsapp: "01221006594", status: "pending-approval", idVerificationImage: "", guarantor: { name: "ماري فضل فهيم برسوم", relation: "زوجة", phone: "01274539646" }, address: "130جنوب الحي العاشر شقة6العاشر من رمضان محافظة الشرقية"
-},
-// 6
-"29809022102012": {
-  id: "29809022102012", name: "مينا مجدى كامل جرجس", job: "عامل نظافه فى معرض ابو يوسف للمتوسيكلات", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01055181287", whatsapp: "01055181287", status: "pending-approval", idVerificationImage: "", guarantor: { name: "مجدى كامل جرجس ابرهيم", relation: "أب", phone: "01123129151" }, address: "24شارع احمد زهران التلاتين الجديد محولات ترسا هرم"
-},
-// 7
-"30401171301673": {
-  id: "30401171301673", name: "كارم محمد محمد عواد", job: "مدينه نصر (عمل حر)", loan: 80000, loanTerm: "30 شهر", installment: "3550", total: "106500 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01055654128", whatsapp: "01206778630", status: "pending-approval", idVerificationImage: "", guarantor: { name: "محمد محمدمحمدعواد", relation: "أخت", phone: "01055654128" }, address: "مدينه نصر"
-},
-// 8
-"28803152600098": {
-  id: "28803152600098", name: "صلاح الدين البدري عبد العال", job: "موظف امن", loan: 50000, loanTerm: "24 شهر", installment: "2725", total: "65400 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01107737151", whatsapp: "01158277794", status: "pending-approval", idVerificationImage: "", guarantor: { name: "هيثم البدري عبد العال", relation: "أخت", phone: "01019120658" }, address: "ع 15 جنوب الأحياء بيت العائله 6 اكتوبر"
-},
-// 9
-"": {
-  id: "", name: "مصطفي حسين محمد مصطفى", job: "مطعم (عمل حر)", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01009716579", whatsapp: "01009716579", status: "pending-approval", idVerificationImage: "", guarantor: { name: "سميره حماده حسين السدادو", relation: "والدة", phone: "01102186638" }, address: "٧شارع السواكين المطريه"
-},
-// 10
-"": {
-  id: "", name: "محمد عوض جمال محمد", job: "موظف قطاع خاص", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01123344350", whatsapp: "01123344350", status: "pending-approval", idVerificationImage: "", guarantor: { name: "اياد محمد عوض جمال محمد", relation: "ابن", phone: "01552223720" }, address: "٢٥ المجاورة الاولى الحى ١٣ الشيخ زايد"
-},
-// 11
-"28401080104901": {
-  id: "28401080104901", name: "زينب فتحي بكري عمر", job: "مديره مبيعات (ربة منزل)", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01096132381", whatsapp: "01038058138", status: "pending-approval", idVerificationImage: "", guarantor: { name: "محمد احمد عبدالله", relation: "ابن", phone: "01096132681" }, address: "٥٩ش نخله المطيعي مصر الجديده"
-},
-// 12
-"28511071401006": {
-  id: "28511071401006", name: "نجلاء فتحى ذكر قطب", job: "جوزي عندي محلي ماكولات (ربة منزل)", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01113059948", whatsapp: "01113059948", status: "pending-approval", idVerificationImage: "", guarantor: { name: "عادل محمود محمد", relation: "زوج", phone: "01116164400" }, address: "بولاق الدكرور"
-},
-// 13
-"29301102102001": {
-  id: "29301102102001", name: "عبير عدلي محمد سليمان", job: "فني تمريض (موظف حكومي)", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01126925743", whatsapp: "01116843214", status: "pending-approval", idVerificationImage: "", guarantor: { name: "سيد محمد ظريف قطب", relation: "زوج", phone: "01039153312" }, address: "الجيزه صفط اللبن"
-},
-// 14
-"27201161600153": {
-  id: "27201161600153", name: "محمد يحيى ابراهيم عجيبة", job: "باحث بمجلس الدولة بطنطا (موظف حكومي)", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01030401475", whatsapp: "01030401475", status: "pending-approval", idVerificationImage: "", guarantor: { name: "سحر عبدالعاطي محمد علي", relation: "زوجة", phone: "01555598820" }, address: "4 شارع على إبن أبي طالب المتفرع من شارع سكه سيجر أول طنطا"
-},
-// 15
-"26305270171571": {
-  id: "26305270171571", name: "احمد محمد احمد راشد", job: "معاش (صاحب مشروع)", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01554524317", whatsapp: "01555173265", status: "pending-approval", idVerificationImage: "", guarantor: { name: "نسيبه مهدي عبدالغفار حمص", relation: "زوجة", phone: "268071" }, address: "دمليج مركز منوف المنوفية"
-},
-// 16
-"27306062100951": {
-  id: "27306062100951", name: "محمد سيد عبد الحفيظ رفاعي", job: "مدار إدارة في التعاون البترول (موظف حكومي)", loan: 75000, loanTerm: "26 شهر", installment: "3845", total: "99970 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01113264306", whatsapp: "01103202053", status: "pending-approval", idVerificationImage: "", guarantor: { name: "مصطفى محمد سيد عبد الحفيظ", relation: "ابن", phone: "01113264306" }, address: "الجيزة البدرشين منزل ١٣شارع خالد بن الوليد المنزل ملك"
-},
-// 17
-"29606160201864": {
-  id: "29606160201864", name: "هدير احمد علي احمد", job: "خياطه (ربة منزل)", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01200161355", whatsapp: "01200161355", status: "pending-approval", idVerificationImage: "", guarantor: { name: "محمد هاني مبروك سليم ابراهيم", relation: "زوج", phone: "01226635391" }, address: "25 شارع هدي الإسلام سيدي بشر قبلي اول المنتزه"
-},
-// 18
-"27211100101371": {
-  id: "27211100101371", name: "طارق احمد مرسي مصطفي", job: "مدير بالهيئه العامه للنظافه والتجميل بالجيزة (موظف حكومي)", loan: 60000, loanTerm: "24 شهر", installment: "3085", total: "74040 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01150159331", whatsapp: "01150159331", status: "pending-approval", idVerificationImage: "", guarantor: { name: "حازم احمد مرسي مصطفي", relation: "أخت", phone: "01117404088" }, address: "٣٥ شارع زين العابدين ميدان الخلفاوي"
-},
-// 19
-"28911251205696": {
-  id: "28911251205696", name: "السيد ابوزيد فهيم سالم", job: "محل بقاله (صاحب مشروع قائم)", loan: 150000, loanTerm: "48 شهر", installment: "4205", total: "201840 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01215070983", whatsapp: "01207319100", status: "pending-approval", idVerificationImage: "", guarantor: { name: "اماني يعقوب عبدالعزيز المحلاوى", relation: "زوجة", phone: "01282131383" }, address: "الجماليه دقهليه"
-},
-// 4 (ملف 27)
-"28104292800342": {
-  id: "28104292800342", name: "عفاف عبد الرازق عبد الوهاب موسى", job: "معلم في معهد ازهري", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01100797451", whatsapp: "01206419288", status: "pending-approval", idVerificationImage: "", guarantor: { name: "محمود احمد جابر محمد ابراهيم", relation: "زوج", phone: "01206419288" }, address: "الاسكندرية العجمى الهانوفيل الدرابسه 34 ش عطالله العوامى"
-},
-// ===== العميل الجديد: محمد عبدالوهاب محمود أحمد عوض =====
-"29807202102379": {
-  id: "29807202102379",
-  name: "محمد عبدالوهاب محمود أحمد عوض",
-  job: "عامل زرعي عندي ارض زراعيه (عمل حر)",
-  loan: 80000,
-  loanTerm: "30 شهر",
-  installment: "3550",
-  total: "106500 ج.م",
-  hasEtisalat: true,
-  hasVodafone: false,
-  wallet: "اتصالات كاش",
-  walletNum: "01120520935",
-  whatsapp: "01066590637",
-  status: "approved",
-  idVerificationImage: "",
-  guarantor: { name: "دينا عبدالناصر علي محجوب", relation: "زوجة", phone: "01120520935" },
-  address: "البحيرة مركز بدر قريه حراء"
-},
+    "29807202102379": {
+      id: "29807202102379", name: "محمد عبدالوهاب محمود احمد عوض", job: "عامل زرعي عندي ارض زراعيه (عمل حر)", loan: 80000, loanTerm: "30 شهر", installment: "3550", total: "106500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01120520935", whatsapp: "01066590637", status: "pending-approval", idVerificationImage: "", guarantor: { name: "دينا عبدالناصر علي محجوب", relation: "زوجة", phone: "01120520935" }, address: "البحيرة مركز بدر قرية حراء"
+    },
+    "28503070102495": {
+      id: "28503070102495", name: "احمد موسى محمد موسى", job: "مراقب امن (موظف قطاع خاص)", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01147851350", whatsapp: "01270603174", status: "pending-approval", idVerificationImage: "", guarantor: { name: "هدى فرحان عوض محمد", relation: "زوجة", phone: "01147851350" }, address: "بلوك 12مدخل 21مجاوره 1المشروع الامريكى حلوان"
+    },
+    "28505020200413": {
+      id: "28505020200413", name: "احمد محمد محمود عبد العزيز", job: "اسواق فتح الله للجملة مشرف متابعة تنفيذى", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01093420139", whatsapp: "01093420139", status: "pending-approval", idVerificationImage: "", guarantor: { name: "احمد ابراهيم", relation: "والدة", phone: "01279747237" }, address: "21ش الطيبين من ش الزهور الحضرة الجديدة باب شرق الإسكندرية"
+    },
+    "30007011710076": {
+      id: "30007011710076", name: "محمد عبدالله عبدالله سلامه", job: "مشرف قسم الجزاره لدي هايبر برايم مارت", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01106128206", whatsapp: "01154518198", status: "pending-approval", idVerificationImage: "", guarantor: { name: "حسين عبدالله عبدالله سلامه", relation: "أخت", phone: "01028205032" }, address: "المنوفيه مركز بركه السبع قريه الدبايبه"
+    },
+    "28401192201136": {
+      id: "28401192201136", name: "عيد ثابت عطاللة مقار", job: "مشرف امن لدي شركة ادوية", loan: 100000, loanTerm: "32 شهر", installment: "4157", total: "133024 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01221006594", whatsapp: "01221006594", status: "pending-approval", idVerificationImage: "", guarantor: { name: "ماري فضل فهيم برسوم", relation: "زوجة", phone: "01274539646" }, address: "130جنوب الحي العاشر شقة6العاشر من رمضان محافظة الشرقية"
+    },
+    "29809022102012": {
+      id: "29809022102012", name: "مينا مجدى كامل جرجس", job: "عامل نظافه فى معرض ابو يوسف للمتوسيكلات", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01055181287", whatsapp: "01055181287", status: "pending-approval", idVerificationImage: "", guarantor: { name: "مجدى كامل جرجس ابرهيم", relation: "أب", phone: "01123129151" }, address: "24شارع احمد زهران التلاتين الجديد محولات ترسا هرم"
+    },
+    "30401171301673": {
+      id: "30401171301673", name: "كارم محمد محمد عواد", job: "مدينه نصر (عمل حر)", loan: 80000, loanTerm: "30 شهر", installment: "3550", total: "106500 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01055654128", whatsapp: "01206778630", status: "pending-approval", idVerificationImage: "", guarantor: { name: "محمد محمدمحمدعواد", relation: "أخت", phone: "01055654128" }, address: "مدينه نصر"
+    },
+    "28803152600098": {
+      id: "28803152600098", name: "صلاح الدين البدري عبد العال", job: "موظف امن", loan: 50000, loanTerm: "24 شهر", installment: "2725", total: "65400 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01107737151", whatsapp: "01158277794", status: "pending-approval", idVerificationImage: "", guarantor: { name: "هيثم البدري عبد العال", relation: "أخت", phone: "01019120658" }, address: "ع 15 جنوب الأحياء بيت العائله 6 اكتوبر"
+    },
+    "2850601010106172": {
+      id: "2850601010106172", name: "مصطفي حسين محمد مصطفى", job: "مطعم (عمل حر)", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01009716579", whatsapp: "01009716579", status: "pending-approval", idVerificationImage: "", guarantor: { name: "سميره حماده حسين السدادو", relation: "والدة", phone: "01102186638" }, address: "٧شارع السواكين المطريه"
+    },
+    "27101130103017": {
+      id: "27101130103017", name: "محمد عوض جمال محمد", job: "موظف قطاع خاص", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01123344350", whatsapp: "01123344350", status: "pending-approval", idVerificationImage: "", guarantor: { name: "اياد محمد عوض جمال محمد", relation: "ابن", phone: "01552223720" }, address: "٢٥ المجاورة الاولى الحى ١٣ الشيخ زايد"
+    },
+    "28401080104901": {
+      id: "28401080104901", name: "زينب فتحي بكري عمر", job: "مديره مبيعات (ربة منزل)", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01096132381", whatsapp: "01038058138", status: "pending-approval", idVerificationImage: "", guarantor: { name: "محمد احمد عبدالله", relation: "ابن", phone: "01096132681" }, address: "٥٩ش نخله المطيعي مصر الجديده"
+    },
+    "28511071401006": {
+      id: "28511071401006", name: "نجلاء فتحى ذكر قطب", job: "جوزي عندي محلي ماكولات (ربة منزل)", loan: 35000, loanTerm: "12 شهر", installment: "3875", total: "46500 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01113059948", whatsapp: "01113059948", status: "pending-approval", idVerificationImage: "", guarantor: { name: "عادل محمود محمد", relation: "زوج", phone: "01116164400" }, address: "بولاق الدكرور"
+    },
+    "29301102102001": {
+      id: "29301102102001", name: "عبير عدلي محمد سليمان", job: "فني تمريض (موظف حكومي)", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01126925743", whatsapp: "01116843214", status: "pending-approval", idVerificationImage: "", guarantor: { name: "سيد محمد ظريف قطب", relation: "زوج", phone: "01039153312" }, address: "الجيزه صفط اللبن"
+    },
+    "27201161600153": {
+      id: "27201161600153", name: "محمد يحيى ابراهيم عجيبة", job: "باحث بمجلس الدولة بطنطا (موظف حكومي)", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01030401475", whatsapp: "01030401475", status: "pending-approval", idVerificationImage: "", guarantor: { name: "سحر عبدالعاطي محمد علي", relation: "زوجة", phone: "01555598820" }, address: "4 شارع على إبن أبي طالب المتفرع من شارع سكه سيجر أول طنطا"
+    },
+    "26305270171571": {
+      id: "26305270171571", name: "احمد محمد احمد راشد", job: "معاش (صاحب مشروع)", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01554524317", whatsapp: "01555173265", status: "pending-approval", idVerificationImage: "", guarantor: { name: "نسيبه مهدي عبدالغفار حمص", relation: "زوجة", phone: "268071" }, address: "دمليج مركز منوف المنوفية"
+    },
+    "27306062100951": {
+      id: "27306062100951", name: "محمد سيد عبد الحفيظ رفاعي", job: "مدار إدارة في التعاون البترول (موظف حكومي)", loan: 75000, loanTerm: "26 شهر", installment: "3845", total: "99970 ج.م", hasEtisalat: true, hasVodafone: false, wallet: "اتصالات كاش", walletNum: "01113264306", whatsapp: "01103202053", status: "pending-approval", idVerificationImage: "", guarantor: { name: "مصطفى محمد سيد عبد الحفيظ", relation: "ابن", phone: "01113264306" }, address: "الجيزة البدرشين منزل ١٣شارع خالد بن الوليد المنزل ملك"
+    },
+    "29606160201864": {
+      id: "29606160201864", name: "هدير احمد علي احمد", job: "خياطه (ربة منزل)", loan: 40000, loanTerm: "18 شهر", installment: "2965", total: "53370 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01200161355", whatsapp: "01200161355", status: "pending-approval", idVerificationImage: "", guarantor: { name: "محمد هاني مبروك سليم ابراهيم", relation: "زوج", phone: "01226635391" }, address: "25 شارع هدي الإسلام سيدي بشر قبلي اول المنتزه"
+    },
+    "27211100101371": {
+      id: "27211100101371", name: "طارق احمد مرسي مصطفي", job: "مدير بالهيئه العامه للنظافه والتجميل بالجيزة (موظف حكومي)", loan: 60000, loanTerm: "24 شهر", installment: "3085", total: "74040 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01150159331", whatsapp: "01150159331", status: "pending-approval", idVerificationImage: "", guarantor: { name: "حازم احمد مرسي مصطفي", relation: "أخت", phone: "01117404088" }, address: "٣٥ شارع زين العابدين ميدان الخلفاوي"
+    },
+    "28911251205696": {
+      id: "28911251205696", name: "السيد ابوزيد فهيم سالم", job: "محل بقاله (صاحب مشروع قائم)", loan: 150000, loanTerm: "48 شهر", installment: "4205", total: "201840 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01215070983", whatsapp: "01207319100", status: "pending-approval", idVerificationImage: "", guarantor: { name: "اماني يعقوب عبدالعزيز المحلاوى", relation: "زوجة", phone: "01282131383" }, address: "الجماليه دقهليه"
+    },
+    "28104292800342": {
+      id: "28104292800342", name: "عفاف عبد الرازق عبد الوهاب موسى", job: "معلم في معهد ازهري", loan: 200000, loanTerm: "60 شهر", installment: "4440", total: "266400 ج.م", hasEtisalat: false, hasVodafone: false, wallet: "لا يوجد - سيفتحها", walletNum: "01100797451", whatsapp: "01206419288", status: "pending-approval", idVerificationImage: "", guarantor: { name: "محمود احمد جابر محمد ابراهيم", relation: "زوج", phone: "01206419288" }, address: "الاسكندرية العجمى الهانوفيل الدرابسه 34 ش عطالله العوامى"
+    }
   };
 
   let currentClient = null;
@@ -465,7 +424,7 @@
   function buildStatusMessage(client) {
     const status = client.status || 'pending-approval';
     const messages = {
-      'approved': { class: 'approved', icon: '🏆', title: '🎉 تهانينا! تمت الموافقة النهائية!', desc: `✅ تم اعتماد طلب التمويل الخاص بك بنجاح.<br>💰 <strong style="color: var(--gold-dark);">اضغط على زر التواصل مع التحويلات المالية</strong> لإنهاء إجراءات صرف المبلغ فوراً.` },
+      'approved': { class: 'approved', icon: '🏆', title: '🎉 تهانينا! تمت الموافقة النهائية!', desc: `✅ تم اعتماد طلب التمويل الخاص بك بنجاح.<br>💰 <strong style="color: var(--gold-dark);">اضغط على زر التواصل مع التحويلات المالية</strong> لإنهاء إجراءات الصرف فوراً.` },
       'review': { class: 'review', icon: '⏳', title: '⏳ طلبك قيد المراجعة', desc: `🔍 جاري دراسة طلبك من قبل فريق الائتمان.<br>💡 <strong style="color: var(--warning);">يرجى متابعة طلبك من حين لآخر حتى تظهر النتيجة النهائية.</strong>` },
       'rejected': { class: 'rejected', icon: '❌', title: '❌ تم رفض طلبك', desc: `😔 نأسف لإبلاغك بأن طلب التمويل الخاص بك لم تتم الموافقة عليه.<br>📞 يمكنك التواصل مع خدمة العملاء لمعرفة الأسباب.` },
       'invalid': { class: 'invalid', icon: '⚠️', title: '⚠️ بيانات غير صحيحة', desc: `📋 تبين أن بعض البيانات المقدمة غير صحيحة أو غير مكتملة.<br>✏️ يرجى تحديث بياناتك وإعادة التقديم.` },
@@ -517,7 +476,7 @@
       'review': { class: 'review', icon: 'fa-clock', main: '⏳ طلبك قيد المراجعة', sub: '💡 يرجى متابعة طلبك من حين لآخر', badge: '⏳ قيد المراجعة' },
       'rejected': { class: 'rejected', icon: 'fa-circle-xmark', main: '❌ تم رفض طلبك', sub: '😔 نأسف، لم تتم الموافقة على طلب التمويل', badge: '❌ مرفوض' },
       'invalid': { class: 'invalid', icon: 'fa-triangle-exclamation', main: '⚠️ بيانات غير صحيحة', sub: '✏️ يرجى تحديث بياناتك وإعادة التقديم', badge: '⚠️ بيانات غير صحيحة' },
-      'pending-approval': { class: 'pending-approval', icon: 'fa-arrows-rotate', main: '🔄 جارى حصولك على الموافقة', sub: '💡 يرجى متابعة طلبك من حين لآخر', badge: '🔄 قيد الموافقة النهائية' }
+      'pending-approval': { class: 'pending-approval', icon: 'fa-clock', main: '⏳ جاري مراجعة طلبك النهائية', sub: '💚 شكراً لتواصلك معنا في Cash Faster', badge: '⏳ قيد المراجعة' }
     };
     const s = statusMap[status] || statusMap['pending-approval'];
     html += `
